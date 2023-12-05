@@ -1,0 +1,101 @@
+.map {
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(186,186,186,1) 0%, rgba(91,91,91,1) 100%);
+}
+
+.GenericDiv{
+  border: solid 1px #000000;
+  background-color: rgb(193, 205, 212);
+  padding: 10px;
+  margin: 10px;
+}
+
+#options{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 400px;
+
+}
+
+#popup {
+  position: absolute;
+  background-color: white;
+  width: 500px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+#popup-closer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px; /* Adjust the spacing as needed */
+}
+
+/* Style for table cells */
+td, th {
+  padding: 10px;
+  border: 1px solid #ddd; /* Add a border for each cell */
+  text-align: left;
+}
+
+/* Optional: Style for table header */
+th {
+  background-color: #f2f2f2; /* Light gray background for header */
+}
+
+.overlayPopup {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  bottom: 20%;
+  right: 20%;
+  padding: 20px;
+  border: solid 1px #000000;
+  background-color: rgb(193, 205, 212, 1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  z-index: 1000;
+}
+
+#closeBtn {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Styles for the overlay background */
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgb(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+#filePreview{
+  padding: 10px;
+  width: 100%;
+  height: 600px;
+  border: solid 1px #000000;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
