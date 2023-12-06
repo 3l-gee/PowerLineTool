@@ -20,10 +20,11 @@ function featuresStyle (feature, resolution) {
   if (zoom <= 8) {
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'black',
-        width: 2,
+        color: 'blue',
+        width: 4,
       }),
     }));
+
   } else {
     // Style for the first point
     styles.push(new ol.style.Style({
@@ -90,6 +91,12 @@ function selected (feature, resolution) {
   // If zoom is greater than or equal to 14, apply the red stroke style
   if (zoom <= 8) {
     styles.push(new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 100, // Adjust the radius based on the zoom level
+        fill: new ol.style.Fill({
+          color: 'black',
+        }),
+      }),
       stroke: new ol.style.Stroke({
         color: '#FFA7D3',
         width: 10,
@@ -136,6 +143,12 @@ function selected (feature, resolution) {
     }));
 
     styles.push(new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 10, // Adjust the radius based on the zoom level
+        fill: new ol.style.Fill({
+          color: '#FFA7D3',
+        }),
+      }),
       stroke: new ol.style.Stroke({
         color: '#FFA7D3',
         width: 10,
@@ -143,6 +156,38 @@ function selected (feature, resolution) {
     }));
   }
   feature.set('zIndex', 10);
+  return styles;
+}
+
+function selectedFeatures (feature, resolution) {
+  const zoom = map.getView().getZoom();
+
+  const geometry = feature.getGeometry();
+  const coordinates = geometry.getCoordinates();
+
+  const styles = [];
+
+  if (zoom <= 8) {
+    styles.push(new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'grey',
+        width: 4,
+      }),
+    }));
+  } else {
+    styles.push(new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'grey',
+        width: 4,
+      }),
+      image: new ol.style.Circle({
+        radius: 6,
+        fill: new ol.style.Fill({
+          color: 'black',
+        }),
+      }),
+    }));
+  }
   return styles;
 }
 
@@ -183,25 +228,14 @@ var layerConfig_BackroundMap = {
 const SelectedFeatureSource = new ol.source.Vector()
 
 const SelectedFeatureLayer = new ol.layer.Vector({
+  layerId : "Selected",
   source : SelectedFeatureSource,
-  style : new ol.style.Style({
-    image: new ol.style.Circle({
-      radius: 3, 
-      fill: new ol.style.Fill({
-        color: 'orange',
-      }),
-    }),
-    stroke: new ol.style.Stroke({
-      color: 'orange',
-      width: 10,
-    })
-  })
+  style : selectedFeatures,
 })
 
 console.log(SelectedFeatureLayer)
-
 const ActiveObstacle = new ol.layer.Tile({
-  opacity: 0.1,
+  opacity: 1,
   minZoom : 8,
   source: new ol.source.TileWMS({
     url: `https://wms0.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=ch.bazl.luftfahrthindernis&LANG=en`,
@@ -238,6 +272,7 @@ var BackroundMap = new ol.layer.Tile({
   source: wmtsSource(layerConfig_BackroundMap)
 });
 
+
 const SimplifiedTLMSource = new ol.source.Vector({
   features: new ol.format.GeoJSON().readFeatures(TLMDATA, {
     featureProjection: 'EPSG:2056', // Adjust to your map's projection
@@ -247,6 +282,7 @@ const SimplifiedTLMSource = new ol.source.Vector({
 const SimplifiedTLMLayer = new ol.layer.Vector({
   style: featuresStyle,
   source: SimplifiedTLMSource,
+  layerId : "TLM",
 });
 
 const View = new ol.View({
@@ -271,12 +307,17 @@ const map = new ol.Map({
 
 //Interaction
 /////////////////////////////////////////////////////////////////////
-const container = document.getElementById('popup');
-const content = document.getElementById('popup-content');
-const closer = document.getElementById('popup-closer');
+//Populates the table
+updateSelectedFeaturesTable();
+
+//When a feature is selcted
+const popupContainer = document.getElementById('popup');
+const popupTitle = document.getElementById('popup-title');
+const popupContent = document.getElementById('popup-content');
+const popupCloser = document.getElementById('popup-closer');
 
 const popup = new ol.Overlay({
-  element: container,
+  element: popupContainer,
   autoPan: {
     animation: {
       duration: 250,
@@ -286,17 +327,18 @@ const popup = new ol.Overlay({
 
 map.addOverlay(popup);
 
+
 const selectInteraction = new ol.interaction.Select({
   style: selected,
-  layers: [SimplifiedTLMLayer], // Specify the layers on which the interaction will work
-  multi: true,
+  layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
+  multi: false,
   hitTolerance : 5
 });
 
-closer.onclick = function () {
+popupCloser.onclick = function() {
   selectInteraction.getFeatures().clear();
   popup.setPosition(undefined);
-  closer.blur();
+  popupCloser.blur();
   return false;
 };
 
@@ -304,45 +346,63 @@ map.addInteraction(selectInteraction);
 
 selectInteraction.on('select', function (evt) {
   const selectedFeatures = evt.selected;
+  const selectedLayerName = selectInteraction.getLayer(selectedFeatures[0]).get("layerId")
 
   if (selectedFeatures.length > 0) {
-    const extent = ol.extent.createEmpty();
-    
-    // Extend the extent with the geometry of each selected feature
-    selectedFeatures.forEach(function (feature) {
-      ol.extent.extend(extent, feature.getGeometry().getExtent());
-    });
+    if (selectedLayerName =="Selected"){
+      const extent = selectedFeatures[0].getGeometry().getExtent()
+      const center = ol.extent.getCenter(extent);
 
-    // Calculate the center of the bounding box (extent)
-    const center = ol.extent.getCenter(extent);
-    var popupContent = '<table>'
-    let entry = '<tr><th>ID</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
-    popupContent += entry
-    for (let selectedFeature of selectedFeatures){
-      let featureId = selectedFeature.get("id") 
-
-      entry =""
-      entry += "<tr><td>" 
-      entry += featureId
-      entry += "</td><td>"
-      entry += selectedFeature.get("omsMatches") 
-      entry += '</td><td>';
-      entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}">+</button>`;
-      entry += '</td></tr>';
-      popupContent += entry
-    }
-    popupContent += "</table>"
-    content.innerHTML = popupContent
-
-    const actionButtons = document.querySelectorAll('.action-button');
-    actionButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const featureId = button.dataset.featureId;
-        addFeature(featureId, "TLM");
+      popupTitle.innerHTML = "TEST";
+      var newPopupContent = '<p>'
+      let entry
+      for (let selectedFeature of selectedFeatures){
+        entry = JSON.stringify(selectedFeature.getProperties())
+        newPopupContent += entry
+      }
+      newPopupContent += "</p>"
+      popupContent.innerHTML = newPopupContent
+      popup.setPosition(center);
+    } 
+    else if (selectedLayerName =="TLM"){
+      const extent = ol.extent.createEmpty();
+      selectedFeatures.forEach(function (feature) {
+        ol.extent.extend(extent, feature.getGeometry().getExtent());
       });
-    });
+      const center = ol.extent.getCenter(extent);
 
-    popup.setPosition(center);}
+      popupTitle.innerHTML = "Selected Features";
+
+      var newPopupContent = '<table>'
+      let entry = '<tr><th>ID</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
+      newPopupContent += entry
+      for (let selectedFeature of selectedFeatures){
+        let featureId = selectedFeature.get("id") 
+        entry = ""
+        entry += "<tr><td>" 
+        entry += featureId
+        entry += "</td><td>"
+        entry += selectedFeature.get("omsMatches") 
+        entry += '</td><td>';
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}">+</button>`;
+        entry += '</td></tr>';
+        newPopupContent += entry
+      }
+      newPopupContent += "</table>"
+      popupContent.innerHTML = newPopupContent
+
+      const actionButtons = document.querySelectorAll('.action-button');
+      actionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const featureId = button.dataset.featureId;
+          addFeature(featureId, "TLM");
+
+        });
+      });
+
+      popup.setPosition(center);
+    }
+  }
 })
 
 //BackendCall
@@ -366,22 +426,26 @@ $('#helloButton').click(function() {
   });
 });
 
-$('#remFeature').click(function() {
+
+function remFeature(featureId = "null") {
   $.ajax({
     type: 'POST',
     url: '/map/remFeature/',
     headers: {
-        'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
+    data: JSON.stringify({
+      featureId: featureId,
+    }),
     success: function(data) {
       updateSelectedFeaturesTable();
       console.log('remFeature:', data);
     },
     error: function(error) {
-        console.error('remFeature Error:', error);
+      console.error('remFeature Error:', error);
     }
-});
-});
+  });
+}
 
 function getFeature(callback) {
   $.ajax({
@@ -398,17 +462,18 @@ function getFeature(callback) {
   });
 }
 
-function addFeature(featureId,featureType) {
+function addFeature(featureId,featureType, featureData = null) {
   $.ajax({
     type: 'POST',
     url: '/map/addFeature/',
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    data: {
+    data: JSON.stringify({
       featureId: featureId,
-      featureType : featureType
-    },
+      featureType : featureType,
+      featureData : featureData,
+    }),
     success: function(data) {
       console.log('addFeature:', data);
       updateSelectedFeaturesTable();
@@ -421,6 +486,12 @@ function addFeature(featureId,featureType) {
 
 // HTML 
 /////////////////////////////////////////////////////////////////////
+$(document).ready(function() {
+  $('#remFeature').click(function() {
+    remFeature();
+  });
+});
+
 function updateSelectedFeaturesTable() {
   getFeature(function(features) {
     var tableBody = $('#selectedFeatures tbody');
@@ -437,13 +508,15 @@ function updateSelectedFeaturesTable() {
         var row = $('<tr>')
           .append($('<td>').text(value.type))
           .append($('<td>').text(value.id))
+          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}">-</button>`));
     
         tableBody.append(row);
       }
+      $('.remFeatureButton').click(function() {
+        var featureId = $(this).data('id');
+        remFeature(featureId);
+      });
     }
-    
-
-      console.log(tableBody);
   })
 }
 

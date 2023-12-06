@@ -12,7 +12,7 @@ def transform_coordinates(src_epsg, dest_epsg, x, y):
 
     return dest_x, dest_y
 
-def dataConvert(feature, type) :
+def dataConvert(type, feature) :
     features = []
 
     if type == "TLM" : 
@@ -26,30 +26,48 @@ def dataConvert(feature, type) :
             point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
             features.append(point_geojson)
 
+        for i in range(len(feature["lines"])) : 
+            attributes = {
+                "feature" : feature["tlmID"],
+                "from": feature["points"][i]["description"],
+                "to": feature["points"][i+1]["description"],
+                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+            }
+            line_geojson = geojson.Feature(geometry=geojson.LineString([
+                (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
+                (feature["points"][i+1]["location"]["x"], feature["points"][i+1]["location"]["y"])
+                ]), properties=attributes)
+            features.append(line_geojson)
 
         feature_collection = geojson.FeatureCollection(features)
-
         return feature_collection
-             
-    #    for point in feature["points"]:
-    #         attributes = {
-    #             "feature" : feature["tlmID"],
-    #             "description": point["description"],
-    #             "terrain" : point["terrain"]["magnitude"],
-    #             "structureHeigh" : point["structureHeigh"]["magnitude"]
-    #                       }
-    #         point_geojson = geojson.Feature(geometry=geojson.Point((point["location"]["x"], point["location"]["y"])), properties=attributes)
-    #         features.append(point_geojson)
-        
-    #     for line in feature["lines"]:
-    #         attributes = {"attribute_name": line["attribute_value"]}
-    #         line_geojson = geojson.Feature(geometry=geojson.LineString([(point["longitude"], point["latitude"]) for point in line]), properties=attributes)
-    #         features.append(line_geojson)
-
-
-    
+                
     elif type == "DCS" : 
-        return 
+        for i in range(len(feature["points"])) : 
+            attributes = {
+                "feature" : "TODO",
+                "description": "TODO",
+                "terrain" : feature["points"][i]["elevation"]["magnitude"],
+                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+            }
+            point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
+            features.append(point_geojson)
+
+        for i in range(len(feature["jths"])) : 
+            attributes = {
+                "feature" : "TEST",
+                "from": "TODO",
+                "to": "TODO",
+                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+            }
+            line_geojson = geojson.Feature(geometry=geojson.LineString([
+                (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
+                (feature["points"][i+1]["location"]["x"], feature["points"][i+1]["location"]["y"])
+                ]), properties=attributes)
+            features.append(line_geojson)
+        
+        feature_collection = geojson.FeatureCollection(features)
+        return feature_collection
 
 class StageOne: 
     def __init__(self, ) : 
@@ -61,7 +79,7 @@ class StageOne:
 
     def addFeatureTLM(self, featureId) :
         rawFeature = self.TLMFeatures[featureId]
-        coordinates = dataConvert(rawFeature, "TLM")
+        coordinates = dataConvert("TLM", rawFeature)
         self.features[featureId] = {
             "type"  : "TLM",
             "id"    : featureId, 
@@ -70,16 +88,18 @@ class StageOne:
         }
 
     def addFeatureDCS(self, featureId, data) :
-
-
+        coordinates = dataConvert("DCS", data)
         self.features[featureId] = {
             "type"  : "DCS",
             "id"    : featureId, 
             "raw"   : data,
-            "coordinates" : [[2600000,1200000],[2600100,1200100]]
+            "coordinates" : coordinates
         }
 
-    def remFeature(self) :
+    def remFeature(self, featureId) : 
+        self.features.pop(featureId)
+
+    def remFeatures(self) :
         self.features = {}
 
 

@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import logging
 from . import Mapfunctions 
+import json
 
 stage_one_instance = Mapfunctions.StageOne()
 
@@ -16,9 +17,14 @@ def index(request):
 
 def remFeature(request):
     if request.method == 'POST' :
-        stage_one_instance.remFeature()
-
-    return HttpResponse(stage_one_instance.features) 
+        data = json.loads(request.body)
+        featureId = data.get('featureId')
+        if featureId == "null" : 
+            stage_one_instance.remFeatures()
+            return JsonResponse({'success': True, 'features': stage_one_instance.features})
+        else : 
+            stage_one_instance.remFeature(featureId)
+            return JsonResponse({'success': True, 'features': stage_one_instance.features})
 
 def log_coordinates(request):
     if request.method == 'POST':
@@ -34,23 +40,28 @@ def log_coordinates(request):
 
 def addFeature(request): 
     if request.method == 'POST' :
-        featureId = request.POST.get('featureId')
-        featureType = request.POST.get('featureType')
+        data = json.loads(request.body)
+        featureId = data.get('featureId')
+        featureType = data.get('featureType')
+        featureData = data.get('featureData')
+
+        # featureId = request.POST.get('featureId')
+        # featureType = request.POST.get('featureType')
+        # featureData = request.POST.get('featureData')
         if featureType == "TLM" : 
             stage_one_instance.addFeatureTLM(featureId)
 
             return JsonResponse({'success': True, 'features': stage_one_instance.features})
 
         elif featureType == "DCS" : 
-            stage_one_instance.addFeatureDCS(featureId, request.POST.get('featureData')) 
+            stage_one_instance.addFeatureDCS(featureId, featureData) 
             
-            return HttpResponse(stage_one_instance.features) 
+            return JsonResponse({'success': True, 'features': stage_one_instance.features})
 
     return HttpResponse(stage_one_instance.features) 
 
 def getFeature(request):
     if request.method == 'GET' :
-        
         return JsonResponse({'success': True, 'features': stage_one_instance.features})
     
     return HttpResponse(stage_one_instance.features) 

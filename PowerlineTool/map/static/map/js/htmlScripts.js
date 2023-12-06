@@ -3,6 +3,7 @@
 //HTML FUNCTIONS
 /////////////////////////////////////////////////////////////////////
 
+
 function openPopup() {
     // Display the overlay and the popup
     document.getElementById('DCSOverlay').style.display = 'block';
@@ -25,7 +26,8 @@ function saveAction() {
       reader.onload = function (e) {
         const jsonData = JSON.parse(e.target.result);
 
-        addFeatureDCS(selectedFile.name, "DCS", jsonData);
+        console.log(selectedFile.name, "DCS", jsonData)
+        addFeature(selectedFile.name, "DCS", jsonData);
 
         closePopup();
       };
@@ -58,10 +60,6 @@ function handleFile(file) {
       reader.onload = function (e) {
         const jsonData = JSON.parse(e.target.result);
 
-        // You can access and work with the parsed JSON data (jsonData) here
-        console.log(jsonData);
-
-        // For demonstration, displaying the JSON as a string in the preview
         const preview = document.createElement('pre');
         preview.textContent = JSON.stringify(jsonData, null, 2);
         filePreview.innerHTML = ''; // Clear previous preview
@@ -72,28 +70,28 @@ function handleFile(file) {
     }
 }
 
-
-function addFeatureDCS(featureId,featureType, featureData) {
-    $.ajax({
-      type: 'POST',
-      url: '/map/addFeature/',
-      headers: {
-        'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
-      },
-      data: {
-        featureId: featureId,
-        featureType : featureType,
-        featureData : featureData
-      },
-      success: function(data) {
-        console.log('addFeature:', data);
-        updateSelectedFeaturesTable();
-      },
-      error: function(error) {
-        console.error('addFeature Error:', error);
-      }
-    });
-  }
+function addFeature(featureId,featureType, featureData = null) {
+  console.log(featureData)
+  $.ajax({
+    type: 'POST',
+    url: '/map/addFeature/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    data: JSON.stringify({
+      featureId: featureId,
+      featureType : featureType,
+      featureData : featureData
+    }),
+    success: function(data) {
+      console.log('addFeature:', data);
+      updateSelectedFeaturesTable();
+    },
+    error: function(error) {
+      console.error('addFeature Error:', error);
+    }
+  });
+}
 
   function getFeature(callback) {
     $.ajax({
@@ -110,24 +108,3 @@ function addFeatureDCS(featureId,featureType, featureData) {
     });
   }
 
-  function updateSelectedFeaturesTable() {
-    getFeature(function(features) {
-      var tableBody = $('#selectedFeatures tbody');
-      tableBody.empty();
-  
-      if (features) {
-        for (const [key, value] of Object.entries(features)) {
-          var jsonContent = JSON.stringify(value.raw);
-  
-          var row = $('<tr>')
-            .append($('<td>').text(value.type))
-            .append($('<td>').text(value.id))
-            
-          tableBody.append(row);
-        }
-      }
-      
-  
-        console.log(tableBody);
-    })
-  }
