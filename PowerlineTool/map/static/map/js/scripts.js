@@ -186,6 +186,19 @@ function selectedFeatures (feature, resolution) {
           color: 'black',
         }),
       }),
+      text: new ol.style.Text({
+        text: (feature.get("description") !== undefined ? "num: " + feature.get("description") + "\n" : "") + feature.get("structureHeight") + " m",
+        font: '12px Calibri,sans-serif',
+        textAlign: 'left',
+        fill: new ol.style.Fill({
+          color: 'black',
+        }),
+        backgroundFill: new ol.style.Fill({
+          color: [255, 255, 255, 0.6],
+        }),
+        padding: [2, 2, 2, 2],
+        offsetX: 10, 
+      }),
     }));
   }
   return styles;
@@ -353,14 +366,16 @@ selectInteraction.on('select', function (evt) {
       const extent = selectedFeatures[0].getGeometry().getExtent()
       const center = ol.extent.getCenter(extent);
 
-      popupTitle.innerHTML = "TEST";
-      var newPopupContent = '<p>'
+      popupTitle.innerHTML = "Feature";
+      var newPopupContent = '<pre id="json">'
       let entry
       for (let selectedFeature of selectedFeatures){
-        entry = JSON.stringify(selectedFeature.getProperties())
+        const selectedFeatureProperties = selectedFeature.getProperties();
+        delete selectedFeatureProperties.geometry;
+        entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
         newPopupContent += entry
       }
-      newPopupContent += "</p>"
+      newPopupContent += "</pre>"
       popupContent.innerHTML = newPopupContent
       popup.setPosition(center);
     } 
@@ -371,7 +386,7 @@ selectInteraction.on('select', function (evt) {
       });
       const center = ol.extent.getCenter(extent);
 
-      popupTitle.innerHTML = "Selected Features";
+      popupTitle.innerHTML = "Line String";
 
       var newPopupContent = '<table>'
       let entry = '<tr><th>ID</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
@@ -384,7 +399,7 @@ selectInteraction.on('select', function (evt) {
         entry += "</td><td>"
         entry += selectedFeature.get("omsMatches") 
         entry += '</td><td>';
-        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}">+</button>`;
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> + </button>`;
         entry += '</td></tr>';
         newPopupContent += entry
       }
@@ -484,14 +499,6 @@ function addFeature(featureId,featureType, featureData = null) {
   });
 }
 
-// HTML 
-/////////////////////////////////////////////////////////////////////
-$(document).ready(function() {
-  $('#remFeature').click(function() {
-    remFeature();
-  });
-});
-
 function updateSelectedFeaturesTable() {
   getFeature(function(features) {
     var tableBody = $('#selectedFeatures tbody');
@@ -508,7 +515,7 @@ function updateSelectedFeaturesTable() {
         var row = $('<tr>')
           .append($('<td>').text(value.type))
           .append($('<td>').text(value.id))
-          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}">-</button>`));
+          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}"> - </button>`));
     
         tableBody.append(row);
       }
@@ -519,4 +526,147 @@ function updateSelectedFeaturesTable() {
     }
   })
 }
+
+function validateStepOne(){
+  $.ajax({
+    type: 'POST',
+    url: '/map/validateStepOne/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    success: function(data) {
+      console.log('validateStepOne:', data);
+      if (data.success) {
+        updateSelectedFeaturesTable();
+        map.removeLayer(SimplifiedTLMLayer)
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+
+        const TestDraw = new ol.layer.Vector({
+          source: new ol.source.Vector({})
+        })
+
+        const drawInteraction = new ol.interaction.Draw({
+          type: "LineString",
+          trace: true,
+          traceSource: SelectedFeatureLayer.getSource(),
+          source: TestDraw.getSource(),
+        })
+
+        const snapInteraction = new ol.interaction.Snap({
+          source: SelectedFeatureLayer.getSource(),
+        });
+
+        map.addInteraction(drawInteraction)
+        map.addInteraction(snapInteraction)
+        map.addLayer(TestDraw)
+
+
+      } else {
+        alert('Validation failed: ' + data.message);
+      }
+    },
+    error: function(error) {
+      console.error('validateStepOne Error:', error);
+    }
+  })
+}
+
+function openPopup() {
+  document.getElementById('DCSOverlay').style.display = 'block';
+  document.getElementById('DCSPopup').style.display = 'block';
+}
+
+function closePopup() {
+  document.getElementById('DCSOverlay').style.display = 'none';
+  document.getElementById('DCSPopup').style.display = 'none';
+}
+
+function saveAction() { 
+  const fileInput = document.getElementById('fileInput');
+  const selectedFile = fileInput.files[0];
+
+  if (selectedFile && selectedFile.type === 'application/json') {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const jsonData = JSON.parse(e.target.result);
+
+      console.log(selectedFile.name, "DCS", jsonData)
+      addFeature(selectedFile.name, "DCS", jsonData);
+
+      closePopup();
+    };
+
+    reader.readAsText(selectedFile);
+  }
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  const files = event.dataTransfer.files;
+  handleFile(files[0]);
+}
+
+function handleFileSelect(event) {
+  const files = event.target.files;
+  handleFile(files[0]);
+}
+
+function handleFile(file) {
+  const filePreview = document.getElementById('filePreview');
+
+  if (file && file.type === 'application/json') {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const jsonData = JSON.parse(e.target.result);
+
+      const preview = document.createElement('pre');
+      preview.textContent = JSON.stringify(jsonData, null, 2);
+      filePreview.innerHTML = ''; // Clear previous preview
+      filePreview.appendChild(preview);
+    };
+
+    reader.readAsText(file);
+  }
+}
+
+// HTML 
+/////////////////////////////////////////////////////////////////////
+$(document).ready(function() {
+  $('#remFeature').click(function() {
+    remFeature();
+  });
+  $('#openPopupBtn').click(function() {
+    openPopup();
+  });
+
+  $('#closeBtn').click(function() {
+    closePopup();
+  });
+
+  $('#saveDCSFeature').click(function() {
+    saveAction();
+  });
+  $('#fileInput').on('change', function(event) {
+    handleFileSelect(event);
+  });
+
+  $('#DCSPopup').on('dragover', function(event) {
+      handleDragOver(event);
+  });
+
+  $('#DCSPopup').on('drop', function(event) {
+      handleDrop(event);
+  });
+
+  $('#step1Validate').click(function() {
+    validateStepOne();
+  });
+});
 

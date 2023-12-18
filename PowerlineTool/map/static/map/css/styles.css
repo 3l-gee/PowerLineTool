@@ -99,3 +99,7 @@ th {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+#step2{
+  display: none;
+}

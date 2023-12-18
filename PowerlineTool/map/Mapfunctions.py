@@ -14,14 +14,13 @@ def transform_coordinates(src_epsg, dest_epsg, x, y):
 
 def dataConvert(type, feature) :
     features = []
-
     if type == "TLM" : 
         for i in range(len(feature["points"])) : 
             attributes = {
                 "feature" : feature["tlmID"],
                 "description": feature["points"][i]["description"],
                 "terrain" : feature["points"][i]["terrain"]["magnitude"],
-                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+                "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
             features.append(point_geojson)
@@ -31,7 +30,7 @@ def dataConvert(type, feature) :
                 "feature" : feature["tlmID"],
                 "from": feature["points"][i]["description"],
                 "to": feature["points"][i+1]["description"],
-                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+                "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
             }
             line_geojson = geojson.Feature(geometry=geojson.LineString([
                 (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
@@ -48,7 +47,7 @@ def dataConvert(type, feature) :
                 "feature" : "TODO",
                 "description": "TODO",
                 "terrain" : feature["points"][i]["elevation"]["magnitude"],
-                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+                "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
             features.append(point_geojson)
@@ -58,7 +57,7 @@ def dataConvert(type, feature) :
                 "feature" : "TEST",
                 "from": "TODO",
                 "to": "TODO",
-                "structureHeight" : feature["points"][i]["structureHeight"]["magnitude"]
+                "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
             }
             line_geojson = geojson.Feature(geometry=geojson.LineString([
                 (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
@@ -103,3 +102,6 @@ class StageOne:
         self.features = {}
 
 
+class StageTow: 
+    def __init__(self, stageOneFeatures):
+        self.features = stageOneFeatures

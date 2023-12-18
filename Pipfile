@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "==3.7.2"
+"backports.zoneinfo" = "==0.2.1"
+certifi = "==2023.11.17"
+django = "==4.2.7"
+geojson = "==3.1.0"
+pyproj = "==3.5.0"
+sqlparse = "==0.4.4"
+typing-extensions = "==4.8.0"
+tzdata = "==2023.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.7"

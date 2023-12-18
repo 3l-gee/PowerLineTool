@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-320u%skrj7m#+yi+&^scqkg1rbg-y4bg((0!*%(biddt((r&gw
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# BIG NO NO
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -130,3 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Set up logging to a file
 logging.basicConfig(filename='django.log', level=logging.INFO)
+ 

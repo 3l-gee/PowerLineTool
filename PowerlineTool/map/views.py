@@ -45,9 +45,6 @@ def addFeature(request):
         featureType = data.get('featureType')
         featureData = data.get('featureData')
 
-        # featureId = request.POST.get('featureId')
-        # featureType = request.POST.get('featureType')
-        # featureData = request.POST.get('featureData')
         if featureType == "TLM" : 
             stage_one_instance.addFeatureTLM(featureId)
 
@@ -65,3 +62,19 @@ def getFeature(request):
         return JsonResponse({'success': True, 'features': stage_one_instance.features})
     
     return HttpResponse(stage_one_instance.features) 
+
+
+def validateStepOne(request):
+    successParameters = {
+        "value" : False, 
+        "continuous" : False,
+    }
+
+    if len(stage_one_instance.features) > 0 : 
+        successParameters["value"] = True
+
+    #Todo
+    if True : 
+        successParameters["continuous"] = True
+
+    return JsonResponse({'success': all(successParameters.values()), 'features': stage_one_instance.features})
