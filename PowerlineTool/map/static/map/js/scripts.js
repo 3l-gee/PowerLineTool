@@ -420,6 +420,55 @@ selectInteraction.on('select', function (evt) {
   }
 })
 
+
+const DrawnFeature = new ol.layer.Vector({
+  source: new ol.source.Vector({})
+})
+
+const drawInteraction = new ol.interaction.Draw({
+  type: "LineString",
+  trace: true,
+  traceSource: SelectedFeatureLayer.getSource(),
+  source: DrawnFeature.getSource(),
+  condition: function(event) {
+    return ol.events.condition.singleClick(event) || event.originalEvent.button === 0;
+  }
+})
+
+const snapInteraction = new ol.interaction.Snap({
+  source: SelectedFeatureLayer.getSource(),
+  edge: false,  // Enable snapping to edges
+  vertex: true,  // Enable snapping to vertices
+  pixelTolerance: 200,
+});
+
+const listedDrawnFeature= [];
+
+// Event listener for drawend event
+drawInteraction.on('drawend', function (event) {
+  const feature = event.feature;
+  listedDrawnFeature.push(feature);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    drawInteraction.abortDrawing();
+  }
+});
+
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault(); // Prevent the default context menu
+  if (e.button === 2) { // Check if it's a right-click (button 2)
+    drawInteraction.removeLastPoint();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    drawInteraction.finishDrawing();
+  }
+});
+
 //BackendCall
 /////////////////////////////////////////////////////////////////////
 
@@ -542,24 +591,11 @@ function validateStepOne(){
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
 
-        const TestDraw = new ol.layer.Vector({
-          source: new ol.source.Vector({})
-        })
-
-        const drawInteraction = new ol.interaction.Draw({
-          type: "LineString",
-          trace: true,
-          traceSource: SelectedFeatureLayer.getSource(),
-          source: TestDraw.getSource(),
-        })
-
-        const snapInteraction = new ol.interaction.Snap({
-          source: SelectedFeatureLayer.getSource(),
-        });
+        map.removeInteraction(selectInteraction);
 
         map.addInteraction(drawInteraction)
         map.addInteraction(snapInteraction)
-        map.addLayer(TestDraw)
+        map.addLayer(DrawnFeature)
 
 
       } else {
@@ -636,6 +672,30 @@ function handleFile(file) {
   }
 }
 
+function validateStepTwo(){
+  $.ajax({
+    type: 'POST',
+    url: '/map/validateStepTwo/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    data: JSON.stringify({
+      feature : new ol.format.GeoJSON().writeFeature(drawnFeature),
+    }),
+    success: function(data) {
+      console.log('validateStepOne:', data);
+      if (data.success) {
+
+      } else {
+        alert('Validation failed: ' + data.message);
+      }
+    },
+    error: function(error) {
+      console.error('validateStepOne Error:', error);
+    }
+  })
+}
+
 // HTML 
 /////////////////////////////////////////////////////////////////////
 $(document).ready(function() {
@@ -667,6 +727,10 @@ $(document).ready(function() {
 
   $('#step1Validate').click(function() {
     validateStepOne();
+  });
+
+  $('#step2Validate').click(function() {
+    validateStepTwo();
   });
 });
 

@@ -1,22 +1,19 @@
-PowerlineTool/map/templates/map/index.html
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Venv
+venv/
+
+# VsCode
+.vs/
+
 __pycache__/TLM_Extractor_functions.cpython-37.pyc
 TLMData/TLMFullFeatures.json
 TLMData/TLMSimpleFeatures.geojson
 TLMData/TLMSimpleFeatures.gpkg
 TLMData/TLMSimpleFeatures.qmd
 PowerlineTool/django.log
-PowerlineTool/PowerlineTool/__pycache__/__init__.cpython-38.pyc
-PowerlineTool/PowerlineTool/__pycache__/settings.cpython-38.pyc
-PowerlineTool/PowerlineTool/__pycache__/urls.cpython-38.pyc
-PowerlineTool/PowerlineTool/__pycache__/wsgi.cpython-38.pyc
-PowerlineTool/map/__pycache__/__init__.cpython-38.pyc
-PowerlineTool/map/__pycache__/admin.cpython-38.pyc
-PowerlineTool/map/__pycache__/apps.cpython-38.pyc
-PowerlineTool/map/__pycache__/Mapfunctions.cpython-38.pyc
-PowerlineTool/map/__pycache__/models.cpython-38.pyc
-PowerlineTool/map/__pycache__/urls.cpython-38.pyc
-PowerlineTool/map/__pycache__/views.cpython-38.pyc
-PowerlineTool/map/migrations/__pycache__/__init__.cpython-38.pyc
 PowerlineTool/map/static/map/data/TLMFullFeatures.json
 PowerlineTool/map/static/map/js/TLMSimpleFeatures.json
 PowerlineTool/db.sqlite3

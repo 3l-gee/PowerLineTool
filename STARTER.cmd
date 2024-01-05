@@ -1,21 +1,14 @@
 @echo off
 
-REM Replace 'your_project_name' with the actual name of your Django project
-set PROJECT_NAME=PowerlineTool
-
-pip install pipenv
+python -m venv venv
 pause
-pipenv run python -m pip install --upgrade pip
+call venv\Scripts\activate
 pause
-pipenv install
+pip install -r requirements.txt
 pause
-
-REM Open web browser with localhost:8000
 start http://localhost:8000/map
-
-REM Run Django development server
-cd %PROJECT_NAME%
-pipenv run python manage.py runserver
+cd PowerlineTool
+python manage.py runserver
 pause
 
 

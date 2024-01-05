@@ -6,6 +6,8 @@ import json
 
 stage_one_instance = Mapfunctions.StageOne()
 
+
+
 #TEST
 def log_hello(request):
     # Log a message when the button is clicked
@@ -78,3 +80,22 @@ def validateStepOne(request):
         successParameters["continuous"] = True
 
     return JsonResponse({'success': all(successParameters.values()), 'features': stage_one_instance.features})
+
+def validateStepTwo(request):
+    if request.method == 'POST' :
+        data = json.loads(request.body)
+        featureId = data.get('featureId')
+        featureType = data.get('featureType')
+        featureData = data.get('featureData')
+
+        successParameters = {
+            "value" : False, 
+        }
+            
+        stage_two_instance = Mapfunctions.StageTow(request)
+
+        #Todo
+        if True : 
+            successParameters["value"] = True
+
+        return JsonResponse({'success': all(successParameters.values()), 'features': stage_one_instance.features})

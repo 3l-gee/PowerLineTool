@@ -42,15 +42,30 @@ def dataConvert(type, feature) :
         return feature_collection
                 
     elif type == "DCS" : 
-        for i in range(len(feature["points"])) : 
-            attributes = {
-                "feature" : "TODO",
-                "description": "TODO",
-                "terrain" : feature["points"][i]["elevation"]["magnitude"],
-                "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
-            }
-            point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
-            features.append(point_geojson)
+        # for i in range(len(feature["points"])) : 
+        #     attributes = {
+        #         "feature" : "TODO",
+        #         "description": "TODO",
+        #         "terrain" : feature["points"][i]["elevation"]["magnitude"],
+        #         "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
+        #     }
+        #     point_geojson = geojson.Feature(geometry=geojson.Point((feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"])), properties=attributes)
+        #     features.append(point_geojson)
+
+        # for i in range(len(feature["jths"])) : 
+        #     attributes = {
+        #         "feature" : "TEST",
+        #         "from": "TODO",
+        #         "to": "TODO",
+        #         "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
+        #     }
+        #     line_geojson = geojson.Feature(geometry=geojson.LineString([
+        #         (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
+        #         (feature["points"][i+1]["location"]["x"], feature["points"][i+1]["location"]["y"])
+        #         ]), properties=attributes)
+        #     features.append(line_geojson)
+
+        line_coordinates = [(feature["points"][0]["location"]["x"], feature["points"][0]["location"]["y"])]
 
         for i in range(len(feature["jths"])) : 
             attributes = {
@@ -59,11 +74,12 @@ def dataConvert(type, feature) :
                 "to": "TODO",
                 "structureHeight" : round(feature["points"][i]["structureHeight"]["magnitude"],3)
             }
-            line_geojson = geojson.Feature(geometry=geojson.LineString([
-                (feature["points"][i]["location"]["x"], feature["points"][i]["location"]["y"]),
-                (feature["points"][i+1]["location"]["x"], feature["points"][i+1]["location"]["y"])
-                ]), properties=attributes)
-            features.append(line_geojson)
+            line_coordinates.append((feature["points"][i+1]["location"]["x"], feature["points"][i+1]["location"]["y"]))
+
+
+        line_geojson = geojson.Feature(geometry=geojson.LineString(line_coordinates), properties=attributes)
+            
+        features.append(line_geojson)
         
         feature_collection = geojson.FeatureCollection(features)
         return feature_collection
