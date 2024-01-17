@@ -1,10 +1,10 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import logging
-from . import Mapfunctions 
+from . import mapFunctions 
 import json
 
-stage_one_instance = Mapfunctions.StageOne()
+stage_one_instance = mapFunctions.StageOne()
 
 
 
@@ -33,7 +33,7 @@ def log_coordinates(request):
         latitude = request.POST.get('latitude')
         longitude = request.POST.get('longitude')
 
-        latitudeMod, longitudeMod = Mapfunctions.transform_coordinates(3857, 2056, longitude, latitude)
+        latitudeMod, longitudeMod = mapFunctions.transform_coordinates(3857, 2056, longitude, latitude)
 
         return JsonResponse({'coordinates': [round(latitudeMod,1), round(longitudeMod,1)], 'status': 'success' })
     else:
@@ -92,7 +92,7 @@ def validateStepTwo(request):
             "value" : False, 
         }
             
-        stage_two_instance = Mapfunctions.StageTow(request)
+        stage_two_instance = mapFunctions.StageTow(request)
 
         #Todo
         if True : 
