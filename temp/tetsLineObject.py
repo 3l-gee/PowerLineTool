@@ -8,23 +8,23 @@ import uuid
 import copy
 
 class Point:
-    def __init__(self, x, y):
+    def __init__(self, x, y, attributes=None):
         # Generate a unique identifier for the point
         self.id = str(uuid.uuid4())[:6]
         
         # Set the x and y coordinates of the point
         self.x = x
         self.y = y
-        
-        # Initialize an empty list to store the edges connected to this point
-        self.edges = []
+                
+        self.attributes = attributes
         
     def __str__(self):
+
         # Return a string representation of the Point for easy printing
-        return f"\t\t{self.id}: [{self.x}, {self.y}, Edges: {self.edges}]"
+        return f"{self.id}: [{self.x}, {self.y}"
 
 class Edge:
-    def __init__(self, start, end):
+    def __init__(self, start, end, attributes=None):
         # Generate a unique identifier for the edge
         self.id = str(uuid.uuid4())[:6]
         
@@ -32,16 +32,133 @@ class Edge:
         self.start = start
         self.end = end
         
-        # Update the edges lists of the start and end points to include this edge
-        self.start.edges.append(self.id)
-        self.end.edges.append(self.id)
+        self.attributes = attributes
+        
+    def reroute(self, new_start, new_end):
+        # No need to remove from the old points since they no longer store edges
+        self.start = new_start
+        self.end = new_end
+
         
     def __str__(self):
         # Return a string representation of the Edge for easy printing
-        return f"\t\t{self.id}: {self.start.id} to {self.end.id}"
-            
-
+        return f"{self.id}: {self.start.id} to {self.end.id}"
+    
+    
 class LineString:
+    def __init__(self):
+        # Generate a unique identifier for the LineString
+        self.id = str(uuid.uuid4())[:6]
+        
+        # Dictionary to store points (key: point_id, value: Point instance)
+        self.points = {}
+        
+        # Dictionary to store edges (key: edge_id, value: Edge instance)
+        self.edges = {}
+        
+    def add_point(self, x, y, attributes=None):
+        """Add a new point to the LineString."""
+        new_point = Point(x, y, attributes)
+        self.points[new_point.id] = new_point
+        return new_point
+
+    def add_edge(self, start_point, end_point, attributes=None):
+        """Add a new edge to the LineString."""
+        new_edge = Edge(start_point, end_point, attributes)
+        self.edges[new_edge.id] = new_edge
+        
+    def remove_edge(self, edge_id):
+        if edge_id not in self.edges:
+            print(f"Edge with id {edge_id} not found.")
+            return
+
+        # Remove the edge itself
+        del self.edges[edge_id]
+        
+    def remove_point(self, point_id):
+        if point_id not in self.points:
+            print(f"Point with id {point_id} not found.")
+            return
+
+        # Remove the point itself
+        del self.points[point_id]
+
+        # Remove edges associated with the point
+        for edge_id in list(self.edges):
+            edge = self.edges[edge_id]
+            if edge.start.id == point_id or edge.end.id == point_id:
+                self.remove_edge(edge_id)
+                
+    def outgoing_edges(self, point_id):
+        """Get the outgoing edges of a point in the LineString."""
+        if point_id not in self.points:
+            print(f"Point id {point_id} not found in LineString.")
+            return []
+
+        return [edge for edge in self.edges.values() if edge.start.id == point_id or edge.end.id == point_id]
+                
+    def find_endpoints(self):
+        """Find endpoints in the LineString."""
+        endpoints = [point_id for point_id, point in self.points.items() if self._count_connections(point) == 1]
+        return endpoints
+
+    def _count_connections(self, point):
+        """Count the number of edges connected to a point."""
+        return sum(1 for edge in self.edges.values() if edge.start.id == point.id or edge.end.id == point.id)
+                
+    def traverse_graph(self, start_point_id=None):
+        """Traverse the graph using Depth-First Search (DFS) starting from an endpoint."""
+        endpoints = self.find_endpoints()
+
+        if not endpoints:
+            print("No endpoints found. The graph might be disconnected or incomplete.")
+            return
+
+        # If start_point_id is not provided, start from the first endpoint found
+        start_point_id = start_point_id or endpoints[0]
+
+        visited_points = set()
+
+        def dfs(point_id):
+            visited_points.add(point_id)
+            current_point = self.points[point_id]
+            print(f"\nNode {current_point.id}: [{current_point.x}, {current_point.y}] attributes: {current_point.attributes}")
+
+            # Find edges connected to the current point
+            connected_edges = [edge_id for edge_id, edge in self.edges.items()
+                               if edge.start.id == point_id or edge.end.id == point_id]
+
+            for edge_id in connected_edges:
+                edge = self.edges[edge_id]
+                print(f"\tEdge {edge.id}: {edge.start.id} to {edge.end.id}  attributes: {edge.attributes}")
+
+                # Determine the next point to visit
+                next_point_id = edge.end.id if edge.start.id == point_id else edge.start.id
+
+                # Recursively traverse the next point if it hasn't been visited
+                if next_point_id not in visited_points:
+                    dfs(next_point_id)
+
+        dfs(start_point_id)
+        
+    def find_reachable_points(self, start_point_id):
+        """Find reachable points in the LineString starting from a given point."""
+        visited_points = set()
+
+        def dfs(point_id):
+            visited_points.add(point_id)
+        
+            for edge in self.outgoing_edges(point_id):
+                next_point_id = edge.end.id if edge.start.id == point_id else edge.start.id
+                if next_point_id not in visited_points:
+                    dfs(next_point_id)
+
+        dfs(start_point_id)
+        return visited_points
+                
+
+        
+class LineString_OLD:
     def __init__(self):
         # Generate a unique identifier for the LineString
         self.id = str(uuid.uuid4())[:6]
@@ -128,17 +245,64 @@ class LineString:
             if point.x == existing_point.x and point.y == existing_point.y:
                 return existing_point
             
-        return True         
-                        
+        return True       
+    
     def display_linetring(self):
-        """Print the points and edges of the LineString."""
-        print("\tPoints:")
-        for point in self.points.values():
-            print(point)
+        """Print the points and edges of the LineString by traversing connections."""
+        visited_points = set()
+        visited_edges = set()
+    
+        def find_starting_point():
+            # Find a point with only one connection (an edge)
+            for point_id, point in self.points.items():
+                if len(point.edges) == 1:
+                    return point
+            return None
+    
+        def traverse_from_point(point):
+            if point.id in visited_points:
+                return
+            visited_points.add(point.id)
+    
+            print(f"\t\tPoint: {point.id}, x/y: [{point.x}, {point.y}]")
+    
+            for edge_id in point.edges:
+                edge = self.edges[edge_id]
+                if edge.id not in visited_edges:
 
-        print("\tEdges:")
-        for edge in self.edges.values():
-            print(edge)
+                    visited_edges.add(edge.id)
+                    next_point = edge.end if edge.start.id == point.id else edge.start
+                    print(f"\t\t\tEdge: {edge.id}:  {point.id} to {next_point.id}")
+                    traverse_from_point(next_point)
+    
+        starting_point = find_starting_point()
+        if starting_point:
+            traverse_from_point(starting_point)
+    
+        print("\tUnused Edges:")
+        for edge_id in self.edges:
+            if edge_id not in visited_edges:
+                edge = self.edges[edge_id]
+                print(f"\t\tEdge ID: {edge.id}, Start: {edge.start.id}, End: {edge.end.id}")
+    
+        print("\tUnused Points:")
+        for point_id in self.points:
+            if point_id not in visited_points:
+                point = self.points[point_id]
+                print(f"\t\tPoint: {point.id}, x/y: [{point.x}, {point.y}]")
+
+
+
+                        
+    # def display_linetring(self):
+    #     """Print the points and edges of the LineString."""
+    #     print("\tPoints:")
+    #     for point in self.points.values():
+    #         print(point)
+
+    #     print("\tEdges:")
+    #     for edge in self.edges.values():
+    #         print(edge)
             
     def sup_unreachable_points_edges(self, start_point_id):
         """Remove unused edges and points."""
@@ -204,6 +368,7 @@ class Graph:
         if point_id1 not in lineString1.points or point_id2 not in lineString2.points :
             print(f"point: {point_id1} or {point_id2} not found in points")
             return 
+        
         check = self._fuse_ctrl(lineString1.points[point_id1], lineString2.points[point_id2])
         if not all(check.values()):
             for key, item in check.items():
@@ -211,93 +376,100 @@ class Graph:
             return 
         
         # Create a new LineString to represent the fused line
-        fused_Line = LineString()
+        fused_line = LineString()
         
         # Copy points and edges from the first LineString
-        fused_Line.points.update(copy.deepcopy(lineString1.points))
-        fused_Line.edges.update(copy.deepcopy(lineString1.edges))
+        fused_line.points.update(copy.deepcopy(lineString1.points))
+        fused_line.edges.update(copy.deepcopy(lineString1.edges))
         
         # Copy points and edges from the second LineString
-        fused_Line.points.update(copy.deepcopy(lineString2.points))
-        fused_Line.edges.update(copy.deepcopy(lineString2.edges))
+        fused_line.points.update(copy.deepcopy(lineString2.points))
+        fused_line.edges.update(copy.deepcopy(lineString2.edges))
         
         # Remove duplicate data
-        new_point = Point(fused_Line.points[point_id1].x,fused_Line.points[point_id1].y)
-        fused_Line.points[new_point.id] = new_point
+        new_point = Point(fused_line.points[point_id1].x,fused_line.points[point_id1].y)
+        fused_line.points[new_point.id] = new_point
         
-        last_pts1 = fused_Line._out_point(point_id1)[0]
-        last_pts2 = fused_Line._out_point(point_id2)[0]
+        last_point2_id = [fused_line.edges[fused_line.outgoing_edges(point_id2)[0].id].start.id, fused_line.edges[fused_line.outgoing_edges(point_id2)[0].id].end.id]
+        last_point2_id.remove(point_id2)
+        last_point2_id
         
-        fused_Line.add_edge(last_pts1.id, new_point.id)
-        fused_Line.add_edge(last_pts2.id, new_point.id)
+        last_point1_id = [fused_line.edges[fused_line.outgoing_edges(point_id1)[0].id].start.id, fused_line.edges[fused_line.outgoing_edges(point_id1)[0].id].end.id]
+        last_point1_id.remove(point_id1)
+        last_point1_id
+        
+        
+        
+        print(last_point2_id, last_point1_id)
+        fused_line.add_edge(last_point1_id, new_point.id)
+        fused_line.add_edge(last_point2_id, new_point.id)
+        
+        # print(point_id1)
                 
-        del fused_Line.edges[fused_Line.points[point_id2].edges[0]]
-        del fused_Line.points[point_id2]
+        # print (fused_line.outgoing_edges(point_id1))
+        # print (fused_line.edges[fused_line.outgoing_edges(point_id1)[0].id])
+        # del fused_line.edges[fused_line.outgoing_edges(point_id1)[0].id]
+        # del fused_line.points[point_id2]
         
-        del fused_Line.edges[fused_Line.points[point_id1].edges[0]]
-        del fused_Line.points[point_id1]
+        # del fused_line.edges[fused_line.outgoing_edges(point_id2)[0].id]
+        # del fused_line.points[point_id1]
         
-        for key, point in fused_Line.points.items():
-            for edge in point.edges : 
-                if edge not in fused_Line.edges:
-                    point.edges.remove(edge)
+        # for key, point in fused_Line.points.items():
+        #     for edge in point.edges : 
+        #         if edge not in fused_Line.edges:
+        #             point.edges.remove(edge)
                         
         # Remove the second LineString
         del self.lineStrings[lineString_id2]
         del self.lineStrings[lineString_id1]
         
         # Update the first LineString with the fused LineString
-        self.lineStrings[fused_Line.id] = fused_Line
+        self.lineStrings[fused_line.id] = fused_line
         
-        
-    
-    def divide(self, lineString_id, point_id):
-        if lineString_id not in self.lineStrings:
-            print(f"LineString id {lineString_id} not found.")
-            return 
-        
-        lineString = self.lineStrings[lineString_id]
-        
-        if point_id not in lineString.points:
-            print(f"Point id {point_id} not found in LineString {lineString_id}.")
-            return
-        
-        out_edges_id = lineString.points[point_id].edges
-        if len(out_edges_id) != 2:
-            print(f"Cannot divide LineString {lineString_id} at point {point_id}.")
-            return
-                
-        line_part1 = self.create_line_part(lineString, out_edges_id[0], point_id)
-        line_part2 = self.create_line_part(lineString, out_edges_id[1], point_id)
-        
-        del self.lineStrings[lineString_id]
+       
+
         
     def create_line_part(self, lineString, edge_id, point_id):
         line_part = LineString()
         line_part.points = copy.deepcopy(lineString.points)
         line_part.edges = copy.deepcopy(lineString.edges)
-        line_part.sup_edge(edge_id)
-        line_part.sup_unreachable_points_edges(point_id)
+    
+        # Remove the specified edge
+        line_part.remove_edge(edge_id)
+    
+        # Remove unreachable points and edges in the new line part
+        reachable_points = line_part.find_reachable_points(point_id)
+        unreachable_points_ids = []
+        for key, point in line_part.points.items() :
+            if point.id not in reachable_points:
+                unreachable_points_ids.append(point.id)
+                
+        for unreachable_point_id in unreachable_points_ids: 
+            line_part.remove_point(unreachable_point_id)
+            
+        # Add the new line part to the graph
         self.lineStrings[line_part.id] = line_part
-        return line_part
+    
         
     def display_graph(self):
         print("Graph:")
         for key, lineString in self.lineStrings.items():
             print(f"LineString ID: {lineString.id}")
             
-            # Display points
-            print("\tPoints:")
-            for point_id, point in lineString.points.items():
-                print(f"\t\tPoint: {point.id}, x/y: [{point.x}, {point.y}], edges: {point.edges}")
+            print(lineString.traverse_graph())
+            
+            # # Display points
+            # print("\tPoints:")
+            # for point_id, point in lineString.points.items():
+            #     print(f"\t\tPoint: {point.id}, x/y: [{point.x}, {point.y}], edges: {point.edges}")
                 
     
-            # Display edges
-            print("\tEdges:")
-            for edge_id, edge in lineString.edges.items():
-                print(f"\t\tEdge ID: {edge.id}, Start: {edge.start.id}, End: {edge.end.id}")
+            # # Display edges
+            # print("\tEdges:")
+            # for edge_id, edge in lineString.edges.items():
+            #     print(f"\t\tEdge ID: {edge.id}, Start: {edge.start.id}, End: {edge.end.id}")
     
-            print("\n")
+            # print("\n")
             
     def _fuse_ctrl(self,point1,point2):
         valid = {}
@@ -309,8 +481,8 @@ class Graph:
         
         valid['x_difference_check'] = abs(point1.x - point2.x) < X_TOL
         valid['y_difference_check'] = abs(point1.y - point2.y) < Y_TOL
-        valid['pts1_is_ending_pts'] = len(point1.edges) == 1
-        valid['pts2_is_ending_pts'] = len(point2.edges) == 1
+        # valid['pts1_is_ending_pts'] = len(point1.edges) == 1
+        # valid['pts2_is_ending_pts'] = len(point2.edges) == 1
         
         return valid
         
@@ -514,20 +686,26 @@ data2 = {
 graph = Graph()
 
 lineString1 = LineString()
-for i in range(0,len(data["points"])-1) : 
-    lineString1.connect_points(data["points"][i]["location"]["x"],data["points"][i]["location"]["y"], data["points"][i+1]["location"]["x"],data["points"][i+1]["location"]["y"])
-
+pts1 = lineString1.add_point(data["points"][0]["location"]["x"],data["points"][0]["location"]["y"], attributes={"point" : 0})
+for i in range(1,len(data["points"])) : 
+    pts2 = lineString1.add_point(data["points"][i]["location"]["x"],data["points"][i]["location"]["y"], attributes={"point" : i})
+    lineString1.add_edge(pts1, pts2, attributes={"segment" : i})     
+    pts1 = pts2
+    
 graph.add(lineString1)
 
 lineString2 = LineString()
-for i in range(0,len(data2["points"])-1) : 
-    lineString2.connect_points(data2["points"][i]["location"]["x"],data2["points"][i]["location"]["y"], data2["points"][i+1]["location"]["x"],data2["points"][i+1]["location"]["y"])
-
+pts1 = lineString2.add_point(data2["points"][0]["location"]["x"],data2["points"][0]["location"]["y"])
+for i in range(1,len(data2["points"])) : 
+    pts2 = lineString2.add_point(data2["points"][i]["location"]["x"],data2["points"][i]["location"]["y"])
+    lineString2.add_edge(pts1, pts2)     
+    pts1 = pts2
+    
 graph.add(lineString2)
 
 graph.display_graph()
 
-graph.fuse_same_point("xx1", "xx2", "yy1", "yy2")
+# graph.fuse_same_point("xx1", "xx2", "yy1", "yy2")
 
     
 # lineString1.display_linetring()
