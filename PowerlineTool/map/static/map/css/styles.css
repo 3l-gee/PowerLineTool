@@ -103,3 +103,27 @@ th {
 #step2{
   display: none;
 }
+
+#context-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+}
+
+#context-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#context-menu li {
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+#context-menu li:hover {
+  background-color: #f0f0f0;
+}

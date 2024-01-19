@@ -4,7 +4,7 @@ import geojson
 import uuid
 import copy
 
-from . import LineStringInteractions
+from . import LineString
 
 
 
@@ -46,14 +46,6 @@ def dataConvert(type, feature) :
 
         feature_collection = geojson.FeatureCollection(features)
         return feature_collection
-    
-    elif type == "DCS-OO" :
-        #OO
-        lineString = LineStringInteractions.LineString()
-        for i in range(0,len(feature["points"])-1) : 
-            lineString.connect_points(feature["points"][i]["location"]["x"],feature["points"][i]["location"]["y"], feature["points"][i+1]["location"]["x"],feature["points"][i+1]["location"]["y"])
-
-        return lineString
                 
     elif type == "DCS" : 
         #GeoJSon
@@ -99,10 +91,10 @@ def dataConvert(type, feature) :
         feature_collection = geojson.FeatureCollection(features)
         return feature_collection
 
-class StageOne: 
-    def __init__(self, ) : 
+class LineStringHandler: 
+    def __init__(self) : 
         self.features = {}
-        self.lineStringFeaturs = {}
+        self.graphs = {}
         self.TLMFeatures = {}
         tempList = json.load(open('map/static/map/data/TLMFullFeatures.json'))["obstacles"]
         for item in tempList :
@@ -110,28 +102,29 @@ class StageOne:
 
     def addFeatureTLM(self, featureId) :
         rawFeature = self.TLMFeatures[featureId]
+        graph = LineString.LineString()
+        graph.TLM_reader(rawFeature)
         coordinates = dataConvert("TLM", rawFeature)
+        self.graphs[featureId] = graph
         self.features[featureId] = {
             "type"  : "TLM",
             "id"    : featureId, 
             "raw"   : rawFeature,
-            "coordinates" : coordinates
+            "coordinates" : graph.geoJson("TLM", featureId),
         }
 
-        print(self.features)
-
     def addFeatureDCS(self, featureId, data) :
-        test = dataConvert("DCS-OO", data)
-        print(test.display_linetring())
+        graph = LineString.LineString()
+        graph.DCS_reader(data)
         coordinates = dataConvert("DCS", data)
+        self.graphs[featureId] = graph
         self.features[featureId] = {
             "type"  : "DCS",
             "id"    : featureId, 
             "raw"   : data,
-            "coordinates" : coordinates
+            "coordinates" : graph.geoJson("DCS",featureId),
         }
 
-        print(coordinates)
 
     def remFeature(self, featureId) : 
         self.features.pop(featureId)
@@ -139,132 +132,86 @@ class StageOne:
     def remFeatures(self) :
         self.features = {}
 
+    def divide_graph(self, featureId, start_node):
+        feature = self.features[featureId]
 
-class Graph:
-    def __init__(self):
-        self.lineStrings = {}
-    
-    def add(self, lineString):
-        self.lineStrings[lineString.id] = lineString
+        self.features["test_Divide_A"] = {
+            "type"  : feature["type"],
+            "id"    : "test_Divide_A", 
+            "raw"   : feature["raw"],
+            "coordinates" : feature["coordinates"]
+        }
+
+        self.features["test_Divide_B"] = {
+            "type"  : feature["type"],
+            "id"    : "test_Divide_B", 
+            "raw"   : feature["raw"],
+            "coordinates" : feature["coordinates"]
+        }
+
+        # visited = set()
+
+        # def dfs(node):
+        #     visited.add(node)
+        #     for neighbor in graph.neighbors(node):
+        #         if neighbor not in visited:
+        #             dfs(neighbor)
+
+        # dfs(start_node)
+
+        # # Create subgraphs based on visited and unvisited nodes
+        # left_side_nodes = visited
+        # right_side_nodes = set(graph.nodes) - visited
+
+        # left_side_subgraph = graph.subgraph(left_side_nodes)
+        # right_side_subgraph = graph.subgraph(right_side_nodes)
+
+        # return left_side_subgraph, right_side_subgraph
+
+
+
+
+
+# class StageTwo: 
+#     def __init__(self, features):
+#         self.lineString = LineString.LineString()
+#         for feature in features : 
+#             self.lineString = []
+
+
+
         
-    def fuse_same_point(self, lineString_id1, point_id1, lineString_id2, point_id2):
-        if lineString_id1 not in self.lineStrings or lineString_id2 not in self.lineStrings : 
-            print(f"lineString: {lineString_id1} or {lineString_id2} not found in LineString")
-            return
+#     def compose(self, graph1, pts1_id, graph2, pts2_id):
+#         return
+        # # Extract nodes from both graphs
+        # pts1 = graph1[pts1_id]
+        # pts2 = graph2[pts2_id]
         
-        lineString1 = self.lineStrings[lineString_id1]
-        lineString2 = self.lineStrings[lineString_id2]
+        # # Create a new node with some attributes
+        # new_id = "test"
+        # new_attributes = {
+        #     "x": 25,
+        #     "y": 25,
+        #     "structureHeight": 25,
+        #     "elevation": 25,
+        #     "currentLighting": "no"
+        # }
         
-        if point_id1 not in lineString1.points or point_id2 not in lineString2.points :
-            print(f"point: {point_id1} or {point_id2} not found in points")
-            return 
-        check = self._fuse_ctrl(lineString1.points[point_id1], lineString2.points[point_id2])
-        if not all(check.values()):
-            for key, item in check.items():
-                print(key, " : ", item)
-            return 
+        # # Add the new node to both graphs
+        # graph1.add_node(new_id, **new_attributes)
+        # graph2.add_node(new_id, **new_attributes)
         
-        # Create a new LineString to represent the fused line
-        fused_Line = LineStringInteractions.LineString()
+        # # Create a composed graph using nx.compose
+        # composed = nx.compose(graph1, graph2)
         
-        # Copy points and edges from the first LineString
-        fused_Line.points.update(copy.deepcopy(lineString1.points))
-        fused_Line.edges.update(copy.deepcopy(lineString1.edges))
-        
-        # Copy points and edges from the second LineString
-        fused_Line.points.update(copy.deepcopy(lineString2.points))
-        fused_Line.edges.update(copy.deepcopy(lineString2.edges))
-        
-        # Remove duplicate data
-        new_point = LineStringInteractions.Point(fused_Line.points[point_id1].x,fused_Line.points[point_id1].y)
-        fused_Line.points[new_point.id] = new_point
-        
-        last_pts1 = fused_Line._out_point(point_id1)[0]
-        last_pts2 = fused_Line._out_point(point_id2)[0]
-        
-        fused_Line.add_edge(last_pts1.id, new_point.id)
-        fused_Line.add_edge(last_pts2.id, new_point.id)
-                
-        del fused_Line.edges[fused_Line.points[point_id2].edges[0]]
-        del fused_Line.points[point_id2]
-        
-        del fused_Line.edges[fused_Line.points[point_id1].edges[0]]
-        del fused_Line.points[point_id1]
-        
-        for key, point in fused_Line.points.items():
-            for edge in point.edges : 
-                if edge not in fused_Line.edges:
-                    point.edges.remove(edge)
-                        
-        # Remove the second LineString
-        del self.lineStrings[lineString_id2]
-        del self.lineStrings[lineString_id1]
-        
-        # Update the first LineString with the fused LineString
-        self.lineStrings[fused_Line.id] = fused_Line
-        
-        
-    
-    def divide(self, lineString_id, point_id):
-        if lineString_id not in self.lineStrings:
-            print(f"LineString id {lineString_id} not found.")
-            return 
-        
-        lineString = self.lineStrings[lineString_id]
-        
-        if point_id not in lineString.points:
-            print(f"Point id {point_id} not found in LineString {lineString_id}.")
-            return
-        
-        out_edges_id = lineString.points[point_id].edges
-        if len(out_edges_id) != 2:
-            print(f"Cannot divide LineString {lineString_id} at point {point_id}.")
-            return
-                
-        line_part1 = self.create_line_part(lineString, out_edges_id[0], point_id)
-        line_part2 = self.create_line_part(lineString, out_edges_id[1], point_id)
-        
-        del self.lineStrings[lineString_id]
-        
-    def create_line_part(self, lineString, edge_id, point_id):
-        line_part = LineStringInteractions.LineString()
-        line_part.points = copy.deepcopy(lineString.points)
-        line_part.edges = copy.deepcopy(lineString.edges)
-        line_part.sup_edge(edge_id)
-        line_part.sup_unreachable_points_edges(point_id)
-        self.lineStrings[line_part.id] = line_part
-        return line_part
-        
-    def display_graph(self):
-        print("Graph:")
-        for key, lineString in self.lineStrings.items():
-            print(f"LineString ID: {lineString.id}")
+        # # Reroute edges that used to go to pts1 and pts2 to the new_id
+        # for neighbor in list(graph1.neighbors(pts1_id)):
+        #     composed.add_edge(neighbor, new_id, **graph1.get_edge_data(pts1_id, neighbor))
+        # for neighbor in list(graph2.neighbors(pts2_id)):
+        #     composed.add_edge(neighbor, new_id, **graph2.get_edge_data(pts2_id, neighbor))
             
-            # Display points
-            print("\tPoints:")
-            for point_id, point in lineString.points.items():
-                print(f"\t\tPoint: {point.id}, x/y: [{point.x}, {point.y}], edges: {point.edges}")
-                
-    
-            # Display edges
-            print("\tEdges:")
-            for edge_id, edge in lineString.edges.items():
-                print(f"\t\tEdge ID: {edge.id}, Start: {edge.start.id}, End: {edge.end.id}")
-    
-            print("\n")
-            
-    def _fuse_ctrl(self,point1,point2):
-        valid = {}
-        X_TOL = 0.1
-        Y_TOL = 0.1
-        #todo
-        # ALTITUDE_TOL = 0.1
-        # STRUCTURE_HEIGHT_TOL = 0.1
+        # # Remove old pts1 and pts2 nodes
+        # composed.remove_node(pts1_id)
+        # composed.remove_node(pts2_id)
         
-        valid['x_difference_check'] = abs(point1.x - point2.x) < X_TOL
-        valid['y_difference_check'] = abs(point1.y - point2.y) < Y_TOL
-        valid['pts1_is_ending_pts'] = len(point1.edges) == 1
-        valid['pts2_is_ending_pts'] = len(point2.edges) == 1
-        
-        return valid
-        
+        # return composed

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
 
     <script defer type="module" src="{% static 'map/js/scripts.js' %}"></script>
-    <script src="{% static 'map/js/htmlScripts.js' %}"></script>
     
     <style>
 
@@ -81,6 +80,22 @@
         <div id="filePreview"></div>
         <button id="saveDCSFeature">Save</button>
     </div>
+
+    <div id="context-menu">
+        <div id="context-menu-content"></div>
+        <div id="context-menu-2points">
+            <ul>
+                <li class="fuse-button">Fuse</li>
+            </ul>
+        </div>
+        <div id="context-menu-1points">
+            <ul>
+                <li class="divide-button">Divide</li>
+            </ul>
+        </div>
+    </div>
+
+
 
 </body>
 </html>

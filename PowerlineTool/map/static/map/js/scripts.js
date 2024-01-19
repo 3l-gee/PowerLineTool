@@ -187,7 +187,7 @@ function selectedFeatures (feature, resolution) {
         }),
       }),
       text: new ol.style.Text({
-        text: (feature.get("description") !== undefined ? "num: " + feature.get("description") + "\n" : "") + feature.get("structureHeight") + " m",
+        text: (feature.get("id") !== undefined ? "num: " + feature.get("id") + "\n" : "") + feature.get("structureHeight") + " m",
         font: '12px Calibri,sans-serif',
         textAlign: 'left',
         fill: new ol.style.Fill({
@@ -371,6 +371,7 @@ selectInteraction.on('select', function (evt) {
       let entry
       for (let selectedFeature of selectedFeatures){
         const selectedFeatureProperties = selectedFeature.getProperties();
+        console.log(selectedFeature)
         delete selectedFeatureProperties.geometry;
         entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
         newPopupContent += entry
@@ -420,54 +421,62 @@ selectInteraction.on('select', function (evt) {
   }
 })
 
-
-const DrawnFeature = new ol.layer.Vector({
-  source: new ol.source.Vector({})
-})
-
-const drawInteraction = new ol.interaction.Draw({
-  type: "LineString",
-  trace: true,
-  traceSource: SelectedFeatureLayer.getSource(),
-  source: DrawnFeature.getSource(),
-  condition: function(event) {
-    return ol.events.condition.singleClick(event) || event.originalEvent.button === 0;
+function showContextMenu(x, y) {
+  var contextMenu = document.getElementById('context-menu');
+  var contextMenuContent = document.getElementById('context-menu-content');
+  var contextMenuContent1pts = document.getElementById('context-menu-1points');
+  var contextMenuContent2pts = document.getElementById('context-menu-2points');
+  var featuresAtCoordinates = map.getFeaturesAtPixel([x, y]);
+  var points = []
+  for (var feature of featuresAtCoordinates){
+    if (feature.getGeometry().getType() === "Point"){
+      points.push(feature.get('id'))
+    }
   }
-})
 
-const snapInteraction = new ol.interaction.Snap({
-  source: SelectedFeatureLayer.getSource(),
-  edge: false,  // Enable snapping to edges
-  vertex: true,  // Enable snapping to vertices
-  pixelTolerance: 200,
-});
+    // Hide all submenus
+    contextMenuContent1pts.style.display = 'none';
+    contextMenuContent2pts.style.display = 'none';
 
-const listedDrawnFeature= [];
+  if (points.length >= 2){
+    contextMenuContent.innerHTML = 'Point ID: ' + points[0] + ' & ' + points[1] ;
+    contextMenuContent2pts.style.display = 'block';
 
-// Event listener for drawend event
-drawInteraction.on('drawend', function (event) {
-  const feature = event.feature;
-  listedDrawnFeature.push(feature);
-});
+  } else if (points.length === 1 ){
+    contextMenuContent.innerHTML = 'Point ID: ' + points[0];
+    contextMenuContent1pts.style.display = 'block';
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    drawInteraction.abortDrawing();
+  } else {
+    return;
   }
-});
+  // Set the position of the context menu
+  contextMenu.style.display = 'block';
+  contextMenu.style.left = x + 'px';
+  contextMenu.style.top = y + 'px';
 
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault(); // Prevent the default context menu
-  if (e.button === 2) { // Check if it's a right-click (button 2)
-    drawInteraction.removeLastPoint();
-  }
-});
+  // Attach click event listeners to menu items
+  var fuseButton = contextMenuContent2pts.querySelector('.fuse-button');
+  var divideButton = contextMenuContent1pts.querySelector('.divide-button');
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    drawInteraction.finishDrawing();
+  if (fuseButton) {
+    fuseButton.addEventListener('click', function () {
+        fusePoints(points);
+        hideContextMenu();
+    });
   }
-});
+
+  if (divideButton) {
+      divideButton.addEventListener('click', function () {
+          dividePoint(points);
+          hideContextMenu();
+      });
+  }
+}
+
+function hideContextMenu() {
+  var contextMenu = document.getElementById('context-menu');
+  contextMenu.style.display = 'none';
+}
 
 //BackendCall
 /////////////////////////////////////////////////////////////////////
@@ -555,6 +564,7 @@ function updateSelectedFeaturesTable() {
     SelectedFeatureSource.clear()
 
     if (features) {
+      console.log(features)
       for (const [key, value] of Object.entries(features)) {
         for (let testFeature of value.coordinates.features) {
           let testFeatureObject = new ol.format.GeoJSON().readFeature(testFeature);
@@ -591,11 +601,14 @@ function validateStepOne(){
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
 
-        map.removeInteraction(selectInteraction);
-
-        map.addInteraction(drawInteraction)
-        map.addInteraction(snapInteraction)
-        map.addLayer(DrawnFeature)
+        document.addEventListener('contextmenu', function(event) {
+          event.preventDefault();
+          showContextMenu(event.clientX, event.clientY);
+        });
+        
+        document.addEventListener('click', function() {
+          hideContextMenu();
+        });
 
 
       } else {
@@ -608,6 +621,20 @@ function validateStepOne(){
   })
 }
 
+function fusePoints(points) {
+  // Implement the logic for fusing points
+  alert('Fuse Option for Points: ' + points.join(', '));
+}
+
+
+function dividePoint(points) {
+  // Implement the logic for dividing points
+  alert('Divide Option for Points: ' + points.join(', '));
+}
+
+
+// POPUP
+/////////////////////////////////////////////////////////////////////
 function openPopup() {
   document.getElementById('DCSOverlay').style.display = 'block';
   document.getElementById('DCSPopup').style.display = 'block';
@@ -733,4 +760,5 @@ $(document).ready(function() {
     validateStepTwo();
   });
 });
+
 
