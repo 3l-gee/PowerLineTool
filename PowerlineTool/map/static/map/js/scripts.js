@@ -390,7 +390,7 @@ selectInteraction.on('select', function (evt) {
       popupTitle.innerHTML = "Line String";
 
       var newPopupContent = '<table>'
-      let entry = '<tr><th>ID</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
+      let entry = '<tr><th>Source</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
       newPopupContent += entry
       for (let selectedFeature of selectedFeatures){
         let featureId = selectedFeature.get("id") 
@@ -423,14 +423,15 @@ selectInteraction.on('select', function (evt) {
 
 function showContextMenu(x, y) {
   var contextMenu = document.getElementById('context-menu');
-  var contextMenuContent = document.getElementById('context-menu-content');
+  var contextMenuContent1 = document.getElementById('context-menu-content-1');
+  var contextMenuContent2 = document.getElementById('context-menu-content-2');
   var contextMenuContent1pts = document.getElementById('context-menu-1points');
   var contextMenuContent2pts = document.getElementById('context-menu-2points');
   var featuresAtCoordinates = map.getFeaturesAtPixel([x, y]);
   var points = []
   for (var feature of featuresAtCoordinates){
     if (feature.getGeometry().getType() === "Point"){
-      points.push(feature.get('id'))
+      points.push({id: feature.get('id'),source :  feature.get('source')})
     }
   }
 
@@ -438,12 +439,14 @@ function showContextMenu(x, y) {
     contextMenuContent1pts.style.display = 'none';
     contextMenuContent2pts.style.display = 'none';
 
-  if (points.length >= 2){
-    contextMenuContent.innerHTML = 'Point ID: ' + points[0] + ' & ' + points[1] ;
+  if (points.length === 2){
+    contextMenuContent1.innerHTML = 'Source: ' + points[0].source  + ' & ' + points[1].source;
+    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id + ' & ' + points[1].id ;
     contextMenuContent2pts.style.display = 'block';
 
   } else if (points.length === 1 ){
-    contextMenuContent.innerHTML = 'Point ID: ' + points[0];
+    contextMenuContent1.innerHTML = 'Source: ' + points[0].source;
+    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id;
     contextMenuContent1pts.style.display = 'block';
 
   } else {
@@ -621,15 +624,55 @@ function validateStepOne(){
   })
 }
 
-function fusePoints(points) {
-  // Implement the logic for fusing points
-  alert('Fuse Option for Points: ' + points.join(', '));
+function fusePoints(points) {  
+  var dataToSend = {
+      points: points
+  };
+  $.ajax({
+    type: 'POST', 
+    url: '/map/fuse/', 
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    data: JSON.stringify(dataToSend),  // Convert data to JSON string
+    contentType: 'application/json',  // Set content type to JSON
+    success: function(response) {
+        // Handle the success response from the server
+        console.log('fusePoints', response);
+        updateSelectedFeaturesTable();
+    },
+    error: function(xhr, status, error) {
+        // Handle errors
+        console.error('Fuse points error:', status, error);
+    }
+  });
+
 }
 
 
 function dividePoint(points) {
+  var dataToSend = {
+    points: points
+  };
+  $.ajax({
+    type: 'POST', 
+    url: '/map/divide/', 
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    data: JSON.stringify(dataToSend),  // Convert data to JSON string
+    contentType: 'application/json',  // Set content type to JSON
+    success: function(response) {
+        // Handle the success response from the server
+        console.log('dividePoints', response);
+        updateSelectedFeaturesTable();
+    },
+    error: function(xhr, status, error) {
+        // Handle errors
+        console.error('Divide points error:', status, error);
+    }
+  });
   // Implement the logic for dividing points
-  alert('Divide Option for Points: ' + points.join(', '));
 }
 
 

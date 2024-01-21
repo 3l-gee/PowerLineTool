@@ -9,5 +9,7 @@ urlpatterns = [
     path('getFeature/', views.getFeature, name='getFeature'),
     path('remFeature/', views.remFeature, name='remFeature'),
     path('validateStepOne/', views.validateStepOne, name='validateStepOne'),
-    path('validateStepTwo/', views.validateStepTwo, name='validateStepTwo')
+    path('validateStepTwo/', views.validateStepTwo, name='validateStepTwo'),
+    path('fuse/', views.fuse, name='fuse'),
+    path('divide/', views.divide,name='divide')
 ]

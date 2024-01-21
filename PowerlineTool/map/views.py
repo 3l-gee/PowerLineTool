@@ -99,3 +99,29 @@ def validateStepTwo(request):
             successParameters["value"] = True
 
         return JsonResponse({'success': all(successParameters.values()), 'features': LineStringHandler_instance.features})
+    
+
+def fuse(request):
+    if request.method == 'POST' :
+        data = json.loads(request.body)
+        point1_id = data["points"][0]["id"]
+        point1_source = data["points"][0]["source"]
+        point2_id = data["points"][1]["id"]
+        point2_source = data["points"][1]["source"]
+
+        if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+            LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
+            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
+        
+        return JsonResponse({'success': False, 'features': LineStringHandler_instance.features})
+    
+def divide(request):
+    if request.method == 'POST' :
+        data = json.loads(request.body)
+        point_id = data["points"][0]["id"]
+        point_source = data["points"][0]["source"]
+        LineStringHandler_instance.divide(point_source, point_id)
+        return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
+        
+
+    return
