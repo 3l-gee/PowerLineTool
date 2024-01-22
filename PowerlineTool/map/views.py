@@ -123,5 +123,3 @@ def divide(request):
         LineStringHandler_instance.divide(point_source, point_id)
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         
-
-    return

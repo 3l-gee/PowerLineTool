@@ -12,7 +12,7 @@ class LineString:
         else:
             self.graph = nx.Graph()
             self.graph_id = None
-            self.history = [    ]
+            self.history = []
 
     def nodes(self, node_id=None):
         if node_id:
@@ -40,21 +40,60 @@ class LineString:
     def divide(self, node_id):
         if node_id not in self.graph.nodes:
             raise ValueError(f"Node {node_id} does not exist in the graph.")
+        
+        timestamp = datetime.now().isoformat()
+        self.history.append({
+            'timestamp': timestamp,
+            'operation': 'divide',
+            'parameter': {
+                "source" : self.graph_id,
+                "node_id" : node_id
+            }
+        })
 
         left_graph_id = str("divided-" + str(uuid.uuid4())[:6])
         right_graph_id = str("divided-" + str(uuid.uuid4())[:6])
 
-        left_line = LineString(existing_graph=self.graph.subgraph(nx.dfs_tree(self.graph, source=node_id).nodes))
-        right_line = LineString(existing_graph=self.graph.subgraph(nx.dfs_tree(self.graph, source=node_id, reverse=True).nodes))
+        neighbors = list(self.graph.neighbors(node_id))
+
+        left_subgraph = self.graph.copy()
+        right_subgraph = self.graph.copy()
+
+        left_subgraph.remove_edge(node_id, neighbors[0])
+        right_subgraph.remove_edge(node_id, neighbors[1])
+
+        isolated_nodes_left = []
+        for node in left_subgraph.nodes : 
+            if not nx.has_path(left_subgraph, node_id, node):
+                isolated_nodes_left.append(node)
+
+        isolated_nodes_right = []
+        for node in right_subgraph.nodes : 
+            if not nx.has_path(right_subgraph, node_id, node):
+                isolated_nodes_right.append(node)
+
+        left_subgraph.remove_nodes_from(isolated_nodes_left)
+        right_subgraph.remove_nodes_from(isolated_nodes_right)
+
+        edges_to_remove_left = list(nx.isolates(left_subgraph))
+        edges_to_remove_right = list(nx.isolates(right_subgraph))
+
+        left_subgraph.remove_edges_from(edges_to_remove_left)
+        right_subgraph.remove_edges_from(edges_to_remove_right)
+
+        left_line = LineString(existing_graph=left_subgraph,graph_id=left_graph_id, history=self.history)
+        right_line = LineString(existing_graph=right_subgraph,graph_id=right_graph_id, history=self.history)
 
         left_graph = {
             "id": left_graph_id,
             "graph":left_line
         }
+
         right_graph = {
             "id": right_graph_id,
             "graph":right_line
         }
+
         return left_graph,right_graph
 
     def TLM_reader(self, tlm_data,graph_id):
@@ -63,10 +102,11 @@ class LineString:
         self.history.append({
             'timestamp': timestamp,
             'operation': 'init_TLM',
-            'parameter': graph_id
+            'parameter': {
+                "TLM_id" : graph_id
+            }
         })
 
-        # Iterate through points in TLM data
         for i in range(0, len(tlm_data["points"])-1):
             if i == 0: 
                 pts1_attributes = {
@@ -80,7 +120,6 @@ class LineString:
                 pts1_id = str(uuid.uuid4())[:6]
                 self.graph.add_node(pts1_id, **pts1_attributes)
 
-            # Add the second point as a node to the graph
             pts2_attributes = {
                 "x": tlm_data["points"][i+1]["location"]["x"],
                 "y": tlm_data["points"][i+1]["location"]["y"],
@@ -92,7 +131,6 @@ class LineString:
             pts2_id = str(uuid.uuid4())[:6]
             self.graph.add_node(pts2_id, **pts2_attributes)
             
-            # Add the edge between the two points with attributes
             jth_attributes = {
                 "structureHeight": tlm_data["lines"][i]["structureHeight"]["magnitude"],
                 "currentMarking": "NONE"
@@ -107,11 +145,12 @@ class LineString:
         self.history.append({
             'timestamp': timestamp,
             'operation': 'init_DCS',
-            'parameter': graph_id
+            'parameter': {
+                "DCS_ID" : graph_id
+            }
         })
-        # Iterate through points in DCS data
+
         for i in range(0, len(dcs_data["points"])-1):
-            # Add the first point as a node to the graph
             if i == 0: 
                 pts1_attributes = {
                     "x": dcs_data["points"][i]["location"]["x"],
@@ -124,7 +163,6 @@ class LineString:
                 pts1_id = str(uuid.uuid4())[:6]
                 self.graph.add_node(pts1_id, **pts1_attributes)
             
-            # Add the second point as a node to the graph
             pts2_attributes = {
                 "x": dcs_data["points"][i+1]["location"]["x"],
                 "y": dcs_data["points"][i+1]["location"]["y"],
@@ -136,7 +174,6 @@ class LineString:
             pts2_id = str(uuid.uuid4())[:6]
             self.graph.add_node(pts2_id, **pts2_attributes)
             
-            # Add the edge between the two points with attributes
             jth_attributes = {
                 "structureHeight": dcs_data["jths"][i]["structureHeight"]["magnitude"],
                 "currentMarking": dcs_data["jths"][i]["currentMarking"]
@@ -146,21 +183,16 @@ class LineString:
             pts1_id = pts2_id
                     
     def _find_end_nodes(self):
-        # Find nodes with only one neighbor (end nodes)
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
         return end_nodes
     
     def traverse_graph(self):       
-        # Find end nodes of the graph
         end_nodes = self._find_end_nodes()
         
-        # Traverse the linestring graph from the start node to each end node
         print(f"Start Node: {end_nodes[0]}")
     
-        # Use nx.shortest_path to find the path
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
         
-        # Traverse the linestring graph and print node and edge attributes
         for i in range(len(path) - 1):
             current_node = path[i]
             next_node = path[i + 1]
@@ -173,9 +205,8 @@ class LineString:
     
 
     def geoJson(self): 
-        # Find end nodes of the graph
         end_nodes = self._find_end_nodes()
-        # Use nx.shortest_path to find the path
+
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
 
         def get_time(items):
@@ -183,10 +214,8 @@ class LineString:
 
         self.history.sort(key=get_time)
         
-        # Create a list to store the coordinates of the LineString
         coordinates = []
         features = []
-        # Traverse the linestring graph and collect node coordinates
         for node in path:
             node_data = self.graph.nodes[node]
             coordinates.append((node_data['x'], node_data['y']))
@@ -198,10 +227,14 @@ class LineString:
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((node_data['x'], node_data['y'])), properties=attributes)
             features.append(point_geojson)
-        # Create a GeoJSON LineString
+
         attributes = {
                 "source" : self.graph_id,
-                "history" : self.history
+                "history" : self.history,
+                "ctrl"  :{
+                    "nodes" : self.graph.number_of_nodes(),
+                    "edges" : self.graph.number_of_edges()
+                }
             }
         line_string = geojson.LineString(coordinates)
         feature = geojson.Feature(geometry=line_string, properties=attributes)

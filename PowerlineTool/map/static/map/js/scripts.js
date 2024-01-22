@@ -200,6 +200,31 @@ function selectedFeatures (feature, resolution) {
         offsetX: 10, 
       }),
     }));
+
+    styles.push(new ol.style.Style({
+      geometry: new ol.geom.Point(coordinates[0]),
+      image: new ol.style.RegularShape({
+        points: 3,
+        rotation: Math.PI * 4 / 3,
+        radius: 10, // Adjust the radius based on the zoom level
+        fill: new ol.style.Fill({
+          color: 'blue',
+        }),
+      }),
+    }));
+
+    styles.push(new ol.style.Style({
+      geometry: new ol.geom.Point(coordinates[coordinates.length -1]),
+      image: new ol.style.RegularShape({
+        points: 3,
+        rotation: Math.PI / 3,
+        radius: 10, // Adjust the radius based on the zoom level
+        fill: new ol.style.Fill({
+          color: 'red',
+        }),
+      }),
+    }));
+    
   }
   return styles;
 }
@@ -428,52 +453,56 @@ function showContextMenu(x, y) {
   var contextMenuContent1pts = document.getElementById('context-menu-1points');
   var contextMenuContent2pts = document.getElementById('context-menu-2points');
   var featuresAtCoordinates = map.getFeaturesAtPixel([x, y]);
+  var fuseButton = contextMenuContent2pts.querySelector('.fuse-button');
+  var divideButton = contextMenuContent1pts.querySelector('.divide-button');
   var points = []
+  var linestrings = []
   for (var feature of featuresAtCoordinates){
     if (feature.getGeometry().getType() === "Point"){
       points.push({id: feature.get('id'),source :  feature.get('source')})
     }
   }
 
-    // Hide all submenus
-    contextMenuContent1pts.style.display = 'none';
-    contextMenuContent2pts.style.display = 'none';
+  for (var feature of featuresAtCoordinates){
+    if (feature.getGeometry().getType() === "linestring"){
+      linestrings.push(feature.get('source'))
+    }
+  }
+
+  const fuseClickListener = () => {
+    fusePoints(points);
+    hideContextMenu();
+  };
+  
+  const divideClickListener = () => {
+    dividePoint(points);
+    hideContextMenu();
+  };
+
+  // Hide all submenus
+  contextMenuContent1pts.style.display = 'none';
+  contextMenuContent2pts.style.display = 'none';
 
   if (points.length === 2){
-    contextMenuContent1.innerHTML = 'Source: ' + points[0].source  + ' & ' + points[1].source;
-    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id + ' & ' + points[1].id ;
+    contextMenuContent1.innerHTML = 'Source: ' + points[0].source  + ' / ' + points[1].source;
+    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id + ' / ' + points[1].id ;
     contextMenuContent2pts.style.display = 'block';
-
+    fuseButton.removeEventListener('click', fuseClickListener);
+    fuseButton.addEventListener('click', fuseClickListener, { once: true });
+  
   } else if (points.length === 1 ){
     contextMenuContent1.innerHTML = 'Source: ' + points[0].source;
     contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id;
     contextMenuContent1pts.style.display = 'block';
-
-  } else {
+    divideButton.removeEventListener('click', divideClickListener);
+    divideButton.addEventListener('click', divideClickListener, { once: true });
+  }  else {
     return;
   }
   // Set the position of the context menu
   contextMenu.style.display = 'block';
   contextMenu.style.left = x + 'px';
   contextMenu.style.top = y + 'px';
-
-  // Attach click event listeners to menu items
-  var fuseButton = contextMenuContent2pts.querySelector('.fuse-button');
-  var divideButton = contextMenuContent1pts.querySelector('.divide-button');
-
-  if (fuseButton) {
-    fuseButton.addEventListener('click', function () {
-        fusePoints(points);
-        hideContextMenu();
-    });
-  }
-
-  if (divideButton) {
-      divideButton.addEventListener('click', function () {
-          dividePoint(points);
-          hideContextMenu();
-      });
-  }
 }
 
 function hideContextMenu() {
@@ -603,17 +632,6 @@ function validateStepOne(){
         map.removeLayer(SimplifiedTLMLayer)
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
-
-        document.addEventListener('contextmenu', function(event) {
-          event.preventDefault();
-          showContextMenu(event.clientX, event.clientY);
-        });
-        
-        document.addEventListener('click', function() {
-          hideContextMenu();
-        });
-
-
       } else {
         alert('Validation failed: ' + data.message);
       }
@@ -624,57 +642,50 @@ function validateStepOne(){
   })
 }
 
-function fusePoints(points) {  
-  var dataToSend = {
-      points: points
-  };
+const fusePoints = (points) => {  
   $.ajax({
     type: 'POST', 
     url: '/map/fuse/', 
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    data: JSON.stringify(dataToSend),  // Convert data to JSON string
-    contentType: 'application/json',  // Set content type to JSON
-    success: function(response) {
-        // Handle the success response from the server
-        console.log('fusePoints', response);
-        updateSelectedFeaturesTable();
+    data: JSON.stringify({
+      points: points
+    }),
+    contentType: 'application/json',  
+    success: (response) => {
+      console.log('fusePoints', response);
+      updateSelectedFeaturesTable();
     },
-    error: function(xhr, status, error) {
-        // Handle errors
-        console.error('Fuse points error:', status, error);
+    error: (xhr, status, error) => {
+      console.error('Fuse points error:', status, error);
     }
   });
+};
 
-}
-
-
-function dividePoint(points) {
-  var dataToSend = {
-    points: points
-  };
+const dividePoint = (points) => {
   $.ajax({
     type: 'POST', 
     url: '/map/divide/', 
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    data: JSON.stringify(dataToSend),  // Convert data to JSON string
+    data: JSON.stringify({
+      points: points
+    }),
     contentType: 'application/json',  // Set content type to JSON
-    success: function(response) {
-        // Handle the success response from the server
-        console.log('dividePoints', response);
-        updateSelectedFeaturesTable();
+    success: (response) => {
+      // Handle the success response from the server
+      console.log('dividePoints', response);
+      updateSelectedFeaturesTable();
     },
-    error: function(xhr, status, error) {
-        // Handle errors
-        console.error('Divide points error:', status, error);
+    error: (xhr, status, error) => {
+      // Handle errors
+      console.error('Divide points error:', status, error);
     }
   });
   // Implement the logic for dividing points
-}
-
+};
 
 // POPUP
 /////////////////////////////////////////////////////////////////////
@@ -802,6 +813,15 @@ $(document).ready(function() {
   $('#step2Validate').click(function() {
     validateStepTwo();
   });
+});
+
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  showContextMenu(event.clientX, event.clientY);
+});
+
+document.addEventListener('click', function() {
+  hideContextMenu();
 });
 
 
