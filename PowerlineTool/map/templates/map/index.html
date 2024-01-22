@@ -1,29 +1,45 @@
 <!-- polls/templates/polls/index.html -->
-{% load static %}  <!-- Load the static template tag library -->
+{% load static %} <!-- Load the static template tag library -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powerline Tool</title>
+
+    <!-- Static CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'map/css/styles.css' %}">
     {% csrf_token %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+
+    <!-- External JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+
+    <!-- OpenLayers CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
 
+    <!-- Custom JavaScript -->
     <script defer type="module" src="{% static 'map/js/scripts.js' %}"></script>
-    
+
+    <!-- Custom Styles -->
     <style>
 
     </style>
 </head>
+
 <body>
+    <!-- Map Container -->
     <div id="map" class="map"></div>
 
+    <!-- Popup Container -->
     <div id="popup">
         <h3 id="popup-title"></h3>
         <a href="#" id="popup-closer">X</a>
@@ -31,11 +47,15 @@
         </div>
     </div>
 
+    <!-- Options Container -->
     <div id="options" class="GenericDiv">
         <h3>Powerline Tool.</h3>
+
+        <!-- Step 1: Selection -->
         <div id="step1" class="GenericDiv">
-            <h5>Step 1 : Selection </h5>        
+            <h5>Step 1: Selection </h5>
             <table id="selectedFeatures">
+                <!-- Table Header -->
                 <thead>
                     <tr>
                         <th>Type</th>
@@ -43,18 +63,25 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+
+                <!-- Table Body -->
                 <tbody>
                 </tbody>
             </table>
+
+            <!-- Buttons for Step 1 -->
             <div style="padding: 10px;">
                 <button id="step1Validate">VALIDATE</button>
                 <button id="remFeature">RESET</button>
                 <button id="openPopupBtn">DCS</button>
             </div>
         </div>
+
+        <!-- Step 2: Formatting -->
         <div id="step2" class="GenericDiv">
-            <h5>Step 2 : Formatting </h5>        
+            <h5>Step 2: Formatting </h5>
             <table id="selectedFeatures">
+                <!-- Table Header -->
                 <thead>
                     <tr>
                         <th>Type</th>
@@ -62,17 +89,23 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+
+                <!-- Table Body -->
                 <tbody>
                 </tbody>
             </table>
+
+            <!-- Buttons for Step 2 -->
             <div style="padding: 10px;">
                 <button id="step2Validate">EXPORT</button>
             </div>
         </div>
-    </div>    
+    </div>
 
-    <div id="DCSOverlay"  class="overlay"></div>
+    <!-- DCS Overlay -->
+    <div id="DCSOverlay" class="overlay"></div>
 
+    <!-- DCS Popup -->
     <div id="DCSPopup" class="overlayPopup">
         <h3>Load DCS File</h3>
         <span id="closeBtn">Close</span>
@@ -81,6 +114,7 @@
         <button id="saveDCSFeature">Save</button>
     </div>
 
+    <!-- Context Menu -->
     <div id="context-menu">
         <div id="context-menu-content-1"></div>
         <div id="context-menu-content-2"></div>
@@ -96,7 +130,6 @@
         </div>
     </div>
 
-
-
 </body>
+
 </html>

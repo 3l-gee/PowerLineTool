@@ -170,7 +170,7 @@ function selectedFeatures (feature, resolution) {
   if (zoom <= 8) {
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'grey',
+        color: 'red',
         width: 4,
       }),
     }));
@@ -187,7 +187,10 @@ function selectedFeatures (feature, resolution) {
         }),
       }),
       text: new ol.style.Text({
-        text: (feature.get("id") !== undefined ? "num: " + feature.get("id") + "\n" : "") + feature.get("structureHeight") + " m",
+        // text: (feature.get("elevation") !== undefined ? "elevation: " + feature.get("elevation") + "\n" : "Height:") + feature.get("structureHeight") + " m",
+        text: (feature.get("elevation") !== undefined ? "elevation: " + feature.get("elevation") + " m\nStr Height: " + feature.get("structureHeight") + " m"
+        :
+         "False"),
         font: '12px Calibri,sans-serif',
         textAlign: 'left',
         fill: new ol.style.Fill({

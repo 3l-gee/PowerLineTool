@@ -230,7 +230,7 @@ class LineString:
 
         attributes = {
                 "source" : self.graph_id,
-                "history" : self.history,
+                "history" : self.history[-3:],
                 "ctrl"  :{
                     "nodes" : self.graph.number_of_nodes(),
                     "edges" : self.graph.number_of_edges()

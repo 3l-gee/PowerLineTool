@@ -137,6 +137,32 @@ class LineStringHandler:
         TOL_ALTITUDE = 0.1
         TOL_STR_HEIGHT = 0.1
 
+        # TESTS = {
+        #     "tolerance_x" : {
+        #         "tolrance" : TOL_X,
+        #         "value" : None,
+        #         "test" : ">=",
+        #         "outcome" : False
+        #     },
+        #     "tolerance_y" :{
+        #         "tolrance" : TOL_Y,
+        #         "value" : None,
+        #         "test" : ">="
+        #         "outcome" : False
+        #     },
+        #     "tolerance_alt" :{
+        #         "tolrance" : TOL_ALTITUDE,
+        #         "value" : None,
+        #         "test" : ">=",
+        #         "outcome" : False
+        #     },
+        #     "tolerance_str_height" :{
+        #         "tolrance" : TTOL_STR_HEIGHTOL_X,
+        #         "value" : None,
+        #         "test" : ">=",
+        #         "outcome" : False
+        #     },
+        # }
          # Check if the specified nodes exist in the graphs
         if point1_id not in self.graphs[point1_source].nodes() or point2_id not in self.graphs[point2_source].nodes():
             raise ValueError("One or both specified nodes do not exist in the graphs.")
