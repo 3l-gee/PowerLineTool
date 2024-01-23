@@ -25,17 +25,17 @@ class LineString:
     def remove_node(self, node_id):
         self.graph.remove_node(node_id)
 
-    def add_edge(self, node1, node2, **attributes):
-        self.graph.add_edge(node1, node2, **attributes)
+    def add_edge(self, node_id1, node_id2, **attributes):
+        self.graph.add_edge(node_id1, node_id2, **attributes)
 
-    def remove_edge(self, node1, node2):
-        self.graph.remove_edge(node1, node2)
+    def remove_edge(self, node_id1, node_id2):
+        self.graph.remove_edge(node_id1, node_id2)
 
     def neighbors(self, node_id):
         return list(self.graph.neighbors(node_id))
     
-    def get_edge_data(self, node1, node2, default=None):
-        return self.graph.get_edge_data(node1, node2, default=default)
+    def get_edge_data(self, node_id1, node_id2, default=None):
+        return self.graph.get_edge_data(node_id1, node_id2, default=default)
     
     def divide(self, node_id):
         if node_id not in self.graph.nodes:
@@ -109,7 +109,7 @@ class LineString:
 
         for i in range(0, len(tlm_data["points"])-1):
             if i == 0: 
-                pts1_attributes = {
+                node_id1_attributes = {
                     "x": tlm_data["points"][i]["location"]["x"],
                     "y": tlm_data["points"][i]["location"]["y"],
                     "structureHeight": tlm_data["points"][i]["structureHeight"]["magnitude"],
@@ -117,10 +117,10 @@ class LineString:
                     "currentLighting": "NONE",
                     "currentMarking": "NONE"
                 }
-                pts1_id = str(uuid.uuid4())[:6]
-                self.graph.add_node(pts1_id, **pts1_attributes)
+                node_id1 = str(uuid.uuid4())[:6]
+                self.graph.add_node(node_id1, **node_id1_attributes)
 
-            pts2_attributes = {
+            node_id2_attributes = {
                 "x": tlm_data["points"][i+1]["location"]["x"],
                 "y": tlm_data["points"][i+1]["location"]["y"],
                 "structureHeight": tlm_data["points"][i+1]["structureHeight"]["magnitude"],
@@ -128,15 +128,15 @@ class LineString:
                 "currentLighting": "NONE",
                 "currentMarking": "NONE"
             }
-            pts2_id = str(uuid.uuid4())[:6]
-            self.graph.add_node(pts2_id, **pts2_attributes)
+            node_id2 = str(uuid.uuid4())[:6]
+            self.graph.add_node(node_id2, **node_id2_attributes)
             
             jth_attributes = {
                 "structureHeight": tlm_data["lines"][i]["structureHeight"]["magnitude"],
                 "currentMarking": "NONE"
             }
-            self.graph.add_edge(pts1_id, pts2_id, attributes=jth_attributes) 
-            pts1_id = pts2_id
+            self.graph.add_edge(node_id1, node_id2, attributes=jth_attributes) 
+            node_id1 = node_id2
 
         
     def DCS_reader(self, dcs_data, graph_id): 
@@ -152,7 +152,7 @@ class LineString:
 
         for i in range(0, len(dcs_data["points"])-1):
             if i == 0: 
-                pts1_attributes = {
+                node_id1_attributes = {
                     "x": dcs_data["points"][i]["location"]["x"],
                     "y": dcs_data["points"][i]["location"]["y"],
                     "structureHeight": dcs_data["points"][i]["structureHeight"]["magnitude"],
@@ -160,10 +160,10 @@ class LineString:
                     "currentLighting": dcs_data["points"][i]["currentLighting"],
                     "currentMarking": "NONE"
                 }
-                pts1_id = str(uuid.uuid4())[:6]
-                self.graph.add_node(pts1_id, **pts1_attributes)
+                node_id1 = str(uuid.uuid4())[:6]
+                self.graph.add_node(node_id1, **node_id1_attributes)
             
-            pts2_attributes = {
+            node_id2_attributes = {
                 "x": dcs_data["points"][i+1]["location"]["x"],
                 "y": dcs_data["points"][i+1]["location"]["y"],
                 "structureHeight": dcs_data["points"][i+1]["structureHeight"]["magnitude"],
@@ -171,16 +171,16 @@ class LineString:
                 "currentLighting": dcs_data["points"][i+1]["currentLighting"],
                 "currentMarking": "NONE"
             }
-            pts2_id = str(uuid.uuid4())[:6]
-            self.graph.add_node(pts2_id, **pts2_attributes)
+            node_id2 = str(uuid.uuid4())[:6]
+            self.graph.add_node(node_id2, **node_id2_attributes)
             
             jth_attributes = {
                 "structureHeight": dcs_data["jths"][i]["structureHeight"]["magnitude"],
                 "currentMarking": dcs_data["jths"][i]["currentMarking"]
             }
-            self.graph.add_edge(pts1_id, pts2_id, attributes=jth_attributes) 
+            self.graph.add_edge(node_id1, node_id2, attributes=jth_attributes) 
 
-            pts1_id = pts2_id
+            node_id1 = node_id2
                     
     def _find_end_nodes(self):
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
