@@ -1,14 +1,28 @@
-from pyproj import Proj, transform
 import networkx as nx
 import json
-import geojson
 import uuid
-import copy
 from datetime import datetime
 from . import lineString
 
 class LineStringHandler: 
+    """
+    A class handling LineString objects and their features,
+
+    Attributes:
+        features : Dict[str, Dict]:
+            Dictionary to store features
+        graphs : Dict[str, LineString]):
+            Dictionary to store LineString graphs, where the keys are feature IDs.
+        TLMFeatures : Dict[str, Dict]:
+            Dictionary to store TLM features, where the keys are TLM IDs.
+    """
     def __init__(self) : 
+        """
+        Initializes a LineStringHandler object and loads all the tlm data in TLMFeatures
+
+        Returns:
+            None
+        """
         self.features = {}
         self.graphs = {}
         self.TLMFeatures = {}
@@ -17,6 +31,16 @@ class LineStringHandler:
             self.TLMFeatures[item["tlmID"]] = item
 
     def addFeatureTLM(self, featureId) :
+        """
+        Adds a TLM feature to the handler by loading its data from the generic TLM data.
+
+        Parameters:
+            featureId : str
+                ID of the TLM feature to be added.
+
+        Returns:
+            None
+        """
         rawFeature = self.TLMFeatures[featureId]
         graph = lineString.LineString()
         graph.TLM_reader(rawFeature,featureId)
@@ -25,10 +49,22 @@ class LineStringHandler:
             "type"  : "TLM",
             "id"    : featureId, 
             "raw"   : rawFeature,
-            "coordinates" : graph.geoJson(),
+            "coordinates" : graph.geo_json(),
         }
 
     def addFeatureDCS(self, featureId, data) :
+        """
+        Adds a DCS feature to the handler.
+
+        Parameters:
+            featureId : str
+                ID of the DCS feature to be added.
+            data : Dict
+                DCS data
+
+        Returns:
+            None
+        """
         graph = lineString.LineString()
         graph.DCS_reader(data,featureId)
         self.graphs[featureId] = graph
@@ -36,11 +72,11 @@ class LineStringHandler:
             "type"  : "DCS",
             "id"    : featureId, 
             "raw"   : data,
-            "coordinates" : graph.geoJson(),
+            "coordinates" : graph.geo_json(),
         }
 
 
-    def remFeature(self, featureId) : 
+    def remFeature(self, featureId) :
         self.features.pop(featureId)
         self.graphs.pop(featureId)
 
@@ -58,14 +94,14 @@ class LineStringHandler:
             "type"  : "divide",
             "id"    : left_graph["id"], 
             "raw"   : None,
-            "coordinates" : self.graphs[left_graph["id"]].geoJson()
+            "coordinates" : self.graphs[left_graph["id"]].geo_json()
         }
 
         self.features[right_graph["id"]] = {
             "type"  : "divide",
             "id"    : right_graph["id"], 
             "raw"   : None,
-            "coordinates" : self.graphs[right_graph["id"]].geoJson()
+            "coordinates" : self.graphs[right_graph["id"]].geo_json()
         }
 
         print(left_graph,right_graph)
@@ -124,7 +160,7 @@ class LineStringHandler:
             "type"  : "fused",
             "id"    : new_id,
             "raw"   : [],
-            "coordinates" : self.graphs[new_id].geoJson(),
+            "coordinates" : self.graphs[new_id].geo_json(),
         }
         
     def neighboors(self, point_source, point_id):

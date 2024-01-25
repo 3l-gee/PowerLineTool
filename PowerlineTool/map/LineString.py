@@ -4,7 +4,32 @@ import geojson
 from datetime import datetime
 
 class LineString:
+    """
+    A class representing a line graph structure with graph manipulation.
+
+    Attributes:
+        graph : nx.Graph()
+            NetworkX graph object
+        graph_id: str
+            Unique identifier .
+        history: List[Dict[str, Any]]
+            List of dictionaries documenting the operations.
+    """
     def __init__(self, existing_graph=None, graph_id=None, history=None):
+        """
+        Initializes a LineString object.
+
+            Parameters:
+                existing_graph (optional): nx.Graph()
+                    An existing graph to be copied.
+                graph_id (optional): str
+                    A unique identifier for the graph.
+                history (optional): List[Dict[str, Any]]
+                    A list of dictionaries documenting the operations.
+
+            Returns:
+                None
+        """
         if existing_graph:
             self.graph = existing_graph.copy()
             self.graph_id = graph_id
@@ -38,6 +63,16 @@ class LineString:
         return self.graph.get_edge_data(node_id1, node_id2, default=default)
     
     def divide(self, node_id):
+        """
+        Divides the graph into two subgraphs at the specified node.
+
+            Parameters
+            node_id: str
+                ID of the node at which to divide.
+
+            Returns:
+                tuple: Two subgraphs as LineString objects.
+        """
         if node_id not in self.graph.nodes:
             raise ValueError(f"Node {node_id} does not exist in the graph.")
         
@@ -97,6 +132,18 @@ class LineString:
         return left_graph,right_graph
 
     def TLM_reader(self, tlm_data,graph_id):
+        """
+        Initializes the graph using data from TLM
+
+            Parameters:
+                tlm_data : dict
+                    Data representing a TLM.
+                graph_id : str
+                    Unique identifier for the graph.
+
+            Returns:
+                None
+        """
         self.graph_id = graph_id
         timestamp = datetime.now().isoformat()
         self.history.append({
@@ -140,6 +187,17 @@ class LineString:
 
         
     def DCS_reader(self, dcs_data, graph_id): 
+        """Initializes the graph using data from  DCS.
+
+            Parameters:
+                dcs_data : dict
+                    Data representing a DCS.
+                graph_id : str
+                Unique identifier for the graph.
+
+            Returns:
+                None
+            """
         self.graph_id = graph_id
         timestamp = datetime.now().isoformat()
         self.history.append({
@@ -204,7 +262,13 @@ class LineString:
             print(f"Node: {next_node}")
     
 
-    def geoJson(self): 
+    def geo_json(self):
+        """Generates a GeoJSON representation of the graph.
+
+            Returns:
+                geojson.FeatureCollection: 
+                    GeoJSON representation of the graph.
+            """
         end_nodes = self._find_end_nodes()
 
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
