@@ -11,6 +11,9 @@ venv/
 #logs
 .log
 
+#cmd
+.cmd
+
 __pycache__/TLM_Extractor_functions.cpython-37.pyc
 TLMData/TLMFullFeatures.json
 TLMData/TLMSimpleFeatures.geojson
