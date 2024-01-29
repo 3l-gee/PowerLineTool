@@ -8,6 +8,9 @@ venv/
 # VsCode
 .vs/
 
+#logs
+.log
+
 __pycache__/TLM_Extractor_functions.cpython-37.pyc
 TLMData/TLMFullFeatures.json
 TLMData/TLMSimpleFeatures.geojson
