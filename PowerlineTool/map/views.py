@@ -8,7 +8,7 @@ LineStringHandler_instance = mapFunction.LineStringHandler()
 def index(request):
     return render(request, 'map/index.html', {'stage_one_instance': LineStringHandler_instance})
 
-def remeature(request):
+def remFeature(request):
     if request.method == 'POST' :
         data = json.loads(request.body)
         featureId = data.get('featureId')

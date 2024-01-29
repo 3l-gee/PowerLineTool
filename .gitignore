@@ -15,11 +15,7 @@ venv/
 .cmd
 
 __pycache__/TLM_Extractor_functions.cpython-37.pyc
-TLMData/TLMFullFeatures.json
-TLMData/TLMSimpleFeatures.geojson
 TLMData/TLMSimpleFeatures.gpkg
 TLMData/TLMSimpleFeatures.qmd
 PowerlineTool/django.log
-PowerlineTool/map/static/map/data/TLMFullFeatures.json
-PowerlineTool/map/static/map/js/TLMSimpleFeatures.json
 PowerlineTool/db.sqlite3
