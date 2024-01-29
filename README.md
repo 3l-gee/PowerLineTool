@@ -38,8 +38,8 @@ STEP 2 : we can now modify the data
 - left click point : show detail
 - left click line : show detail + 3 history entry
 - right click point : Fuse or divde 
-- fuse : both ends
--  divide : in between
+  - fuse : both ends
+  - divide : in between
     - unwanted part can be deletd with ( - )
 - EXPORT : TODO Export
 
