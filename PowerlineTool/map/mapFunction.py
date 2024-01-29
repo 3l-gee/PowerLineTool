@@ -85,7 +85,20 @@ class LineStringHandler:
         self.graphs = {}
 
     def divide(self, point_source, point_id):
+        """
+        Divides the features at the specified point
+        Generates two sub features and all the linked information
+        Deletes the original feature.
 
+            Parameters:
+                point_source : str
+                    The source identifier of the point.
+                point_id : str
+                    The identifier of the point where the graph should be divided.
+
+            Returns:
+                None
+        """
         left_graph,right_graph = self.graphs[point_source].divide(point_id)
         self.graphs[left_graph["id"]] = left_graph["graph"]
         self.graphs[right_graph["id"]] = right_graph["graph"]
@@ -109,6 +122,22 @@ class LineStringHandler:
         self.remFeature(point_source)
     
     def fuse(self, point1_source, point1_id, point2_source, point2_id):
+        """
+        Fuses two points from different sources into a new node and updates the graph and features accordingly.
+
+        Parameters:
+            point1_source : str
+                The source identifier of the first point.
+            point1_id : str
+                The identifier of the first point.
+            point2_source : str
+                The source identifier of the second point.
+            point2_id : str
+                The identifier of the second point.
+
+        Returns:
+            None
+        """
         nx_graph1 = self.graphs[point1_source].graph
         nx_graph2 = self.graphs[point2_source].graph
 
@@ -168,11 +197,32 @@ class LineStringHandler:
              
            
     def same_point(self, point1_source, point1_id, point2_source, point2_id):
+        """
+        Checks if two points from different sources represent the same geographical location within specified tolerances.
+
+        Parameters:
+            point1_source : str
+                The source identifier of the first point.
+            point1_id : str
+                The identifier of the first point.
+            point2_source : str
+                The source identifier of the second point.
+            point2_id : str
+                The identifier of the second point.
+
+        Returns:
+            bool: True 
+                if the points represent the same geographical location within specified tolerances, False otherwise.
+        
+        Raises:
+            ValueError: If one or both specified nodes do not exist in the graphs.
+        """
         TOL_X = 0.1
         TOL_Y = 0.1
         TOL_ALTITUDE = 0.1
         TOL_STR_HEIGHT = 0.1
 
+        # TODO structured test implementation
         # TESTS = {
         #     "tolerance_x" : {
         #         "tolrance" : TOL_X,

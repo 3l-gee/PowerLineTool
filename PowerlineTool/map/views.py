@@ -1,21 +1,14 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-import logging
 from . import mapFunction 
 import json
 
 LineStringHandler_instance = mapFunction.LineStringHandler()
 
-#TEST
-def log_hello(request):
-    # Log a message when the button is clicked
-    logging.info('Hello, world!')
-    return HttpResponse('Logged "Hello, world!"') 
-
 def index(request):
     return render(request, 'map/index.html', {'stage_one_instance': LineStringHandler_instance})
 
-def remFeature(request):
+def remeature(request):
     if request.method == 'POST' :
         data = json.loads(request.body)
         featureId = data.get('featureId')
@@ -101,6 +94,9 @@ def validateStepTwo(request):
 
 def fuse(request):
     if request.method == 'POST' :
+        # TODO handel unfusable cases (not last point)
+        # JsonResponse
+
         data = json.loads(request.body)
         point1_id = data["points"][0]["id"]
         point1_source = data["points"][0]["source"]
@@ -115,9 +111,15 @@ def fuse(request):
     
 def divide(request):
     if request.method == 'POST' :
+        # TODO handel undividable cases (last point)
+        # JsonResponse
+
         data = json.loads(request.body)
         point_id = data["points"][0]["id"]
         point_source = data["points"][0]["source"]
         LineStringHandler_instance.divide(point_source, point_id)
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         
+# TODO handel export
+        
+# TODO handel history
