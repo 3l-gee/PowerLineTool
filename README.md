@@ -70,8 +70,6 @@ STEP 2 : we can now modify the data
     - unwanted part can be deletd with ( - )
 - EXPORT : TODO Export
 
-## Description
-
 ## Generic View
 - <span style="color:red">**Blue**<span>: TLM data set (loaded automatically)
 - <span style="color:blue">**Red**<span> : DCS feature / CSV feature
