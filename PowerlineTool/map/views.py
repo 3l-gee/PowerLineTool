@@ -119,7 +119,11 @@ def divide(request):
         point_source = data["points"][0]["source"]
         LineStringHandler_instance.divide(point_source, point_id)
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
-        
+
+
+def export(request): 
+    return print(request)
+
 # TODO handel export
         
 # TODO handel history

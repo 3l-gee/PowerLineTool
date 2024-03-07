@@ -690,6 +690,30 @@ const dividePoint = (points) => {
   // Implement the logic for dividing points
 };
 
+function validateStepTwo(){
+  $.ajax({
+    type: 'POST',
+    url: '/map/validateStepTwo/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    data: JSON.stringify({
+      feature : new ol.format.GeoJSON().writeFeature(),
+    }),
+    success: function(data) {
+      console.log('validateStepOne:', data);
+      if (data.success) {
+
+      } else {
+        alert('Validation failed: ' + data.message);
+      }
+    },
+    error: function(error) {
+      console.error('validateStepOne Error:', error);
+    }
+  })
+};
+
 // POPUP
 /////////////////////////////////////////////////////////////////////
 function openPopup() {
@@ -756,30 +780,6 @@ function handleFile(file) {
   }
 }
 
-function validateStepTwo(){
-  $.ajax({
-    type: 'POST',
-    url: '/map/validateStepTwo/',
-    headers: {
-      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
-    },
-    data: JSON.stringify({
-      feature : new ol.format.GeoJSON().writeFeature(drawnFeature),
-    }),
-    success: function(data) {
-      console.log('validateStepOne:', data);
-      if (data.success) {
-
-      } else {
-        alert('Validation failed: ' + data.message);
-      }
-    },
-    error: function(error) {
-      console.error('validateStepOne Error:', error);
-    }
-  })
-}
-
 // HTML 
 /////////////////////////////////////////////////////////////////////
 $(document).ready(function() {
@@ -816,6 +816,7 @@ $(document).ready(function() {
   $('#step2Validate').click(function() {
     validateStepTwo();
   });
+  $()
 });
 
 document.addEventListener('contextmenu', function(event) {

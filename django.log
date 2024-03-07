@@ -7,3 +7,157 @@ INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'DCSexemple.json'
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 122, in divide
+    self.remFeature(point_source)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 80, in remFeature
+    self.features.pop(featureId)
+KeyError: 'df36503d-b499-4757-85e6-a38c14f7e87c'
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 120, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\lineString.py", line 98, in divide
+    right_subgraph.remove_edge(node_id, neighbors[1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico

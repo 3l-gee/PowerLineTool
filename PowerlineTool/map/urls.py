@@ -10,5 +10,6 @@ urlpatterns = [
     path('validateStepOne/', views.validateStepOne, name='validateStepOne'),
     path('validateStepTwo/', views.validateStepTwo, name='validateStepTwo'),
     path('fuse/', views.fuse, name='fuse'),
-    path('divide/', views.divide,name='divide')
+    path('divide/', views.divide,name='divide'),
+    path('export/', views.export, name='export')
 ]
