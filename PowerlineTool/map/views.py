@@ -6,7 +6,7 @@ import json
 LineStringHandler_instance = mapFunction.LineStringHandler()
 
 def index(request):
-    return render(request, 'map/index.html', {'stage_one_instance': LineStringHandler_instance})
+    return render(request, 'map/index.html', {'stage_one_instance': "LineStringHandler_instance"})
 
 def remFeature(request):
     if request.method == 'POST' :
@@ -53,11 +53,9 @@ def addFeature(request):
 def getFeature(request):
     if request.method == 'GET' :
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
-    
-    return HttpResponse(LineStringHandler_instance.features) 
 
 
-def validateStepOne(request):
+def validation(request):
     successParameters = {
         "value" : False, 
         "continuous" : False,
@@ -121,9 +119,21 @@ def divide(request):
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
 
 
-def export(request): 
-    return print(request)
+def export(request):
+    if request.method == 'POST' :
+        if len(LineStringHandler_instance.features) != 1: 
+            return JsonResponse({'success': False, 
+                                 'message' :f'Currently {len(LineStringHandler_instance.features)} feature(s) open, must be reduced to 1.'})
+        else : 
+            export_file = LineStringHandler_instance.generate_export_files()
+            if len(list(export_file.keys())) != 1 :
+                return JsonResponse({'success': False, 
+                        'message' :f'Currently {len(list(export_file.keys()))} feature(s) open, must be reduced to 1.'})  
+            else :
+                key = list(export_file.keys())[0]
+                return JsonResponse({'success': True,"id" : key,  "dcs" : export_file[key]["dcs"], "history" : export_file[key]["history"]})
+
 
 # TODO handel export
         
-# TODO handel history
+# TODO handel historys

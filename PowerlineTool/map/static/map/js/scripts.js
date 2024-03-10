@@ -621,15 +621,15 @@ function updateSelectedFeaturesTable() {
   })
 }
 
-function validateStepOne(){
+function validation(){
   $.ajax({
     type: 'POST',
-    url: '/map/validateStepOne/',
+    url: '/map/validation/',
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
     success: function(data) {
-      console.log('validateStepOne:', data);
+      console.log('validation:', data);
       if (data.success) {
         updateSelectedFeaturesTable();
         map.removeLayer(SimplifiedTLMLayer)
@@ -640,7 +640,7 @@ function validateStepOne(){
       }
     },
     error: function(error) {
-      console.error('validateStepOne Error:', error);
+      console.error('validation Error:', error);
     }
   })
 }
@@ -690,26 +690,28 @@ const dividePoint = (points) => {
   // Implement the logic for dividing points
 };
 
-function validateStepTwo(){
+function exportfeature(){
   $.ajax({
     type: 'POST',
-    url: '/map/validateStepTwo/',
+    url: '/map/export/',
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    data: JSON.stringify({
-      feature : new ol.format.GeoJSON().writeFeature(),
-    }),
     success: function(data) {
-      console.log('validateStepOne:', data);
+      console.log('exportFeature:', data);
       if (data.success) {
-
+        var finalHistory = data.history
+        var finalDCSformatedFeature = data.dcs
+        openDCSAttributesPopup()
+        const filePreview = document.getElementById('DCSAttributesfilePreview');
+        const formattedJSON = JSON.stringify(finalDCSformatedFeature, null, 2);
+        filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
       } else {
-        alert('Validation failed: ' + data.message);
+        alert('exportFeature failed: ' + data.message);
       }
     },
     error: function(error) {
-      console.error('validateStepOne Error:', error);
+      console.error('exportfeature Error:', error);
     }
   })
 };
@@ -735,13 +737,9 @@ function saveAction() {
 
     reader.onload = function (e) {
       const jsonData = JSON.parse(e.target.result);
-
-      console.log(selectedFile.name, "DCS", jsonData)
       addFeature(selectedFile.name, "DCS", jsonData);
-
       closePopup();
     };
-
     reader.readAsText(selectedFile);
   }
 }
@@ -763,6 +761,56 @@ function handleFileSelect(event) {
 
 function handleFile(file) {
   const filePreview = document.getElementById('filePreview');
+
+  if (file && file.type === 'application/json') {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const jsonData = JSON.parse(e.target.result);
+
+      const preview = document.createElement('pre');
+      preview.textContent = JSON.stringify(jsonData, null, 2);
+      filePreview.innerHTML = ''; // Clear previous preview
+      filePreview.appendChild(preview);
+    };
+
+    reader.readAsText(file);
+  }
+}
+////
+function openDCSAttributesPopup() {
+  document.getElementById('DCSOverlay').style.display = 'block';
+  document.getElementById('DCSAttributesPopup').style.display = 'block';
+}
+
+function closeDCSAttributesPopup() {
+  document.getElementById('DCSOverlay').style.display = 'none';
+  document.getElementById('DCSAttributesPopup').style.display = 'none';
+}
+
+function exportDCSAttributesAction() { 
+  const fileInput = document.getElementById('fileInput');
+  const selectedFile = fileInput.files[0];
+  console.log("test")
+}
+
+function handleDCSAttributesDragOver(event) {
+  event.preventDefault();
+}
+
+function handleDCSAttributesDrop(event) {
+  event.preventDefault();
+  const Metadatafiles = event.dataTransfer.files;
+  handleDCSAttributesFile(Metadatafiles[0]);
+}
+
+function handleDCSAttributesFileSelect(event) {
+  const Metadatafiles = event.target.files;
+  handleDCSAttributesFile(Metadatafiles[0]);
+}
+
+function handleDCSAttributesFile(file) {
+  const filePreview = document.getElementById('DCSAttributesfilePreview');
 
   if (file && file.type === 'application/json') {
     const reader = new FileReader();
@@ -809,14 +857,32 @@ $(document).ready(function() {
       handleDrop(event);
   });
 
-  $('#step1Validate').click(function() {
-    validateStepOne();
+  $('#validation').click(function() {
+    validation();
   });
 
-  $('#step2Validate').click(function() {
-    validateStepTwo();
+  $('#exportfeature').click(function() {
+    exportfeature();
   });
-  $()
+  ///////////
+  $('#DCSAttributescloseBtn').click(function() {
+    closeDCSAttributesPopup();
+  });
+
+  $('#saveDCSFeature').click(function() {
+    exportDCSAttributesAction();
+  });
+  $('#DCSAttributesfileInput').on('change', function(event) {
+    handleDCSAttributesFileSelect(event);
+  });
+
+  $('#DCSAttributesPopup').on('dragover', function(event) {
+    handleDCSAttributesDragOver(event);
+  });
+
+  $('#DCSAttributesPopup').on('drop', function(event) {
+    handleDCSAttributesDrop(event);
+  });
 });
 
 document.addEventListener('contextmenu', function(event) {

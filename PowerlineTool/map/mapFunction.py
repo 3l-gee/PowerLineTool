@@ -146,7 +146,11 @@ class LineStringHandler:
         timestamp = datetime.now().isoformat()
         history.append({'timestamp': timestamp,
                         'operation': 'fuse', 
-                        'parameter': str(point1_source + " / " + point2_source)})
+                        'parameter': {
+                            'source' : str(point1_source + " / " + point2_source),
+                            'node_id' : str(point1_id + " / " + point2_id)
+                        }
+                        })
         
         node1 = nx_graph1.nodes[point1_id]
         node2 = nx_graph2.nodes[point2_id]
@@ -158,7 +162,9 @@ class LineStringHandler:
             "y": node1['y'],
             "structureHeight": node1['structureHeight'],
             "elevation": node1['elevation'],
-            "currentLighting": "TEST"
+            "currentLighting": "UMBIGIOUS", #TODO what lighting / marking should this have ?
+            "currentMarking" : "UMBIGIOUS",
+            "description" : "description"
         }
 
         nx_graph1.add_node(new_node_id, **new_attributes)
@@ -222,6 +228,8 @@ class LineStringHandler:
         TOL_ALTITUDE = 0.1
         TOL_STR_HEIGHT = 0.1
 
+        # TODO handel naming And marking
+
         # TODO structured test implementation
         # TESTS = {
         #     "tolerance_x" : {
@@ -269,3 +277,16 @@ class LineStringHandler:
         if abs(point1['structureHeight'] - point2['structureHeight']) >= TOL_STR_HEIGHT:
             return False
         return True
+    
+    def generate_export_files(self):
+        res = {}
+        for id, graph in self.graphs.items():
+            res[id]={
+                "dcs": graph.DCS_writer(),
+                "history" :graph.history
+                }
+
+        return res
+
+
+

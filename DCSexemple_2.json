@@ -1,0 +1,1482 @@
+{
+  "originator" : "a2149df0-f910-4e52-9c8e-f32a149594cf",
+  "type" : "POWER_LINE_LIMITED",
+  "moving" : false,
+  "group" : false,
+  "points" : [ {
+    "structureHeight" : {
+      "magnitude" : 23.97,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM1",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682141.52,
+      "y" : 1243276.77
+    },
+    "elevation" : {
+      "magnitude" : 473.87,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 30.64,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM2",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682243.6,
+      "y" : 1243051.81
+    },
+    "elevation" : {
+      "magnitude" : 469.18,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 24.05,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM3",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682315.82,
+      "y" : 1242891.64
+    },
+    "elevation" : {
+      "magnitude" : 472.75,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.18,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM4",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682377.75,
+      "y" : 1242717.56
+    },
+    "elevation" : {
+      "magnitude" : 468.49,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 29.56,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM5",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682413.41,
+      "y" : 1242618.68
+    },
+    "elevation" : {
+      "magnitude" : 467.95,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 33.4,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM6",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682525.0,
+      "y" : 1242410.33
+    },
+    "elevation" : {
+      "magnitude" : 466.58,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.42,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM7",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682591.9,
+      "y" : 1242193.08
+    },
+    "elevation" : {
+      "magnitude" : 471.11,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.12,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM8",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682655.24,
+      "y" : 1241971.38
+    },
+    "elevation" : {
+      "magnitude" : 476.52,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 34.59,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM9",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682703.41,
+      "y" : 1241803.61
+    },
+    "elevation" : {
+      "magnitude" : 474.19,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.14,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM10",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682804.2,
+      "y" : 1241587.54
+    },
+    "elevation" : {
+      "magnitude" : 478.1,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.96,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM11",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682881.18,
+      "y" : 1241422.95
+    },
+    "elevation" : {
+      "magnitude" : 482.08,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 33.65,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM12",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682927.27,
+      "y" : 1241221.68
+    },
+    "elevation" : {
+      "magnitude" : 482.46,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 31.61,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM13",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2682991.8,
+      "y" : 1240948.19
+    },
+    "elevation" : {
+      "magnitude" : 475.19,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 25.82,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM14",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683055.41,
+      "y" : 1240676.27
+    },
+    "elevation" : {
+      "magnitude" : 468.58,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 22.72,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM15",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683113.89,
+      "y" : 1240428.35
+    },
+    "elevation" : {
+      "magnitude" : 484.7,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.85,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM16",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683158,
+      "y" : 1240241.32
+    },
+    "elevation" : {
+      "magnitude" : 512.03,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 24.28,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM17",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683209.04,
+      "y" : 1240023.66
+    },
+    "elevation" : {
+      "magnitude" : 530.99,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.99,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM18",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683256.84,
+      "y" : 1239821.92
+    },
+    "elevation" : {
+      "magnitude" : 538.73,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 24.78,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM19",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683307.79,
+      "y" : 1239601.65
+    },
+    "elevation" : {
+      "magnitude" : 534.19,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 26.82,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM20",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683360.55,
+      "y" : 1239380.94
+    },
+    "elevation" : {
+      "magnitude" : 525.15,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 22.88,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM21",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683412.56,
+      "y" : 1239161.04
+    },
+    "elevation" : {
+      "magnitude" : 524.74,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 30.74,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM22",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683559.6,
+      "y" : 1238979.93
+    },
+    "elevation" : {
+      "magnitude" : 523.81,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 22.43,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM23",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683715.65,
+      "y" : 1238787.55
+    },
+    "elevation" : {
+      "magnitude" : 519.34,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 26.76,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM24",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2683882.63,
+      "y" : 1238581.99
+    },
+    "elevation" : {
+      "magnitude" : 532.28,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.9,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM25",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684008.5,
+      "y" : 1238426.77
+    },
+    "elevation" : {
+      "magnitude" : 550.98,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 62.9,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES",
+    "currentLighting" : "NONE",
+    "description" : "Mast 52",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684167.39,
+      "y" : 1238219.03
+    },
+    "elevation" : {
+      "magnitude" : 544.6,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 60.85,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "Mast 51",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684386.08,
+      "y" : 1237993.53
+    },
+    "elevation" : {
+      "magnitude" : 544.9,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 60.85,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES",
+    "currentLighting" : "NONE",
+    "description" : "Mast 50",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684599.82,
+      "y" : 1237772.25
+    },
+    "elevation" : {
+      "magnitude" : 550.3,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 58,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES",
+    "currentLighting" : "NONE",
+    "description" : "Mast 49",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684690.39,
+      "y" : 1237539.78
+    },
+    "elevation" : {
+      "magnitude" : 581.4,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 82.2,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "Mast 48",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684545.83,
+      "y" : 1237278.96
+    },
+    "elevation" : {
+      "magnitude" : 551.7,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 84.8,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES",
+    "currentLighting" : "NONE",
+    "description" : "Mast 47",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684370.84,
+      "y" : 1236963.21
+    },
+    "elevation" : {
+      "magnitude" : 538.7,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 73.8,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES",
+    "currentLighting" : "NONE",
+    "description" : "Mast 46",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684425.15,
+      "y" : 1236802.09
+    },
+    "elevation" : {
+      "magnitude" : 548,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 78.09,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM6",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684449.3,
+      "y" : 1236615.67
+    },
+    "elevation" : {
+      "magnitude" : 527.2,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.7,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM7",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684474.79,
+      "y" : 1236408.43
+    },
+    "elevation" : {
+      "magnitude" : 521.25,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 62.65,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM8",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684741.08,
+      "y" : 1235847.19
+    },
+    "elevation" : {
+      "magnitude" : 484.17,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 60.33,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM9",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684865.61,
+      "y" : 1235499.42
+    },
+    "elevation" : {
+      "magnitude" : 483.77,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 64.06,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM10",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684912.59,
+      "y" : 1235122.75
+    },
+    "elevation" : {
+      "magnitude" : 488.41,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.22,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM11",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2684970.95,
+      "y" : 1234770.17
+    },
+    "elevation" : {
+      "magnitude" : 490.84,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 61.46,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM12",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2685286.61,
+      "y" : 1234540
+    },
+    "elevation" : {
+      "magnitude" : 494.31,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 65.02,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM13",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2685663.07,
+      "y" : 1234403.23
+    },
+    "elevation" : {
+      "magnitude" : 559.29,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.74,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM14",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2685924.94,
+      "y" : 1234231.84
+    },
+    "elevation" : {
+      "magnitude" : 660.32,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 46.67,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM15",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2686022.71,
+      "y" : 1233966.68
+    },
+    "elevation" : {
+      "magnitude" : 673.11,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 54.09,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM16",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2686214.09,
+      "y" : 1233813.03
+    },
+    "elevation" : {
+      "magnitude" : 673.24,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 56.46,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM17",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2686478.67,
+      "y" : 1233600.48
+    },
+    "elevation" : {
+      "magnitude" : 641.01,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 61.06,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM2",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2686735.27,
+      "y" : 1233394.76
+    },
+    "elevation" : {
+      "magnitude" : 629.53,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    },
+    "lighting" : "NONE",
+    "marking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 59.13,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM3",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2687066.05,
+      "y" : 1233129.1
+    },
+    "elevation" : {
+      "magnitude" : 666.32,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.66,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM4",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2687311.22,
+      "y" : 1232932.11
+    },
+    "elevation" : {
+      "magnitude" : 681.96,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 52.69,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM5",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2687550.03,
+      "y" : 1232726.43
+    },
+    "elevation" : {
+      "magnitude" : 677.36,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 48.15,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM6",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2687734.42,
+      "y" : 1232567.65
+    },
+    "elevation" : {
+      "magnitude" : 672.53,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 50.57,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM7",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2687924.65,
+      "y" : 1232373.31
+    },
+    "elevation" : {
+      "magnitude" : 671.58,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 51.26,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM8",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2688168.39,
+      "y" : 1232111.03
+    },
+    "elevation" : {
+      "magnitude" : 660.5,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 53.14,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM9",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2688352.77,
+      "y" : 1231912.93
+    },
+    "elevation" : {
+      "magnitude" : 667.75,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 45.81,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM10",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2688489.81,
+      "y" : 1231822.65
+    },
+    "elevation" : {
+      "magnitude" : 685.24,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 58.88,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM11",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2688786.63,
+      "y" : 1231626.97
+    },
+    "elevation" : {
+      "magnitude" : 652.81,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.39,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM12",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2689036.78,
+      "y" : 1231452.12
+    },
+    "elevation" : {
+      "magnitude" : 653.77,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 51.82,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM13",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2689261.42,
+      "y" : 1231294.87
+    },
+    "elevation" : {
+      "magnitude" : 628.5,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 52.18,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM14",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2689489.25,
+      "y" : 1231135.64
+    },
+    "elevation" : {
+      "magnitude" : 615.98,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.53,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM15",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2689763.39,
+      "y" : 1230944
+    },
+    "elevation" : {
+      "magnitude" : 596.15,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  }, {
+    "structureHeight" : {
+      "magnitude" : 47.9,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "currentLighting" : "NONE",
+    "description" : "TLM16",
+    "location" : {
+      "crs" : 2056,
+      "x" : 2690024.25,
+      "y" : 1230762.3
+    },
+    "elevation" : {
+      "magnitude" : 594.65,
+      "unit" : "METERS",
+      "verticalDatum" : 5728
+    }
+  } ],
+  "jths" : [ {
+    "structureHeight" : {
+      "magnitude" : 30.75,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 30.93,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 28.55,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 29.87,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 35.65,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 33.93,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.54,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 34.63,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 35.04,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 34.41,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 34.23,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 37.04,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 33.31,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.7,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 28.12,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 28.52,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 28.05,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 28.11,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 27.88,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 26.95,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 31.26,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 31.77,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 32.71,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 30.63,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 65.93,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 64.9,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 64.96,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 69.12,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 93.69,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 90.15,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 85.58,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 82.23,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "ORANGE_SPHERES"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 80.82,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 103.36,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "markingType" : "ORANGE_SPHERES",
+    "lightingTYpe" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 65.43,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.07,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 69.06,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.92,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 101.44,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "markingType" : "ORANGE_SPHERES",
+    "lightingTYpe" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 101.78,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "markingType" : "ORANGE_SPHERES",
+    "lightingTYpe" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.56,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 54.13,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 61.2,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 67.83,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 106.26,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE",
+    "markingType" : "ORANGE_SPHERES",
+    "lightingTYpe" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 59.09,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.75,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 53.6,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 52.15,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 56.21,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.09,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 53.45,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 64.14,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 64.93,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 57.9,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 52.65,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 55.53,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  }, {
+    "structureHeight" : {
+      "magnitude" : 65.98,
+      "unit" : "METERS"
+    },
+    "currentMarking" : "NONE"
+  } ],
+  "hospitalNearby" : false,
+  "ownerInfo" : {
+    "ownerCompanyName" : "Swissgrid AG",
+    "ownerAddress" : {
+      "department" : "Projects Lines / Substations East",
+      "street1" : "Bleichenmattstrasse 31",
+      "street2" : "Postfach",
+      "postalCode" : "5001",
+      "city" : "Aarau",
+      "countryCode" : "CH"
+    },
+    "ownerContact" : "Remo Kälin / remo.kaelin@ewz.ch /+41 58 319 42 46 // Rafael Martin Roso / rafael.martinroso@swissgrid.ch / +41 58 580 25 12"
+  },
+  "approvalLetterRequired" : false,
+  "lastChangedIn" : "6b081033-89c2-4a37-a975-7ebcd6e2584d",
+  "pending" : false,
+  "authority" : "6f453faf-05ac-44e9-8ff6-572b76cb151f",
+  "publicationTypes" : [ ],
+  "structureStatus" : "ACTIVE",
+  "legacySymbolCode" : "HL",
+  "legacyOwnerAddress" : "EWZ Elektrizitätswerk der Stadt Zürich\nBeatenplatz 2\n8001 Zürich\n",
+  "legacyOmsCMID" : "502351",
+  "legacyOmsInvoiceCMID" : "502351",
+  "legacyInvoiceAddress" : "EWZ Elektrizitätswerk der Stadt Zürich\nBeatenplatz 2\n8001 Zürich\n"
+}

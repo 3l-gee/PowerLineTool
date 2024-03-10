@@ -161,3 +161,1374 @@ INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\urls.py changed, reloading.
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 125, in export
+    if request.methode == 'POST' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 126, in export
+    if request.methode == 'POST' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/validation/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: validation() takes 0 positional arguments but 1 was given
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 130, in export
+    if request.methode == 'POST' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 327, in DCS_writer
+    res["Points"][0] = {
+    ~~~~~~~~~~~~~^^^
+IndexError: list assignment index out of range
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 346, in DCS_writer
+    edge_data = self.graph.get_edge_data([path[i-1]], [path[i]])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\networkx\classes\graph.py", line 1457, in get_edge_data
+    return self._adj[u][v]
+           ~~~~~~~~~^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 347, in DCS_writer
+    edge_data = self.graph.get_edge_data([path[i-1]], [path[i]])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\networkx\classes\graph.py", line 1457, in get_edge_data
+    return self._adj[u][v]
+           ~~~~~~~~~^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 348, in DCS_writer
+    edge_data = self.graph.get_edge_data([path[i-1]], [path[i]])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\networkx\classes\graph.py", line 1457, in get_edge_data
+    return self._adj[u][v]
+           ~~~~~~~~~^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 372, in DCS_writer
+    "magnitude" : edge_data["structureHeight"],
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'structureHeight'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 279, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 371, in DCS_writer
+    "magnitude" : edge_data["structureHeight"],
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'structureHeight'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/addFeature/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 47, in addFeature
+    LineStringHandler_instance.addFeatureDCS(featureId, featureData)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 69, in addFeatureDCS
+    graph.DCS_reader(data,featureId)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 220, in DCS_reader
+    "currentMarking": dcs_data["points"][i]["currentMarking"],
+                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'currentMarking'
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/addFeature/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 47, in addFeature
+    LineStringHandler_instance.addFeatureDCS(featureId, featureData)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 69, in addFeatureDCS
+    graph.DCS_reader(data,featureId)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 243, in DCS_reader
+    "currentMarking": dcs_data["jths"][i].get(["currentMarking"],"NONE")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/addFeature/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 47, in addFeature
+    LineStringHandler_instance.addFeatureDCS(featureId, featureData)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 69, in addFeatureDCS
+    graph.DCS_reader(data,featureId)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 243, in DCS_reader
+    "currentMarking": dcs_data["jths"][i].get(["currentMarking"],"NONE")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 332, in DCS_writer
+    res["Points"].append({
+    ~~~^^^^^^^^^^
+KeyError: 'Points'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 339, in DCS_writer
+    "description" : first_node_data['description'],
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'description'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 340, in DCS_writer
+    "description" : node_data.get(['description'],f"TLM{i}"),
+                    ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'node_data' where it is not associated with a value
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 340, in DCS_writer
+    "description" : node_data.get(['description'],f"TLM0"),
+                    ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'node_data' where it is not associated with a value
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 340, in DCS_writer
+    "description" : first_node_data.get(['description'],f"TLM0"),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 340, in DCS_writer
+    "description": node_data['description'] if node_data['description'] is not None else f"TLM0",
+                                               ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'node_data' where it is not associated with a value
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 118, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: '35a201c8-ce79-45c5-ad3a-a5437642fea9'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 281, in generate_export_files
+    res["dcs"][id] = graph.DCS_writer()
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py", line 361, in DCS_writer
+    "currentMarking" : node_data['currentMarking'],
+                       ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'currentMarking'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 118, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 122, in divide
+    self.remFeature(point_source)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 80, in remFeature
+    self.features.pop(featureId)
+KeyError: '35a201c8-ce79-45c5-ad3a-a5437642fea9'
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 118, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 102, in divide
+    left_graph,right_graph = self.graphs[point_source].divide(point_id)
+                             ~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: '35a201c8-ce79-45c5-ad3a-a5437642fea9'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/divide/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 118, in divide
+    LineStringHandler_instance.divide(point_source, point_id)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 122, in divide
+    self.remFeature(point_source)
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 80, in remFeature
+    self.features.pop(featureId)
+KeyError: '35a201c8-ce79-45c5-ad3a-a5437642fea9'
+ERROR:django.request:Internal Server Error: /map/fuse/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 104, in fuse
+    if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 257, in same_point
+    if point1_id not in self.graphs[point1_source].nodes() or point2_id not in self.graphs[point2_source].nodes():
+                        ~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'DCSexemple_2.json'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\lineString.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 128, in export
+    export_file = LineStringHandler_instance.generate_export_files()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py", line 284, in generate_export_files
+    res[id]["dcs"] = graph.DCS_writer()
+    ~~~^^^^
+KeyError: 'DCSexemple_1.json'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/export/
+Traceback (most recent call last):
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py", line 134, in export
+    return JsonResponse({'success': True,"id" : key,  "dcs" : export_file[key]["dcs"], "history" : export_file[key]["history"]})
+                                                              ~~~~~~~~~~~^^^^^
+TypeError: unhashable type: 'list'
+INFO:django.utils.autoreload:C:\Users\Raphael_Gerth\source\repos\3l-gee\PowerLineTool\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

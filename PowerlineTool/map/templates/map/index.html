@@ -71,7 +71,7 @@
 
             <!-- Buttons for Step 1 -->
             <div style="padding: 10px;">
-                <button id="step1Validate">VALIDATE</button>
+                <button id="validation">VALIDATE</button>
                 <button id="remFeature">RESET</button>
                 <button id="openPopupBtn">DCS</button>
             </div>
@@ -97,7 +97,7 @@
 
             <!-- Buttons for Step 2 -->
             <div style="padding: 10px;">
-                <button id="step2Validate">EXPORT</button>
+                <button id="exportfeature">EXPORT</button>
             </div>
         </div>
     </div>
@@ -105,13 +105,29 @@
     <!-- DCS Overlay -->
     <div id="DCSOverlay" class="overlay"></div>
 
-    <!-- DCS Popup -->
+    <!-- DCS Geometry Popup -->
     <div id="DCSPopup" class="overlayPopup">
-        <h3>Load DCS File</h3>
+        <h3>Geometry File</h3>
         <span id="closeBtn">Close</span>
-        <input type="file" id="fileInput" accept=".json">
-        <div id="filePreview"></div>
+        <!-- <input type="file" id="fileInput" accept=".json"> -->
+        <div class="file-upload">
+            <label for="fileInput" class="file-upload-label">Upload your DCS Geoemtry files here (File 1)</label>
+            <input type="file" id="fileInput" accept=".json" class="file-upload-input">
+        </div>
+        <div id="filePreview" class="filePreview"></div>
         <button id="saveDCSFeature">Save</button>
+    </div>
+
+    <!-- DCS Geometry Popup -->
+    <div id="DCSAttributesPopup" class="overlayPopup">
+        <h3>Metadata File</h3>
+        <span id="DCSAttributescloseBtn">Close</span>
+        <div class="file-upload">
+            <label for="DCSAttributesfileInput" class="file-upload-label">Upload your DCS Metadata files here (File 2)</label>
+            <input type="file" id="DCSAttributesfileInput" accept=".json" class="file-upload-input">
+        </div>
+        <div id="DCSAttributesfilePreview" class="filePreview"></div>
+        <button id="exportDcsFeature">Export</button>
     </div>
 
     <!-- Context Menu -->

@@ -60,7 +60,7 @@ th {
   position: absolute;
   top: 20%;
   left: 20%;
-  bottom: 20%;
+  height: 50%;
   right: 20%;
   padding: 20px;
   border: solid 1px #000000;
@@ -89,10 +89,10 @@ th {
   backdrop-filter: blur(2px);
 }
 
-#filePreview{
+.filePreview{
   padding: 10px;
   width: 100%;
-  height: 600px;
+  height: 100%;
   border: solid 1px #000000;
   background-color: rgb(255, 255, 255);
   box-sizing: border-box; 
@@ -126,4 +126,34 @@ th {
 
 #context-menu li:hover {
   background-color: #f0f0f0;
+}
+
+/* Style for the container */
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Style for the file input */
+.file-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Style for the label */
+.file-upload-label {
+  display: block;
+  padding: 10px;
+  border: 2px #000000;
+  background-color: #79ebff;
+  color: #777;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition effect for smoother hover */
 }
