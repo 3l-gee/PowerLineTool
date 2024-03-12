@@ -83,7 +83,7 @@ class LineString:
             'operation': 'divide',
             'parameter': {
                 "source" : self.graph_id,
-                "node_id" : node_id
+                "node_id" : node_id,
             }
         })
 
@@ -247,12 +247,12 @@ class LineString:
 
             node_id1 = node_id2
                     
-    def _find_end_nodes(self):
+    def find_end_nodes(self):
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
         return end_nodes
     
     def traverse_graph(self):       
-        end_nodes = self._find_end_nodes()
+        end_nodes = self.find_end_nodes()
         
         print(f"Start Node: {end_nodes[0]}")
     
@@ -276,7 +276,7 @@ class LineString:
                 geojson.FeatureCollection: 
                     GeoJSON representation of the graph.
             """
-        end_nodes = self._find_end_nodes()
+        end_nodes = self.find_end_nodes()
 
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
 
@@ -322,7 +322,7 @@ class LineString:
             "points" : [],
             "jths" :[]
         }
-        end_nodes = self._find_end_nodes()
+        end_nodes = self.find_end_nodes()
 
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
 

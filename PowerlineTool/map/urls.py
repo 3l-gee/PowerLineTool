@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('log_coordinates/', views.log_coordinates, name='log_coordinates'),
     path('addFeature/', views.addFeature, name='addFeature'),
     path('getFeature/', views.getFeature, name='getFeature'),
     path('remFeature/', views.remFeature, name='remFeature'),

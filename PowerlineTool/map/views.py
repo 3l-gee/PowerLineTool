@@ -17,19 +17,7 @@ def remFeature(request):
             return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         else : 
             LineStringHandler_instance.remFeature(featureId)
-            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
-
-def log_coordinates(request):
-    if request.method == 'POST':
-        latitude = request.POST.get('latitude')
-        longitude = request.POST.get('longitude')
-
-        latitudeMod, longitudeMod = mapFunction.transform_coordinates(3857, 2056, longitude, latitude)
-
-        return JsonResponse({'coordinates': [round(latitudeMod,1), round(longitudeMod,1)], 'status': 'success' })
-    else:
-        return JsonResponse({'status': 'error', 'message': 'Invalid HTTP method'})
-    
+            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})    
 
 def addFeature(request): 
     if request.method == 'POST' :
@@ -57,38 +45,14 @@ def getFeature(request):
 
 def validation(request):
     successParameters = {
-        "value" : False, 
-        "continuous" : False,
+        "value" : False
     }
 
     if len(LineStringHandler_instance.features) > 0 : 
         successParameters["value"] = True
 
-    #Todo
-    if True : 
-        successParameters["continuous"] = True
-
     return JsonResponse({'success': all(successParameters.values()), 'features': LineStringHandler_instance.features})
-
-def validateStepTwo(request):
-    if request.method == 'POST' :
-        data = json.loads(request.body)
-        featureId = data.get('featureId')
-        featureType = data.get('featureType')
-        featureData = data.get('featureData')
-
-        successParameters = {
-            "value" : False, 
-        }
-            
-        stage_two_instance = mapFunction.StageTow(request)
-
-        #Todo
-        if True : 
-            successParameters["value"] = True
-
-        return JsonResponse({'success': all(successParameters.values()), 'features': LineStringHandler_instance.features})
-    
+   
 
 def fuse(request):
     if request.method == 'POST' :
@@ -101,11 +65,17 @@ def fuse(request):
         point2_id = data["points"][1]["id"]
         point2_source = data["points"][1]["source"]
 
+        if point1_id not in LineStringHandler_instance.graphs[point1_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message' : f'you muste fuse at the end of the line, {point1_id} is not at the end of the line {point1_source}'})
+        
+        if point2_id not in LineStringHandler_instance.graphs[point2_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message' : f'you muste fuse at the end of the line, {point2_id} is not at the end of the line {point2_source}'})
+
         if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
             LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
             return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         
-        return JsonResponse({'success': False, 'features': LineStringHandler_instance.features})
+        return JsonResponse({'success': False})
     
 def divide(request):
     if request.method == 'POST' :

@@ -4,6 +4,31 @@ import TLMDATA from './TLMSimpleFeatures.json' assert {type : 'json'}
 /////////////////////////////////////////////////////////////////////
 
 var initialSelectedFeatures = $('#selectedFeatures tbody').html();
+let ExportMaterial = {
+  name : null,
+  dcs : {
+    originator : null,
+    type : null,
+    moving : null,
+    group : null,
+    points : [],
+    jths : [],
+    hospitalNearby : null,
+    ownerInfo : null, 
+    approvalLetterRequired : null, 
+    lastModificationReport : null, 
+    pending : null,
+    authority : null,
+    publicationTypes : null, 
+    structureStatus : null, 
+    legacySymbolCode : null, 
+    legacyOwnerAddress : null,
+    legacyOmsCMID : null, 
+    legacyOmsInvoiceCMID : null, 
+    legacyInvoiceAddress : null
+  },
+  history : null
+}
 
 function featuresStyle (feature, resolution) {
   // Get the zoom level from the map
@@ -656,12 +681,15 @@ const fusePoints = (points) => {
       points: points
     }),
     contentType: 'application/json',  
-    success: (response) => {
-      console.log('fusePoints', response);
-      updateSelectedFeaturesTable();
+    success: function(data) {
+      if (data.success){
+        alert('Fuse failed: ' + data.message);
+      } else {
+        alert('Fuse failed: ' + data.message);
+      }
     },
     error: (xhr, status, error) => {
-      console.error('Fuse points error:', status, error);
+      console.error('Fuse Error:', error);
     }
   });
 };
@@ -700,11 +728,12 @@ function exportfeature(){
     success: function(data) {
       console.log('exportFeature:', data);
       if (data.success) {
-        var finalHistory = data.history
-        var finalDCSformatedFeature = data.dcs
+        ExportMaterial.history = data.history
+        ExportMaterial.dcs.points = data.dcs.points
+        ExportMaterial.dcs.jths = data.dcs.jths
         openDCSAttributesPopup()
         const filePreview = document.getElementById('DCSAttributesfilePreview');
-        const formattedJSON = JSON.stringify(finalDCSformatedFeature, null, 2);
+        const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
         filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
       } else {
         alert('exportFeature failed: ' + data.message);
@@ -744,16 +773,6 @@ function saveAction() {
   }
 }
 
-function handleDragOver(event) {
-  event.preventDefault();
-}
-
-function handleDrop(event) {
-  event.preventDefault();
-  const files = event.dataTransfer.files;
-  handleFile(files[0]);
-}
-
 function handleFileSelect(event) {
   const files = event.target.files;
   handleFile(files[0]);
@@ -788,28 +807,13 @@ function closeDCSAttributesPopup() {
   document.getElementById('DCSAttributesPopup').style.display = 'none';
 }
 
-function exportDCSAttributesAction() { 
-  const fileInput = document.getElementById('fileInput');
-  const selectedFile = fileInput.files[0];
-  console.log("test")
-}
-
-function handleDCSAttributesDragOver(event) {
-  event.preventDefault();
-}
-
-function handleDCSAttributesDrop(event) {
-  event.preventDefault();
-  const Metadatafiles = event.dataTransfer.files;
-  handleDCSAttributesFile(Metadatafiles[0]);
-}
-
 function handleDCSAttributesFileSelect(event) {
-  const Metadatafiles = event.target.files;
-  handleDCSAttributesFile(Metadatafiles[0]);
+  const file = event.target.files[0];
+  const fileName = file.name;
+  handleDCSAttributesFile(file,fileName);
 }
 
-function handleDCSAttributesFile(file) {
+function handleDCSAttributesFile(file, name) {
   const filePreview = document.getElementById('DCSAttributesfilePreview');
 
   if (file && file.type === 'application/json') {
@@ -817,19 +821,64 @@ function handleDCSAttributesFile(file) {
 
     reader.onload = function (e) {
       const jsonData = JSON.parse(e.target.result);
+      ExportMaterial.name = name
 
-      const preview = document.createElement('pre');
-      preview.textContent = JSON.stringify(jsonData, null, 2);
-      filePreview.innerHTML = ''; // Clear previous preview
-      filePreview.appendChild(preview);
+      ExportMaterial.dcs.originator = jsonData.originator
+      ExportMaterial.dcs.type = jsonData.type
+      ExportMaterial.dcs.moving = jsonData.moving
+      ExportMaterial.dcs.group = jsonData.group
+      ExportMaterial.dcs.hospitalNearby = jsonData.hospitalNearby
+      ExportMaterial.dcs.ownerInfo = jsonData.ownerInfo
+      ExportMaterial.dcs.approvalLetterRequired = jsonData.approvalLetterRequired
+      ExportMaterial.dcs.lastModificationReport = jsonData.lastModificationReport
+      ExportMaterial.dcs.pending = jsonData.pending
+      ExportMaterial.dcs.authority = jsonData.authority
+      ExportMaterial.dcs.publicationTypes = jsonData.publicationTypes
+      ExportMaterial.dcs.structureStatus = jsonData.structureStatus
+      ExportMaterial.dcs.legacySymbolCode = jsonData.legacySymbolCode
+      ExportMaterial.dcs.legacyOwnerAddress = jsonData.legacyOwnerAddress
+      ExportMaterial.dcs.legacyOmsCMID = jsonData.legacyOmsCMID
+      ExportMaterial.dcs.legacyOmsInvoiceCMID = jsonData.legacyOmsInvoiceCMID
+      ExportMaterial.dcs.legacyInvoiceAddress = jsonData.legacyInvoiceAddress
+
+      const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
+      filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
     };
 
     reader.readAsText(file);
   }
 }
 
+function exportDCSAttributesAction(file) {
+  //DCS data generation
+  const dcsData = JSON.stringify(file.dcs, null, 2);
+  const dcsBlob = new Blob([dcsData], { type: 'application/json' });
+  const dcsA = document.createElement('a');
+  const dcsUrl = window.URL.createObjectURL(dcsBlob);
+  dcsA.href = dcsUrl;
+  dcsA.download = 'MOD-' + file.name ;
+  document.body.appendChild(dcsA);
+  dcsA.click();
+  document.body.removeChild(dcsA);
+  window.URL.revokeObjectURL(dcsUrl);
+
+  //History 
+  const historyData = JSON.stringify(file.history, null, 2);
+  const historyBlob = new Blob([historyData], { type: 'application/json' });
+  const historyA = document.createElement('a');
+  const historyUrl = window.URL.createObjectURL(historyBlob);
+  historyA.href = historyUrl;
+  historyA.download = 'History-' + file.name ;
+  document.body.appendChild(historyA);
+  historyA.click();
+  document.body.removeChild(historyA);
+  window.URL.revokeObjectURL(historyUrl);
+}
+
 // HTML 
 /////////////////////////////////////////////////////////////////////
+
+
 $(document).ready(function() {
   $('#remFeature').click(function() {
     remFeature();
@@ -849,14 +898,6 @@ $(document).ready(function() {
     handleFileSelect(event);
   });
 
-  $('#DCSPopup').on('dragover', function(event) {
-      handleDragOver(event);
-  });
-
-  $('#DCSPopup').on('drop', function(event) {
-      handleDrop(event);
-  });
-
   $('#validation').click(function() {
     validation();
   });
@@ -869,19 +910,12 @@ $(document).ready(function() {
     closeDCSAttributesPopup();
   });
 
-  $('#saveDCSFeature').click(function() {
-    exportDCSAttributesAction();
-  });
   $('#DCSAttributesfileInput').on('change', function(event) {
     handleDCSAttributesFileSelect(event);
   });
 
-  $('#DCSAttributesPopup').on('dragover', function(event) {
-    handleDCSAttributesDragOver(event);
-  });
-
-  $('#DCSAttributesPopup').on('drop', function(event) {
-    handleDCSAttributesDrop(event);
+  $('#exportDcsFeature').click(function() {
+    exportDCSAttributesAction(ExportMaterial);
   });
 });
 
