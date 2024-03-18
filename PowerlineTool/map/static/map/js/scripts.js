@@ -474,7 +474,11 @@ selectInteraction.on('select', function (evt) {
   }
 })
 
+let isContextMenuVisible = false;
+
 function showContextMenu(x, y) {
+  if (isContextMenuVisible) return; // Check if the context menu is already visible
+  isContextMenuVisible = true; // Set the flag to true when showing the menu
   var contextMenu = document.getElementById('context-menu');
   var contextMenuContent1 = document.getElementById('context-menu-content-1');
   var contextMenuContent2 = document.getElementById('context-menu-content-2');
@@ -498,11 +502,13 @@ function showContextMenu(x, y) {
   }
 
   const fuseClickListener = () => {
+    console.log("fuseClickListener")
     fusePoints(points);
     hideContextMenu();
   };
   
   const divideClickListener = () => {
+    console.log("divideClickListener")
     dividePoint(points);
     hideContextMenu();
   };
@@ -536,28 +542,34 @@ function showContextMenu(x, y) {
 function hideContextMenu() {
   var contextMenu = document.getElementById('context-menu');
   contextMenu.style.display = 'none';
+  isContextMenuVisible = false; 
+}
+
+function removeAllListeners(element) {
+  var clonedElement = element.cloneNode(true);
+  element.parentNode.replaceChild(clonedElement, element);
 }
 
 //BackendCall
 /////////////////////////////////////////////////////////////////////
 
-// Attach a click event handler to the button
-$('#helloButton').click(function() {
-  // Send an AJAX request to the server with the CSRF token
-  $.ajax({
-      type: 'POST',
-      url: '/map/log_hello/',
-      headers: {
-          'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
-      },
-      success: function(data) {
-          console.log('Server log:', data);
-      },
-      error: function(error) {
-          console.error('Error:', error);
-      }
-  });
-});
+// // Attach a click event handler to the button
+// $('#helloButton').click(function() {
+//   // Send an AJAX request to the server with the CSRF token
+//   $.ajax({
+//       type: 'POST',
+//       url: '/map/log_hello/',
+//       headers: {
+//           'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+//       },
+//       success: function(data) {
+//           console.log('Server log:', data);
+//       },
+//       error: function(error) {
+//           console.error('Error:', error);
+//       }
+//   });
+// });
 
 
 function remFeature(featureId = "null") {
@@ -570,9 +582,9 @@ function remFeature(featureId = "null") {
     data: JSON.stringify({
       featureId: featureId,
     }),
-    success: function(data) {
+    success: function(response) {
       updateSelectedFeaturesTable();
-      console.log('remFeature:', data);
+      console.log('remFeature:', response);
     },
     error: function(error) {
       console.error('remFeature Error:', error);
@@ -584,9 +596,9 @@ function getFeature(callback) {
   $.ajax({
     type: 'GET',
     url: '/map/getFeature/', 
-    success: function (data) {
-      console.log('getFeature:', data);
-      callback(data.features);
+    success: function (response) {
+      console.log('getFeature:', response);
+      callback(response.features);
     },
     error: function (error) {
       console.error('getFeature Error:', error);
@@ -607,8 +619,8 @@ function addFeature(featureId,featureType, featureData = null) {
       featureType : featureType,
       featureData : featureData,
     }),
-    success: function(data) {
-      console.log('addFeature:', data);
+    success: function(response) {
+      console.log('addFeature:', response);
       updateSelectedFeaturesTable();
     },
     error: function(error) {
@@ -653,15 +665,15 @@ function validation(){
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    success: function(data) {
-      console.log('validation:', data);
-      if (data.success) {
+    success: function(response) {
+      console.log('validation:', response);
+      if (response.success) {
         updateSelectedFeaturesTable();
         map.removeLayer(SimplifiedTLMLayer)
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
       } else {
-        alert('Validation failed: ' + data.message);
+        alert('Validation failed: ' + response.message);
       }
     },
     error: function(error) {
@@ -681,11 +693,11 @@ const fusePoints = (points) => {
       points: points
     }),
     contentType: 'application/json',  
-    success: function(data) {
-      if (data.success){
-        alert('Fuse failed: ' + data.message);
+    success: function(response) {
+      if (response.success){
+        updateSelectedFeaturesTable();
       } else {
-        alert('Fuse failed: ' + data.message);
+        alert('Fuse failed: ' + response.message);
       }
     },
     error: (xhr, status, error) => {
@@ -704,18 +716,20 @@ const dividePoint = (points) => {
     data: JSON.stringify({
       points: points
     }),
-    contentType: 'application/json',  // Set content type to JSON
+    contentType: 'application/json',
     success: (response) => {
-      // Handle the success response from the server
       console.log('dividePoints', response);
-      updateSelectedFeaturesTable();
+      if (response.success){
+        updateSelectedFeaturesTable();
+      } else {
+        alert('Divide failed: ' + response.message);
+      }
+
     },
     error: (xhr, status, error) => {
-      // Handle errors
       console.error('Divide points error:', status, error);
     }
   });
-  // Implement the logic for dividing points
 };
 
 function exportfeature(){
@@ -725,18 +739,18 @@ function exportfeature(){
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    success: function(data) {
-      console.log('exportFeature:', data);
-      if (data.success) {
-        ExportMaterial.history = data.history
-        ExportMaterial.dcs.points = data.dcs.points
-        ExportMaterial.dcs.jths = data.dcs.jths
+    success: function(response) {
+      console.log('exportFeature:', response);
+      if (response.success) {
+        ExportMaterial.history = response.history
+        ExportMaterial.dcs.points = response.dcs.points
+        ExportMaterial.dcs.jths = response.dcs.jths
         openDCSAttributesPopup()
         const filePreview = document.getElementById('DCSAttributesfilePreview');
         const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
         filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
       } else {
-        alert('exportFeature failed: ' + data.message);
+        alert('exportFeature failed: ' + response.message);
       }
     },
     error: function(error) {
@@ -841,6 +855,14 @@ function handleDCSAttributesFile(file, name) {
       ExportMaterial.dcs.legacyOmsInvoiceCMID = jsonData.legacyOmsInvoiceCMID
       ExportMaterial.dcs.legacyInvoiceAddress = jsonData.legacyInvoiceAddress
 
+      ExportMaterial.history.push({
+        timestamp: new Date().toISOString(),
+        operation: 'Metadata completion',
+        parameter: {
+            Source : name
+          }
+      })
+
       const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
       filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
     };
@@ -905,7 +927,7 @@ $(document).ready(function() {
   $('#exportfeature').click(function() {
     exportfeature();
   });
-  ///////////
+  
   $('#DCSAttributescloseBtn').click(function() {
     closeDCSAttributesPopup();
   });
@@ -926,6 +948,12 @@ document.addEventListener('contextmenu', function(event) {
 
 document.addEventListener('click', function() {
   hideContextMenu();
+  var contextMenuContent1pts = document.getElementById('context-menu-1points');
+  var contextMenuContent2pts = document.getElementById('context-menu-2points');
+  var fuseButton = contextMenuContent2pts.querySelector('.fuse-button');
+  var divideButton = contextMenuContent1pts.querySelector('.divide-button');
+  removeAllListeners(fuseButton);
+  removeAllListeners(divideButton);
 });
 
 

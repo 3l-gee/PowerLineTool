@@ -117,8 +117,6 @@ class LineStringHandler:
             "coordinates" : self.graphs[right_graph["id"]].geo_json()
         }
 
-        print(left_graph,right_graph)
-
         self.remFeature(point_source)
     
     def fuse(self, point1_source, point1_id, point2_source, point2_id):

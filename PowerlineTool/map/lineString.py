@@ -251,22 +251,22 @@ class LineString:
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
         return end_nodes
     
-    def traverse_graph(self):       
-        end_nodes = self.find_end_nodes()
+    # def traverse_graph(self):       
+    #     end_nodes = self.find_end_nodes()
         
-        print(f"Start Node: {end_nodes[0]}")
+    #     print(f"Start Node: {end_nodes[0]}")
     
-        path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
+    #     path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
         
-        for i in range(len(path) - 1):
-            current_node = path[i]
-            next_node = path[i + 1]
+    #     for i in range(len(path) - 1):
+    #         current_node = path[i]
+    #         next_node = path[i + 1]
     
-            edge_data = self.graph.get_edge_data(current_node, next_node)
-            node_data = self.graph.nodes[next_node]
+    #         edge_data = self.graph.get_edge_data(current_node, next_node)
+    #         node_data = self.graph.nodes[next_node]
             
-            print(f"Edge {current_node} - {next_node}")
-            print(f"Node: {next_node}")
+    #         print(f"Edge {current_node} - {next_node}")
+    #         print(f"Node: {next_node}")
     
 
     def geo_json(self):

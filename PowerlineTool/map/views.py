@@ -5,6 +5,7 @@ import json
 
 LineStringHandler_instance = mapFunction.LineStringHandler()
 
+
 def index(request):
     return render(request, 'map/index.html', {'stage_one_instance': "LineStringHandler_instance"})
 
@@ -71,20 +72,33 @@ def fuse(request):
         if point2_id not in LineStringHandler_instance.graphs[point2_source].find_end_nodes() :
             return JsonResponse({'success': False, 'message' : f'you muste fuse at the end of the line, {point2_id} is not at the end of the line {point2_source}'})
 
-        if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
-            LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
-            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
+        # if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+        #     LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
+        #     return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         
-        return JsonResponse({'success': False})
+        # return JsonResponse({'success': False})
+
+        if not LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+            return JsonResponse({'success': False, 'message' : f'the point {point2_id} and {point1_id} are too different to be fused.'})
+
+        LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
+        return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
     
 def divide(request):
     if request.method == 'POST' :
-        # TODO handel undividable cases (last point)
-        # JsonResponse
-
         data = json.loads(request.body)
         point_id = data["points"][0]["id"]
         point_source = data["points"][0]["source"]
+
+        if point_source not in LineStringHandler_instance.graphs.keys():
+            return JsonResponse({'success': False, 'message': f'Source {point_source} not in graph'})
+
+        if point_id not in LineStringHandler_instance.graphs[point_source].nodes():
+            return JsonResponse({'success': False, 'message': f'Point f{point_source} not in source {point_source}'})
+        
+        if point_id in LineStringHandler_instance.graphs[point_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message': f'Can not divide at the end of the line'})
+
         LineStringHandler_instance.divide(point_source, point_id)
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
 
