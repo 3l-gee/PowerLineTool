@@ -467,3 +467,73 @@ INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
 INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
 INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\mapFunction.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\urls.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /map/map/getTLMSimpleFeatures/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /map/map/getTLMSimpleFeatures/
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/getTLMSimpleFeatures/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 13, in getTLMSimpleFeatures
+    if request.methode == 'POST' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+ERROR:django.request:Internal Server Error: /map/getTLMSimpleFeatures/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 13, in getTLMSimpleFeatures
+    if request.methode == 'GET' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /map/getTLMSimpleFeatures/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 13, in getTLMSimpleFeatures
+    if request.methode == 'GET' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+ERROR:django.request:Internal Server Error: /map/getTLMSimpleFeatures/
+Traceback (most recent call last):
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py", line 13, in getTLMSimpleFeatures
+    if request.methode == 'GET' :
+       ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'methode'
+INFO:django.utils.autoreload:C:\Users\gerth\ITV Consult AG\itvdata - 3_Geschaeft\33_Projekte\BAZL\7000_DCS\5 - Operation\Tools\Python Script DCS\HL Read Find Format\NEW\PowerlineTool\map\views.py changed, reloading.
+INFO:django.utils.autoreload:Watching for file changes with StatReloader
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

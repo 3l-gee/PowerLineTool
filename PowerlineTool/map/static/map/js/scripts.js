@@ -339,11 +339,18 @@ var BackroundMap = new ol.layer.Tile({
 });
 
 
+// const SimplifiedTLMSource = new ol.source.Vector({
+//   features: new ol.format.GeoJSON().readFeatures(TLMDATA, {
+//     featureProjection: 'EPSG:2056', // Adjust to your map's projection
+//   }),
+// });
+
 const SimplifiedTLMSource = new ol.source.Vector({
-  features: new ol.format.GeoJSON().readFeatures(TLMDATA, {
-    featureProjection: 'EPSG:2056', // Adjust to your map's projection
-  }),
+  features: [], // Initialize with empty features array
 });
+
+// Loads the TLM Simple features
+getTLMSimpleFeatures()
 
 const SimplifiedTLMLayer = new ol.layer.Vector({
   style: featuresStyle,
@@ -553,24 +560,30 @@ function removeAllListeners(element) {
 //BackendCall
 /////////////////////////////////////////////////////////////////////
 
-// // Attach a click event handler to the button
-// $('#helloButton').click(function() {
-//   // Send an AJAX request to the server with the CSRF token
-//   $.ajax({
-//       type: 'POST',
-//       url: '/map/log_hello/',
-//       headers: {
-//           'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
-//       },
-//       success: function(data) {
-//           console.log('Server log:', data);
-//       },
-//       error: function(error) {
-//           console.error('Error:', error);
-//       }
-//   });
-// });
-
+function getTLMSimpleFeatures() {
+  $.ajax({
+    type: 'GET',
+    url: '/map/getTLMSimpleFeatures/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    success: function(response) {
+      console.log('getTLMSimpleFeatures:', response);
+      if (response.success){
+        SimplifiedTLMSource.clear(); 
+        const newFeatures = new ol.format.GeoJSON().readFeatures(response.features, {
+          featureProjection: 'EPSG:2056',
+        });
+        SimplifiedTLMSource.addFeatures(newFeatures); // Add new features
+      } else {
+        // Handle failure if needed 
+      }
+    },
+    error: function(error) {
+      console.error('getTLMSimpleFeatures Error:', error);
+    } 
+  })
+}
 
 function remFeature(featureId = "null") {
   $.ajax({

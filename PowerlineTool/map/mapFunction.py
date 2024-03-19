@@ -26,6 +26,7 @@ class LineStringHandler:
         self.features = {}
         self.graphs = {}
         self.TLMFeatures = {}
+        self.TLMSimplefeature = json.load(open('PowerlineTool/map/static/map/data/TLMSimpleFeatures.json'))
         tempList = json.load(open('PowerlineTool/map/static/map/data/TLMFullFeatures.json'))["obstacles"]
         for item in tempList :
             self.TLMFeatures[item["tlmID"]] = item

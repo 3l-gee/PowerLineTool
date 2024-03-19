@@ -9,5 +9,6 @@ urlpatterns = [
     path('validation/', views.validation, name='validation'),
     path('fuse/', views.fuse, name='fuse'),
     path('divide/', views.divide,name='divide'),
-    path('export/', views.export, name='export')
+    path('export/', views.export, name='export'),
+    path('getTLMSimpleFeatures/', views.getTLMSimpleFeatures, name='getTLMSimpleFeatures')
 ]

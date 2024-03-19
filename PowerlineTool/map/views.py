@@ -9,6 +9,11 @@ LineStringHandler_instance = mapFunction.LineStringHandler()
 def index(request):
     return render(request, 'map/index.html', {'stage_one_instance': "LineStringHandler_instance"})
 
+def getTLMSimpleFeatures(request): 
+    if request.method == 'GET' :
+        #TODO conditions ?
+        return JsonResponse({'success': True, 'features' : LineStringHandler_instance.TLMSimplefeature})
+
 def remFeature(request):
     if request.method == 'POST' :
         data = json.loads(request.body)
