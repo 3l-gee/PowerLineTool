@@ -161,9 +161,9 @@ class LineStringHandler:
             "y": node1['y'],
             "structureHeight": node1['structureHeight'],
             "elevation": node1['elevation'],
-            "currentLighting": "UMBIGIOUS", #TODO what lighting / marking should this have ?
-            "currentMarking" : "UMBIGIOUS",
-            "description" : "description"
+            "currentLighting": node1['structureHeight'], #TODO what lighting / marking should this have ?
+            "currentMarking" : node1['structureHeight'],
+            "description" : node1['structureHeight']
         }
 
         nx_graph1.add_node(new_node_id, **new_attributes)

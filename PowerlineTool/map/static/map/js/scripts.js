@@ -1,5 +1,3 @@
-import TLMDATA from './TLMSimpleFeatures.json' assert {type : 'json'}
-
 //Cosnt
 /////////////////////////////////////////////////////////////////////
 
@@ -299,7 +297,6 @@ const SelectedFeatureLayer = new ol.layer.Vector({
   style : selectedFeatures,
 })
 
-console.log(SelectedFeatureLayer)
 const ActiveObstacle = new ol.layer.Tile({
   opacity: 1,
   minZoom : 8,
@@ -339,11 +336,6 @@ var BackroundMap = new ol.layer.Tile({
 });
 
 
-// const SimplifiedTLMSource = new ol.source.Vector({
-//   features: new ol.format.GeoJSON().readFeatures(TLMDATA, {
-//     featureProjection: 'EPSG:2056', // Adjust to your map's projection
-//   }),
-// });
 
 const SimplifiedTLMSource = new ol.source.Vector({
   features: [], // Initialize with empty features array
@@ -359,12 +351,14 @@ const SimplifiedTLMLayer = new ol.layer.Vector({
 });
 
 const View = new ol.View({
-    // projection: 'EPSG:3857',
-    // center: [893463,5943335],
     projection: 'EPSG:2056',
     center: [2600000,1200000],
     zoom: 4,
 })
+
+const interactions = ol.interaction.defaults.defaults({
+  doubleClickZoom: false
+});
 
 const map = new ol.Map({
     layers: [
@@ -373,6 +367,7 @@ const map = new ol.Map({
       SimplifiedTLMLayer,
       SelectedFeatureLayer
     ],
+    interactions: interactions,
     target: 'map',
     view : View
 
@@ -400,11 +395,21 @@ const popup = new ol.Overlay({
 
 map.addOverlay(popup);
 
+function singleOrDoubleClick(event) {
+  if (event.type === 'dblclick') {
+      return true;
+  } else {
+      return ol.events.condition.singleClick(event) &&
+          !ol.events.condition.doubleClick(event);
+  }
+}
+
 
 const selectInteraction = new ol.interaction.Select({
+  condition : singleOrDoubleClick,
   style: selected,
   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
-  multi: false,
+  multi: true,
   hitTolerance : 5
 });
 
@@ -417,15 +422,30 @@ popupCloser.onclick = function() {
 
 map.addInteraction(selectInteraction);
 
+
 selectInteraction.on('select', function (evt) {
+  console.log(evt.mapBrowserEvent.type)
+  if (evt.mapBrowserEvent.type === "singleclick") {
+    evt.selected = [evt.selected[0]];
+
+    let foundFeature = null;
+    console.log(evt.selected[0].getProperties().id)
+    selectInteraction.getFeatures().forEach(function(feature) {
+      console.log(feature.get("id"))
+        if (evt.selected[0].getProperties().id != feature.get("id") || evt.selected[0].getProperties().source != feature.get("source")) {
+            foundFeature = feature;
+            // Break the loop since we found the feature we were looking for
+            return true;
+        }
+    });
+    selectInteraction.getFeatures().clear();
+    selectInteraction.getFeatures().push(foundFeature);
+  } 
   const selectedFeatures = evt.selected;
   const selectedLayerName = selectInteraction.getLayer(selectedFeatures[0]).get("layerId")
 
   if (selectedFeatures.length > 0) {
     if (selectedLayerName =="Selected"){
-      const extent = selectedFeatures[0].getGeometry().getExtent()
-      const center = ol.extent.getCenter(extent);
-
       popupTitle.innerHTML = "Feature";
       var newPopupContent = '<pre id="json">'
       let entry
@@ -438,14 +458,13 @@ selectInteraction.on('select', function (evt) {
       }
       newPopupContent += "</pre>"
       popupContent.innerHTML = newPopupContent
-      popup.setPosition(center);
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
     } 
     else if (selectedLayerName =="TLM"){
       const extent = ol.extent.createEmpty();
       selectedFeatures.forEach(function (feature) {
         ol.extent.extend(extent, feature.getGeometry().getExtent());
       });
-      const center = ol.extent.getCenter(extent);
 
       popupTitle.innerHTML = "Line String";
 
@@ -475,18 +494,20 @@ selectInteraction.on('select', function (evt) {
 
         });
       });
-
-      popup.setPosition(center);
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
     }
   }
 })
 
 let isContextMenuVisible = false;
+let isValidationDone = false;
 
 function showContextMenu(x, y) {
   if (isContextMenuVisible) return; // Check if the context menu is already visible
+  if (!isValidationDone) return
   isContextMenuVisible = true; // Set the flag to true when showing the menu
   var contextMenu = document.getElementById('context-menu');
+  var contextMenuTitle = document.getElementById('context-menu-title');
   var contextMenuContent1 = document.getElementById('context-menu-content-1');
   var contextMenuContent2 = document.getElementById('context-menu-content-2');
   var contextMenuContent1pts = document.getElementById('context-menu-1points');
@@ -525,13 +546,15 @@ function showContextMenu(x, y) {
   contextMenuContent2pts.style.display = 'none';
 
   if (points.length === 2){
-    contextMenuContent1.innerHTML = 'Source: ' + points[0].source  + ' / ' + points[1].source;
-    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id + ' / ' + points[1].id ;
+    contextMenuTitle.innerHTML = "Fuse"
+    contextMenuContent1.innerHTML = 'Source 1 : ' + points[0].source  + '<br>Source 2 : ' + points[1].source;
+    contextMenuContent2.innerHTML = 'Point 1 ID: ' + points[0].id + '<br>Point 2 ID: ' + points[1].id ;
     contextMenuContent2pts.style.display = 'block';
     fuseButton.removeEventListener('click', fuseClickListener);
     fuseButton.addEventListener('click', fuseClickListener, { once: true });
   
   } else if (points.length === 1 ){
+    contextMenuTitle.innerHTML = "Divide"
     contextMenuContent1.innerHTML = 'Source: ' + points[0].source;
     contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id;
     contextMenuContent1pts.style.display = 'block';
@@ -649,7 +672,6 @@ function updateSelectedFeaturesTable() {
     SelectedFeatureSource.clear()
 
     if (features) {
-      console.log(features)
       for (const [key, value] of Object.entries(features)) {
         for (let testFeature of value.coordinates.features) {
           let testFeatureObject = new ol.format.GeoJSON().readFeature(testFeature);
@@ -683,6 +705,7 @@ function validation(){
       if (response.success) {
         updateSelectedFeaturesTable();
         map.removeLayer(SimplifiedTLMLayer)
+        isValidationDone = true
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
       } else {

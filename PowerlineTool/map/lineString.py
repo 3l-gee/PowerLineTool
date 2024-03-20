@@ -249,25 +249,7 @@ class LineString:
                     
     def find_end_nodes(self):
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
-        return end_nodes
-    
-    # def traverse_graph(self):       
-    #     end_nodes = self.find_end_nodes()
-        
-    #     print(f"Start Node: {end_nodes[0]}")
-    
-    #     path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
-        
-    #     for i in range(len(path) - 1):
-    #         current_node = path[i]
-    #         next_node = path[i + 1]
-    
-    #         edge_data = self.graph.get_edge_data(current_node, next_node)
-    #         node_data = self.graph.nodes[next_node]
-            
-    #         print(f"Edge {current_node} - {next_node}")
-    #         print(f"Node: {next_node}")
-    
+        return end_nodes   
 
     def geo_json(self):
         """Generates a GeoJSON representation of the graph.
@@ -292,9 +274,12 @@ class LineString:
             coordinates.append((node_data['x'], node_data['y']))
             attributes = {
                 "id" : node,
+                "description" : node_data['description'],
                 "source" : self.graph_id,
                 "elevation" : node_data['elevation'],
-                "structureHeight" : node_data['structureHeight']
+                "structureHeight" : node_data['structureHeight'],
+                "currentMarking" : node_data['currentMarking'],
+                "currentLighting" : node_data['currentLighting']
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((node_data['x'], node_data['y'])), properties=attributes)
             features.append(point_geojson)
@@ -325,9 +310,6 @@ class LineString:
         end_nodes = self.find_end_nodes()
 
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
-
-        def get_time(items):
-            return items.get('timestamp')
         
         first_node_data = self.graph.nodes[path[0]]
         res["points"].append({
