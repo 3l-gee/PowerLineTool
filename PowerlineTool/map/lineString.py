@@ -2,6 +2,7 @@ import networkx as nx
 import uuid
 import geojson
 from datetime import datetime
+import copy
 
 class LineString:
     """
@@ -82,7 +83,7 @@ class LineString:
             'operation': 'divide',
             'parameter': {
                 "source" : self.graph_id,
-                "node_id" : node_id
+                "node_id" : node_id,
             }
         })
 
@@ -156,13 +157,16 @@ class LineString:
 
         for i in range(0, len(tlm_data["points"])-1):
             if i == 0: 
+                
+
                 node_id1_attributes = {
                     "x": tlm_data["points"][i]["location"]["x"],
                     "y": tlm_data["points"][i]["location"]["y"],
                     "structureHeight": tlm_data["points"][i]["structureHeight"]["magnitude"],
                     "elevation": tlm_data["points"][i]["terrain"]["magnitude"],
                     "currentLighting": "NONE",
-                    "currentMarking": "NONE"
+                    "currentMarking": "NONE",
+                    "description" : None
                 }
                 node_id1 = str(uuid.uuid4())[:6]
                 self.graph.add_node(node_id1, **node_id1_attributes)
@@ -173,7 +177,8 @@ class LineString:
                 "structureHeight": tlm_data["points"][i+1]["structureHeight"]["magnitude"],
                 "elevation": tlm_data["points"][i+1]["terrain"]["magnitude"],
                 "currentLighting": "NONE",
-                "currentMarking": "NONE"
+                "currentMarking": "NONE",
+                "description" : None
             }
             node_id2 = str(uuid.uuid4())[:6]
             self.graph.add_node(node_id2, **node_id2_attributes)
@@ -215,8 +220,9 @@ class LineString:
                     "y": dcs_data["points"][i]["location"]["y"],
                     "structureHeight": dcs_data["points"][i]["structureHeight"]["magnitude"],
                     "elevation": dcs_data["points"][i]["elevation"]["magnitude"],
-                    "currentLighting": dcs_data["points"][i]["currentLighting"],
-                    "currentMarking": "NONE"
+                    "currentLighting": dcs_data["points"][i].get("currentLighting", "NONE"),
+                    "currentMarking": dcs_data["points"][i].get("currentMarking", "NONE"),
+                    "description" : dcs_data["points"][i].get("description", None)
                 }
                 node_id1 = str(uuid.uuid4())[:6]
                 self.graph.add_node(node_id1, **node_id1_attributes)
@@ -226,41 +232,24 @@ class LineString:
                 "y": dcs_data["points"][i+1]["location"]["y"],
                 "structureHeight": dcs_data["points"][i+1]["structureHeight"]["magnitude"],
                 "elevation": dcs_data["points"][i+1]["elevation"]["magnitude"],
-                "currentLighting": dcs_data["points"][i+1]["currentLighting"],
-                "currentMarking": "NONE"
+                "currentLighting": dcs_data["points"][i+1].get("currentLighting", "NONE"),
+                "currentMarking": dcs_data["points"][i+1].get("currentMarking", "NONE"),
+                "description" : dcs_data["points"][i+1].get("description", None)
             }
             node_id2 = str(uuid.uuid4())[:6]
             self.graph.add_node(node_id2, **node_id2_attributes)
             
             jth_attributes = {
                 "structureHeight": dcs_data["jths"][i]["structureHeight"]["magnitude"],
-                "currentMarking": dcs_data["jths"][i]["currentMarking"]
+                "currentMarking": dcs_data["jths"][i].get("currentMarking","NONE")
             }
             self.graph.add_edge(node_id1, node_id2, attributes=jth_attributes) 
 
             node_id1 = node_id2
                     
-    def _find_end_nodes(self):
+    def find_end_nodes(self):
         end_nodes = [node for node in self.graph.nodes() if len(list(self.graph.neighbors(node))) == 1]
-        return end_nodes
-    
-    def traverse_graph(self):       
-        end_nodes = self._find_end_nodes()
-        
-        print(f"Start Node: {end_nodes[0]}")
-    
-        path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
-        
-        for i in range(len(path) - 1):
-            current_node = path[i]
-            next_node = path[i + 1]
-    
-            edge_data = self.graph.get_edge_data(current_node, next_node)
-            node_data = self.graph.nodes[next_node]
-            
-            print(f"Edge {current_node} - {next_node}")
-            print(f"Node: {next_node}")
-    
+        return end_nodes   
 
     def geo_json(self):
         """Generates a GeoJSON representation of the graph.
@@ -269,7 +258,7 @@ class LineString:
                 geojson.FeatureCollection: 
                     GeoJSON representation of the graph.
             """
-        end_nodes = self._find_end_nodes()
+        end_nodes = self.find_end_nodes()
 
         path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
 
@@ -285,9 +274,12 @@ class LineString:
             coordinates.append((node_data['x'], node_data['y']))
             attributes = {
                 "id" : node,
+                "description" : node_data['description'],
                 "source" : self.graph_id,
                 "elevation" : node_data['elevation'],
-                "structureHeight" : node_data['structureHeight']
+                "structureHeight" : node_data['structureHeight'],
+                "currentMarking" : node_data['currentMarking'],
+                "currentLighting" : node_data['currentLighting']
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((node_data['x'], node_data['y'])), properties=attributes)
             features.append(point_geojson)
@@ -306,3 +298,73 @@ class LineString:
         
         return geojson.FeatureCollection(features)
     
+    def DCS_writer(self):
+        """Generates a DCS formated json for Points and JTH of the graph
+            Returns:
+                json
+        """
+        res = {
+            "points" : [],
+            "jths" :[]
+        }
+        end_nodes = self.find_end_nodes()
+
+        path = nx.shortest_path(self.graph, end_nodes[0], end_nodes[1])
+        
+        first_node_data = self.graph.nodes[path[0]]
+        res["points"].append({
+            "structureHeight" : {
+                "magnitude" : round(float(first_node_data['structureHeight']),3),
+                "unit" : "METERS"
+            },
+            "currentMarking" : first_node_data['currentMarking'],
+            "currentLighting" : first_node_data['currentLighting'],
+            "description": first_node_data['description'] if first_node_data['description'] is not None else "TLM1",
+            "location" : {
+                "crs" : 2056,
+                "x" : round(float(first_node_data['x']),3),
+                "y" : round(float(first_node_data['y']),3)
+            },
+            "elevation" : {
+                "magnitude" : round(float(first_node_data['elevation']),3),
+                "unit" : "METERS",
+                "verticalDatum" : 5728
+            }
+        })
+        for i in range(1,len(path)) :
+            node_data = self.graph.nodes[path[i]]
+            edge_data = self.graph.get_edge_data(path[i-1], path[i])["attributes"]
+
+            temp_point = {
+                "structureHeight" : {
+                    "magnitude" : round(float(node_data['structureHeight']),3),
+                    "unit" : "METERS"
+                },
+                "currentMarking" : node_data['currentMarking'],
+                "currentLighting" : node_data['currentLighting'],
+                "description": node_data['description'] if node_data['description'] is not None else f"TLM{i+1}",
+                "location" : {
+                    "crs" : 2056,
+                    "x" : round(float(node_data['x']),3),
+                    "y" : round(float(node_data['y']),3)
+                },
+                "elevation" : {
+                    "magnitude" : round(float(node_data['elevation']),3),
+                    "unit" : "METERS",
+                    "verticalDatum" : 5728
+                }
+            }
+            copied_temp_point = copy.deepcopy(temp_point)
+            res["points"].append(copied_temp_point)
+
+            temp_jth = {
+                "structureHeight" : {
+                "magnitude" : round(float(edge_data["structureHeight"]),3),
+                "unit" : "METERS"
+                },
+                "currentMarking" : edge_data["currentMarking"]
+            }
+            copied_temp_jth = copy.deepcopy(temp_jth)
+            res["jths"].append(copied_temp_jth)
+
+        return res

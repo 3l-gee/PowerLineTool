@@ -3,13 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('log_coordinates/', views.log_coordinates, name='log_coordinates'),
     path('addFeature/', views.addFeature, name='addFeature'),
     path('getFeature/', views.getFeature, name='getFeature'),
     path('remFeature/', views.remFeature, name='remFeature'),
-    path('validateStepOne/', views.validateStepOne, name='validateStepOne'),
-    path('validateStepTwo/', views.validateStepTwo, name='validateStepTwo'),
+    path('validation/', views.validation, name='validation'),
     path('fuse/', views.fuse, name='fuse'),
     path('divide/', views.divide,name='divide'),
-    path('export/', views.export, name='export')
+    path('export/', views.export, name='export'),
+    path('getTLMSimpleFeatures/', views.getTLMSimpleFeatures, name='getTLMSimpleFeatures')
 ]

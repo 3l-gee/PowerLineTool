@@ -1,9 +1,32 @@
-import TLMDATA from './TLMSimpleFeatures.json' assert {type : 'json'}
-
 //Cosnt
 /////////////////////////////////////////////////////////////////////
 
 var initialSelectedFeatures = $('#selectedFeatures tbody').html();
+let ExportMaterial = {
+  name : null,
+  dcs : {
+    originator : null,
+    type : null,
+    moving : null,
+    group : null,
+    points : [],
+    jths : [],
+    hospitalNearby : null,
+    ownerInfo : null, 
+    approvalLetterRequired : null, 
+    lastModificationReport : null, 
+    pending : null,
+    authority : null,
+    publicationTypes : null, 
+    structureStatus : null, 
+    legacySymbolCode : null, 
+    legacyOwnerAddress : null,
+    legacyOmsCMID : null, 
+    legacyOmsInvoiceCMID : null, 
+    legacyInvoiceAddress : null
+  },
+  history : null
+}
 
 function featuresStyle (feature, resolution) {
   // Get the zoom level from the map
@@ -30,9 +53,10 @@ function featuresStyle (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
+        displacement : [0,5],
         points: 3,
-        rotation: Math.PI * 4 / 3,
-        radius: 8, // Adjust the radius based on the zoom level
+        rotation: Math.PI,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
           color: 'blue',
         }),
@@ -56,18 +80,19 @@ function featuresStyle (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length - 1]),
       image: new ol.style.RegularShape({
+        displacement : [0,5],
         points: 3,
-        rotation: 0 + Math.PI / 3,
-        radius: 8, // Adjust the radius based on the zoom level
+        rotation: 0,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'red',
+          color: 'blue',
         }),
       }),
     }));
 
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'black',
+        color: 'blue',
         width: 2,
       }),
     }));
@@ -92,9 +117,9 @@ function selected (feature, resolution) {
   if (zoom <= 8) {
     styles.push(new ol.style.Style({
       image: new ol.style.Circle({
-        radius: 100, // Adjust the radius based on the zoom level
+        radius: 8, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'black',
+          color: '#FFA7D3',
         }),
       }),
       stroke: new ol.style.Stroke({
@@ -107,11 +132,11 @@ function selected (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
-        points: 3,
-        rotation: Math.PI * 4 / 3,
+        points: 10,
+        rotation: Math.PI,
         radius: 16, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: '#8BC5FF',
+          color: '#FFA7D3',
         }),
       }),
     }));
@@ -133,11 +158,11 @@ function selected (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length - 1]),
       image: new ol.style.RegularShape({
-        points: 3,
-        rotation: 0 + Math.PI / 3,
+        points: 10,
+        rotation: 0,
         radius: 16, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: '#FFD38B',
+          color: '#FFA7D3',
         }),
       }),
     }));
@@ -177,7 +202,7 @@ function selectedFeatures (feature, resolution) {
   } else {
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'grey',
+        color: 'red',
         width: 4,
       }),
       image: new ol.style.Circle({
@@ -200,18 +225,20 @@ function selectedFeatures (feature, resolution) {
           color: [255, 255, 255, 0.6],
         }),
         padding: [2, 2, 2, 2],
-        offsetX: 10, 
+        offsetX: 15, 
+        offsetY: 25
       }),
     }));
 
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
+        displacement : [0,10],
         points: 3,
-        rotation: Math.PI * 4 / 3,
-        radius: 10, // Adjust the radius based on the zoom level
+        rotation: Math.PI / 2,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'blue',
+          color: 'red',
         }),
       }),
     }));
@@ -219,9 +246,10 @@ function selectedFeatures (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length -1]),
       image: new ol.style.RegularShape({
+        displacement : [0,10],
         points: 3,
-        rotation: Math.PI / 3,
-        radius: 10, // Adjust the radius based on the zoom level
+        rotation: Math.PI + Math.PI / 2,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
           color: 'red',
         }),
@@ -274,7 +302,6 @@ const SelectedFeatureLayer = new ol.layer.Vector({
   style : selectedFeatures,
 })
 
-console.log(SelectedFeatureLayer)
 const ActiveObstacle = new ol.layer.Tile({
   opacity: 1,
   minZoom : 8,
@@ -314,11 +341,13 @@ var BackroundMap = new ol.layer.Tile({
 });
 
 
+
 const SimplifiedTLMSource = new ol.source.Vector({
-  features: new ol.format.GeoJSON().readFeatures(TLMDATA, {
-    featureProjection: 'EPSG:2056', // Adjust to your map's projection
-  }),
+  features: [], // Initialize with empty features array
 });
+
+// Loads the TLM Simple features
+getTLMSimpleFeatures()
 
 const SimplifiedTLMLayer = new ol.layer.Vector({
   style: featuresStyle,
@@ -327,12 +356,14 @@ const SimplifiedTLMLayer = new ol.layer.Vector({
 });
 
 const View = new ol.View({
-    // projection: 'EPSG:3857',
-    // center: [893463,5943335],
     projection: 'EPSG:2056',
     center: [2600000,1200000],
     zoom: 4,
 })
+
+const interactions = ol.interaction.defaults.defaults({
+  doubleClickZoom: false
+});
 
 const map = new ol.Map({
     layers: [
@@ -341,6 +372,7 @@ const map = new ol.Map({
       SimplifiedTLMLayer,
       SelectedFeatureLayer
     ],
+    interactions: interactions,
     target: 'map',
     view : View
 
@@ -368,52 +400,76 @@ const popup = new ol.Overlay({
 
 map.addOverlay(popup);
 
+// function singleOrDoubleClick(event) {
+//   if (event.type === 'dblclick') {
+//       return true;
+//   } else {
+//       return ol.events.condition.singleClick(event) &&
+//           !ol.events.condition.doubleClick(event);
+//   }
+// }
 
-const selectInteraction = new ol.interaction.Select({
+
+// const selectInteraction = new ol.interaction.Select({
+//   condition : singleOrDoubleClick,
+//   style: selected,
+//   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
+//   multi: true,
+//   hitTolerance : 5
+// });
+
+const singleClickSelectInteraction = new ol.interaction.Select({
+  condition : ol.events.condition.singleClick,
   style: selected,
   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
   multi: false,
   hitTolerance : 5
 });
 
+const doubleClickSelectInteraction = new ol.interaction.Select({
+  condition : ol.events.condition.doubleClick,
+  style: selected,
+  layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
+  multi: true,
+  hitTolerance : 5
+});
+
 popupCloser.onclick = function() {
-  selectInteraction.getFeatures().clear();
+  singleClickSelectInteraction.getFeatures().clear();
+  doubleClickSelectInteraction.getFeatures().clear();
   popup.setPosition(undefined);
   popupCloser.blur();
   return false;
 };
 
-map.addInteraction(selectInteraction);
+map.addInteraction(singleClickSelectInteraction);
+map.addInteraction(doubleClickSelectInteraction);
 
-selectInteraction.on('select', function (evt) {
+
+doubleClickSelectInteraction.on('select', function (evt) {
   const selectedFeatures = evt.selected;
-  const selectedLayerName = selectInteraction.getLayer(selectedFeatures[0]).get("layerId")
+  const selectedLayerName = doubleClickSelectInteraction.getLayer(selectedFeatures[0]).get("layerId")
 
   if (selectedFeatures.length > 0) {
     if (selectedLayerName =="Selected"){
-      const extent = selectedFeatures[0].getGeometry().getExtent()
-      const center = ol.extent.getCenter(extent);
-
       popupTitle.innerHTML = "Feature";
       var newPopupContent = '<pre id="json">'
       let entry
       for (let selectedFeature of selectedFeatures){
         const selectedFeatureProperties = selectedFeature.getProperties();
-        console.log(selectedFeature)
         delete selectedFeatureProperties.geometry;
         entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
         newPopupContent += entry
       }
       newPopupContent += "</pre>"
       popupContent.innerHTML = newPopupContent
-      popup.setPosition(center);
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
     } 
     else if (selectedLayerName =="TLM"){
       const extent = ol.extent.createEmpty();
       selectedFeatures.forEach(function (feature) {
         ol.extent.extend(extent, feature.getGeometry().getExtent());
       });
-      const center = ol.extent.getCenter(extent);
 
       popupTitle.innerHTML = "Line String";
 
@@ -428,7 +484,7 @@ selectInteraction.on('select', function (evt) {
         entry += "</td><td>"
         entry += selectedFeature.get("omsMatches") 
         entry += '</td><td>';
-        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> + </button>`;
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> ADD </button>`;
         entry += '</td></tr>';
         newPopupContent += entry
       }
@@ -443,14 +499,78 @@ selectInteraction.on('select', function (evt) {
 
         });
       });
-
-      popup.setPosition(center);
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
     }
   }
 })
 
+singleClickSelectInteraction.on('select', function (evt) {
+  const selectedFeatures = evt.selected;
+  const selectedLayerName = singleClickSelectInteraction.getLayer(selectedFeatures[0]).get("layerId")
+
+  if (selectedFeatures.length > 0) {
+    if (selectedLayerName =="Selected"){
+      popupTitle.innerHTML = "Feature";
+      var newPopupContent = '<pre id="json">'
+      let entry
+      for (let selectedFeature of selectedFeatures){
+        const selectedFeatureProperties = selectedFeature.getProperties();
+        delete selectedFeatureProperties.geometry;
+        entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
+        newPopupContent += entry
+      }
+      newPopupContent += "</pre>"
+      popupContent.innerHTML = newPopupContent
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
+    } 
+    else if (selectedLayerName =="TLM"){
+      const extent = ol.extent.createEmpty();
+      selectedFeatures.forEach(function (feature) {
+        ol.extent.extend(extent, feature.getGeometry().getExtent());
+      });
+
+      popupTitle.innerHTML = "Line String";
+
+      var newPopupContent = '<table>'
+      let entry = '<tr><th>Source</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
+      newPopupContent += entry
+      for (let selectedFeature of selectedFeatures){
+        let featureId = selectedFeature.get("id") 
+        entry = ""
+        entry += "<tr><td>" 
+        entry += featureId
+        entry += "</td><td>"
+        entry += selectedFeature.get("omsMatches") 
+        entry += '</td><td>';
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> ADD </button>`;
+        entry += '</td></tr>';
+        newPopupContent += entry
+      }
+      newPopupContent += "</table>"
+      popupContent.innerHTML = newPopupContent
+
+      const actionButtons = document.querySelectorAll('.action-button');
+      actionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const featureId = button.dataset.featureId;
+          addFeature(featureId, "TLM");
+
+        });
+      });
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
+    }
+  }
+})
+
+let isContextMenuVisible = false;
+let isValidationDone = false;
+
 function showContextMenu(x, y) {
+  if (isContextMenuVisible) return; // Check if the context menu is already visible
+  if (!isValidationDone) return
+  isContextMenuVisible = true; // Set the flag to true when showing the menu
   var contextMenu = document.getElementById('context-menu');
+  var contextMenuTitle = document.getElementById('context-menu-title');
   var contextMenuContent1 = document.getElementById('context-menu-content-1');
   var contextMenuContent2 = document.getElementById('context-menu-content-2');
   var contextMenuContent1pts = document.getElementById('context-menu-1points');
@@ -473,11 +593,13 @@ function showContextMenu(x, y) {
   }
 
   const fuseClickListener = () => {
+    console.log("fuseClickListener")
     fusePoints(points);
     hideContextMenu();
   };
   
   const divideClickListener = () => {
+    console.log("divideClickListener")
     dividePoint(points);
     hideContextMenu();
   };
@@ -487,13 +609,15 @@ function showContextMenu(x, y) {
   contextMenuContent2pts.style.display = 'none';
 
   if (points.length === 2){
-    contextMenuContent1.innerHTML = 'Source: ' + points[0].source  + ' / ' + points[1].source;
-    contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id + ' / ' + points[1].id ;
+    contextMenuTitle.innerHTML = "Fuse"
+    contextMenuContent1.innerHTML = 'Source 1 : ' + points[0].source  + '<br>Source 2 : ' + points[1].source;
+    contextMenuContent2.innerHTML = 'Point 1 ID: ' + points[0].id + '<br>Point 2 ID: ' + points[1].id ;
     contextMenuContent2pts.style.display = 'block';
     fuseButton.removeEventListener('click', fuseClickListener);
     fuseButton.addEventListener('click', fuseClickListener, { once: true });
   
   } else if (points.length === 1 ){
+    contextMenuTitle.innerHTML = "Divide"
     contextMenuContent1.innerHTML = 'Source: ' + points[0].source;
     contextMenuContent2.innerHTML = 'Point ID: ' + points[0].id;
     contextMenuContent1pts.style.display = 'block';
@@ -511,29 +635,41 @@ function showContextMenu(x, y) {
 function hideContextMenu() {
   var contextMenu = document.getElementById('context-menu');
   contextMenu.style.display = 'none';
+  isContextMenuVisible = false; 
+}
+
+function removeAllListeners(element) {
+  var clonedElement = element.cloneNode(true);
+  element.parentNode.replaceChild(clonedElement, element);
 }
 
 //BackendCall
 /////////////////////////////////////////////////////////////////////
 
-// Attach a click event handler to the button
-$('#helloButton').click(function() {
-  // Send an AJAX request to the server with the CSRF token
+function getTLMSimpleFeatures() {
   $.ajax({
-      type: 'POST',
-      url: '/map/log_hello/',
-      headers: {
-          'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
-      },
-      success: function(data) {
-          console.log('Server log:', data);
-      },
-      error: function(error) {
-          console.error('Error:', error);
+    type: 'GET',
+    url: '/map/getTLMSimpleFeatures/',
+    headers: {
+      'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+    },
+    success: function(response) {
+      console.log('getTLMSimpleFeatures:', response);
+      if (response.success){
+        SimplifiedTLMSource.clear(); 
+        const newFeatures = new ol.format.GeoJSON().readFeatures(response.features, {
+          featureProjection: 'EPSG:2056',
+        });
+        SimplifiedTLMSource.addFeatures(newFeatures); // Add new features
+      } else {
+        // Handle failure if needed 
       }
-  });
-});
-
+    },
+    error: function(error) {
+      console.error('getTLMSimpleFeatures Error:', error);
+    } 
+  })
+}
 
 function remFeature(featureId = "null") {
   $.ajax({
@@ -545,9 +681,9 @@ function remFeature(featureId = "null") {
     data: JSON.stringify({
       featureId: featureId,
     }),
-    success: function(data) {
+    success: function(response) {
       updateSelectedFeaturesTable();
-      console.log('remFeature:', data);
+      console.log('remFeature:', response);
     },
     error: function(error) {
       console.error('remFeature Error:', error);
@@ -559,9 +695,9 @@ function getFeature(callback) {
   $.ajax({
     type: 'GET',
     url: '/map/getFeature/', 
-    success: function (data) {
-      console.log('getFeature:', data);
-      callback(data.features);
+    success: function (response) {
+      console.log('getFeature:', response);
+      callback(response.features);
     },
     error: function (error) {
       console.error('getFeature Error:', error);
@@ -582,8 +718,8 @@ function addFeature(featureId,featureType, featureData = null) {
       featureType : featureType,
       featureData : featureData,
     }),
-    success: function(data) {
-      console.log('addFeature:', data);
+    success: function(response) {
+      console.log('addFeature:', response);
       updateSelectedFeaturesTable();
     },
     error: function(error) {
@@ -599,7 +735,6 @@ function updateSelectedFeaturesTable() {
     SelectedFeatureSource.clear()
 
     if (features) {
-      console.log(features)
       for (const [key, value] of Object.entries(features)) {
         for (let testFeature of value.coordinates.features) {
           let testFeatureObject = new ol.format.GeoJSON().readFeature(testFeature);
@@ -609,7 +744,7 @@ function updateSelectedFeaturesTable() {
         var row = $('<tr>')
           .append($('<td>').text(value.type))
           .append($('<td>').text(value.id))
-          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}"> - </button>`));
+          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}"> REMOVE </button>`));
     
         tableBody.append(row);
       }
@@ -621,26 +756,27 @@ function updateSelectedFeaturesTable() {
   })
 }
 
-function validateStepOne(){
+function validation(){
   $.ajax({
     type: 'POST',
-    url: '/map/validateStepOne/',
+    url: '/map/validation/',
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    success: function(data) {
-      console.log('validateStepOne:', data);
-      if (data.success) {
+    success: function(response) {
+      console.log('validation:', response);
+      if (response.success) {
         updateSelectedFeaturesTable();
         map.removeLayer(SimplifiedTLMLayer)
+        isValidationDone = true
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
       } else {
-        alert('Validation failed: ' + data.message);
+        alert('Validation failed: ' + response.message);
       }
     },
     error: function(error) {
-      console.error('validateStepOne Error:', error);
+      console.error('validation Error:', error);
     }
   })
 }
@@ -656,12 +792,15 @@ const fusePoints = (points) => {
       points: points
     }),
     contentType: 'application/json',  
-    success: (response) => {
-      console.log('fusePoints', response);
-      updateSelectedFeaturesTable();
+    success: function(response) {
+      if (response.success){
+        updateSelectedFeaturesTable();
+      } else {
+        alert('Fuse failed: ' + response.message);
+      }
     },
     error: (xhr, status, error) => {
-      console.error('Fuse points error:', status, error);
+      console.error('Fuse Error:', error);
     }
   });
 };
@@ -676,40 +815,45 @@ const dividePoint = (points) => {
     data: JSON.stringify({
       points: points
     }),
-    contentType: 'application/json',  // Set content type to JSON
+    contentType: 'application/json',
     success: (response) => {
-      // Handle the success response from the server
       console.log('dividePoints', response);
-      updateSelectedFeaturesTable();
+      if (response.success){
+        updateSelectedFeaturesTable();
+      } else {
+        alert('Divide failed: ' + response.message);
+      }
+
     },
     error: (xhr, status, error) => {
-      // Handle errors
       console.error('Divide points error:', status, error);
     }
   });
-  // Implement the logic for dividing points
 };
 
-function validateStepTwo(){
+function exportfeature(){
   $.ajax({
     type: 'POST',
-    url: '/map/validateStepTwo/',
+    url: '/map/export/',
     headers: {
       'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
     },
-    data: JSON.stringify({
-      feature : new ol.format.GeoJSON().writeFeature(),
-    }),
-    success: function(data) {
-      console.log('validateStepOne:', data);
-      if (data.success) {
-
+    success: function(response) {
+      console.log('exportFeature:', response);
+      if (response.success) {
+        ExportMaterial.history = response.history
+        ExportMaterial.dcs.points = response.dcs.points
+        ExportMaterial.dcs.jths = response.dcs.jths
+        openDCSAttributesPopup()
+        const filePreview = document.getElementById('DCSAttributesfilePreview');
+        const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
+        filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
       } else {
-        alert('Validation failed: ' + data.message);
+        alert('exportFeature failed: ' + response.message);
       }
     },
     error: function(error) {
-      console.error('validateStepOne Error:', error);
+      console.error('exportfeature Error:', error);
     }
   })
 };
@@ -735,25 +879,11 @@ function saveAction() {
 
     reader.onload = function (e) {
       const jsonData = JSON.parse(e.target.result);
-
-      console.log(selectedFile.name, "DCS", jsonData)
       addFeature(selectedFile.name, "DCS", jsonData);
-
       closePopup();
     };
-
     reader.readAsText(selectedFile);
   }
-}
-
-function handleDragOver(event) {
-  event.preventDefault();
-}
-
-function handleDrop(event) {
-  event.preventDefault();
-  const files = event.dataTransfer.files;
-  handleFile(files[0]);
 }
 
 function handleFileSelect(event) {
@@ -779,9 +909,97 @@ function handleFile(file) {
     reader.readAsText(file);
   }
 }
+////
+function openDCSAttributesPopup() {
+  document.getElementById('DCSOverlay').style.display = 'block';
+  document.getElementById('DCSAttributesPopup').style.display = 'block';
+}
+
+function closeDCSAttributesPopup() {
+  document.getElementById('DCSOverlay').style.display = 'none';
+  document.getElementById('DCSAttributesPopup').style.display = 'none';
+}
+
+function handleDCSAttributesFileSelect(event) {
+  const file = event.target.files[0];
+  const fileName = file.name;
+  handleDCSAttributesFile(file,fileName);
+}
+
+function handleDCSAttributesFile(file, name) {
+  const filePreview = document.getElementById('DCSAttributesfilePreview');
+
+  if (file && file.type === 'application/json') {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const jsonData = JSON.parse(e.target.result);
+      ExportMaterial.name = name
+
+      ExportMaterial.dcs.originator = jsonData.originator
+      ExportMaterial.dcs.type = jsonData.type
+      ExportMaterial.dcs.moving = jsonData.moving
+      ExportMaterial.dcs.group = jsonData.group
+      ExportMaterial.dcs.hospitalNearby = jsonData.hospitalNearby
+      ExportMaterial.dcs.ownerInfo = jsonData.ownerInfo
+      ExportMaterial.dcs.approvalLetterRequired = jsonData.approvalLetterRequired
+      ExportMaterial.dcs.lastModificationReport = jsonData.lastModificationReport
+      ExportMaterial.dcs.pending = jsonData.pending
+      ExportMaterial.dcs.authority = jsonData.authority
+      ExportMaterial.dcs.publicationTypes = jsonData.publicationTypes
+      ExportMaterial.dcs.structureStatus = jsonData.structureStatus
+      ExportMaterial.dcs.legacySymbolCode = jsonData.legacySymbolCode
+      ExportMaterial.dcs.legacyOwnerAddress = jsonData.legacyOwnerAddress
+      ExportMaterial.dcs.legacyOmsCMID = jsonData.legacyOmsCMID
+      ExportMaterial.dcs.legacyOmsInvoiceCMID = jsonData.legacyOmsInvoiceCMID
+      ExportMaterial.dcs.legacyInvoiceAddress = jsonData.legacyInvoiceAddress
+
+      ExportMaterial.history.push({
+        timestamp: new Date().toISOString(),
+        operation: 'Metadata completion',
+        parameter: {
+            Source : name
+          }
+      })
+
+      const formattedJSON = JSON.stringify(ExportMaterial, null, 2);
+      filePreview.innerHTML = '<pre>' + formattedJSON + '</pre>';
+    };
+
+    reader.readAsText(file);
+  }
+}
+
+function exportDCSAttributesAction(file) {
+  //DCS data generation
+  const dcsData = JSON.stringify(file.dcs, null, 2);
+  const dcsBlob = new Blob([dcsData], { type: 'application/json' });
+  const dcsA = document.createElement('a');
+  const dcsUrl = window.URL.createObjectURL(dcsBlob);
+  dcsA.href = dcsUrl;
+  dcsA.download = 'MOD-' + file.name ;
+  document.body.appendChild(dcsA);
+  dcsA.click();
+  document.body.removeChild(dcsA);
+  window.URL.revokeObjectURL(dcsUrl);
+
+  //History 
+  const historyData = JSON.stringify(file.history, null, 2);
+  const historyBlob = new Blob([historyData], { type: 'application/json' });
+  const historyA = document.createElement('a');
+  const historyUrl = window.URL.createObjectURL(historyBlob);
+  historyA.href = historyUrl;
+  historyA.download = 'History-' + file.name ;
+  document.body.appendChild(historyA);
+  historyA.click();
+  document.body.removeChild(historyA);
+  window.URL.revokeObjectURL(historyUrl);
+}
 
 // HTML 
 /////////////////////////////////////////////////////////////////////
+
+
 $(document).ready(function() {
   $('#remFeature').click(function() {
     remFeature();
@@ -801,22 +1019,25 @@ $(document).ready(function() {
     handleFileSelect(event);
   });
 
-  $('#DCSPopup').on('dragover', function(event) {
-      handleDragOver(event);
+  $('#validation').click(function() {
+    validation();
   });
 
-  $('#DCSPopup').on('drop', function(event) {
-      handleDrop(event);
+  $('#exportfeature').click(function() {
+    exportfeature();
+  });
+  
+  $('#DCSAttributescloseBtn').click(function() {
+    closeDCSAttributesPopup();
   });
 
-  $('#step1Validate').click(function() {
-    validateStepOne();
+  $('#DCSAttributesfileInput').on('change', function(event) {
+    handleDCSAttributesFileSelect(event);
   });
 
-  $('#step2Validate').click(function() {
-    validateStepTwo();
+  $('#exportDcsFeature').click(function() {
+    exportDCSAttributesAction(ExportMaterial);
   });
-  $()
 });
 
 document.addEventListener('contextmenu', function(event) {
@@ -826,6 +1047,12 @@ document.addEventListener('contextmenu', function(event) {
 
 document.addEventListener('click', function() {
   hideContextMenu();
+  var contextMenuContent1pts = document.getElementById('context-menu-1points');
+  var contextMenuContent2pts = document.getElementById('context-menu-2points');
+  var fuseButton = contextMenuContent2pts.querySelector('.fuse-button');
+  var divideButton = contextMenuContent1pts.querySelector('.divide-button');
+  removeAllListeners(fuseButton);
+  removeAllListeners(divideButton);
 });
 
 

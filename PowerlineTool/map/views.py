@@ -5,8 +5,14 @@ import json
 
 LineStringHandler_instance = mapFunction.LineStringHandler()
 
+
 def index(request):
-    return render(request, 'map/index.html', {'stage_one_instance': LineStringHandler_instance})
+    return render(request, 'map/index.html', {'stage_one_instance': "LineStringHandler_instance"})
+
+def getTLMSimpleFeatures(request): 
+    if request.method == 'GET' :
+        #TODO conditions ?
+        return JsonResponse({'success': True, 'features' : LineStringHandler_instance.TLMSimplefeature})
 
 def remFeature(request):
     if request.method == 'POST' :
@@ -17,19 +23,7 @@ def remFeature(request):
             return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
         else : 
             LineStringHandler_instance.remFeature(featureId)
-            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
-
-def log_coordinates(request):
-    if request.method == 'POST':
-        latitude = request.POST.get('latitude')
-        longitude = request.POST.get('longitude')
-
-        latitudeMod, longitudeMod = mapFunction.transform_coordinates(3857, 2056, longitude, latitude)
-
-        return JsonResponse({'coordinates': [round(latitudeMod,1), round(longitudeMod,1)], 'status': 'success' })
-    else:
-        return JsonResponse({'status': 'error', 'message': 'Invalid HTTP method'})
-    
+            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})    
 
 def addFeature(request): 
     if request.method == 'POST' :
@@ -53,44 +47,18 @@ def addFeature(request):
 def getFeature(request):
     if request.method == 'GET' :
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
-    
-    return HttpResponse(LineStringHandler_instance.features) 
 
 
-def validateStepOne(request):
+def validation(request):
     successParameters = {
-        "value" : False, 
-        "continuous" : False,
+        "value" : False
     }
 
     if len(LineStringHandler_instance.features) > 0 : 
         successParameters["value"] = True
 
-    #Todo
-    if True : 
-        successParameters["continuous"] = True
-
     return JsonResponse({'success': all(successParameters.values()), 'features': LineStringHandler_instance.features})
-
-def validateStepTwo(request):
-    if request.method == 'POST' :
-        data = json.loads(request.body)
-        featureId = data.get('featureId')
-        featureType = data.get('featureType')
-        featureData = data.get('featureData')
-
-        successParameters = {
-            "value" : False, 
-        }
-            
-        stage_two_instance = mapFunction.StageTow(request)
-
-        #Todo
-        if True : 
-            successParameters["value"] = True
-
-        return JsonResponse({'success': all(successParameters.values()), 'features': LineStringHandler_instance.features})
-    
+   
 
 def fuse(request):
     if request.method == 'POST' :
@@ -103,27 +71,58 @@ def fuse(request):
         point2_id = data["points"][1]["id"]
         point2_source = data["points"][1]["source"]
 
-        if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
-            LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
-            return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
+        if point1_id not in LineStringHandler_instance.graphs[point1_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message' : f'you muste fuse at the end of the line, {point1_id} is not at the end of the line {point1_source}'})
         
-        return JsonResponse({'success': False, 'features': LineStringHandler_instance.features})
+        if point2_id not in LineStringHandler_instance.graphs[point2_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message' : f'you muste fuse at the end of the line, {point2_id} is not at the end of the line {point2_source}'})
+
+        # if LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+        #     LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
+        #     return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
+        
+        # return JsonResponse({'success': False})
+
+        if not LineStringHandler_instance.same_point(point1_source, point1_id, point2_source, point2_id):
+            return JsonResponse({'success': False, 'message' : f'the point {point2_id} and {point1_id} are too different to be fused.'})
+
+        LineStringHandler_instance.fuse(point1_source, point1_id, point2_source, point2_id)
+        return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
     
 def divide(request):
     if request.method == 'POST' :
-        # TODO handel undividable cases (last point)
-        # JsonResponse
-
         data = json.loads(request.body)
         point_id = data["points"][0]["id"]
         point_source = data["points"][0]["source"]
+
+        if point_source not in LineStringHandler_instance.graphs.keys():
+            return JsonResponse({'success': False, 'message': f'Source {point_source} not in graph'})
+
+        if point_id not in LineStringHandler_instance.graphs[point_source].nodes():
+            return JsonResponse({'success': False, 'message': f'Point f{point_source} not in source {point_source}'})
+        
+        if point_id in LineStringHandler_instance.graphs[point_source].find_end_nodes() :
+            return JsonResponse({'success': False, 'message': f'Can not divide at the end of the line'})
+
         LineStringHandler_instance.divide(point_source, point_id)
         return JsonResponse({'success': True, 'features': LineStringHandler_instance.features})
 
 
-def export(request): 
-    return print(request)
+def export(request):
+    if request.method == 'POST' :
+        if len(LineStringHandler_instance.features) != 1: 
+            return JsonResponse({'success': False, 
+                                 'message' :f'Currently {len(LineStringHandler_instance.features)} feature(s) open, must be reduced to 1.'})
+        else : 
+            export_file = LineStringHandler_instance.generate_export_files()
+            if len(list(export_file.keys())) != 1 :
+                return JsonResponse({'success': False, 
+                        'message' :f'Currently {len(list(export_file.keys()))} feature(s) open, must be reduced to 1.'})  
+            else :
+                key = list(export_file.keys())[0]
+                return JsonResponse({'success': True,"id" : key,  "dcs" : export_file[key]["dcs"], "history" : export_file[key]["history"]})
+
 
 # TODO handel export
         
-# TODO handel history
+# TODO handel historys
