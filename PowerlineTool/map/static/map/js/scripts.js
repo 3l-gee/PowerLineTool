@@ -53,9 +53,10 @@ function featuresStyle (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
+        displacement : [0,5],
         points: 3,
-        rotation: Math.PI * 4 / 3,
-        radius: 8, // Adjust the radius based on the zoom level
+        rotation: Math.PI,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
           color: 'blue',
         }),
@@ -79,18 +80,19 @@ function featuresStyle (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length - 1]),
       image: new ol.style.RegularShape({
+        displacement : [0,5],
         points: 3,
-        rotation: 0 + Math.PI / 3,
-        radius: 8, // Adjust the radius based on the zoom level
+        rotation: 0,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'red',
+          color: 'blue',
         }),
       }),
     }));
 
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'black',
+        color: 'blue',
         width: 2,
       }),
     }));
@@ -115,9 +117,9 @@ function selected (feature, resolution) {
   if (zoom <= 8) {
     styles.push(new ol.style.Style({
       image: new ol.style.Circle({
-        radius: 100, // Adjust the radius based on the zoom level
+        radius: 8, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'black',
+          color: '#FFA7D3',
         }),
       }),
       stroke: new ol.style.Stroke({
@@ -130,11 +132,11 @@ function selected (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
-        points: 3,
-        rotation: Math.PI * 4 / 3,
+        points: 10,
+        rotation: Math.PI,
         radius: 16, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: '#8BC5FF',
+          color: '#FFA7D3',
         }),
       }),
     }));
@@ -156,11 +158,11 @@ function selected (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length - 1]),
       image: new ol.style.RegularShape({
-        points: 3,
-        rotation: 0 + Math.PI / 3,
+        points: 10,
+        rotation: 0,
         radius: 16, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: '#FFD38B',
+          color: '#FFA7D3',
         }),
       }),
     }));
@@ -200,7 +202,7 @@ function selectedFeatures (feature, resolution) {
   } else {
     styles.push(new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'grey',
+        color: 'red',
         width: 4,
       }),
       image: new ol.style.Circle({
@@ -223,18 +225,20 @@ function selectedFeatures (feature, resolution) {
           color: [255, 255, 255, 0.6],
         }),
         padding: [2, 2, 2, 2],
-        offsetX: 10, 
+        offsetX: 15, 
+        offsetY: 25
       }),
     }));
 
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[0]),
       image: new ol.style.RegularShape({
+        displacement : [0,10],
         points: 3,
-        rotation: Math.PI * 4 / 3,
-        radius: 10, // Adjust the radius based on the zoom level
+        rotation: Math.PI / 2,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
-          color: 'blue',
+          color: 'red',
         }),
       }),
     }));
@@ -242,9 +246,10 @@ function selectedFeatures (feature, resolution) {
     styles.push(new ol.style.Style({
       geometry: new ol.geom.Point(coordinates[coordinates.length -1]),
       image: new ol.style.RegularShape({
+        displacement : [0,10],
         points: 3,
-        rotation: Math.PI / 3,
-        radius: 10, // Adjust the radius based on the zoom level
+        rotation: Math.PI + Math.PI / 2,
+        radius: 12, // Adjust the radius based on the zoom level
         fill: new ol.style.Fill({
           color: 'red',
         }),
@@ -395,18 +400,34 @@ const popup = new ol.Overlay({
 
 map.addOverlay(popup);
 
-function singleOrDoubleClick(event) {
-  if (event.type === 'dblclick') {
-      return true;
-  } else {
-      return ol.events.condition.singleClick(event) &&
-          !ol.events.condition.doubleClick(event);
-  }
-}
+// function singleOrDoubleClick(event) {
+//   if (event.type === 'dblclick') {
+//       return true;
+//   } else {
+//       return ol.events.condition.singleClick(event) &&
+//           !ol.events.condition.doubleClick(event);
+//   }
+// }
 
 
-const selectInteraction = new ol.interaction.Select({
-  condition : singleOrDoubleClick,
+// const selectInteraction = new ol.interaction.Select({
+//   condition : singleOrDoubleClick,
+//   style: selected,
+//   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
+//   multi: true,
+//   hitTolerance : 5
+// });
+
+const singleClickSelectInteraction = new ol.interaction.Select({
+  condition : ol.events.condition.singleClick,
+  style: selected,
+  layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
+  multi: false,
+  hitTolerance : 5
+});
+
+const doubleClickSelectInteraction = new ol.interaction.Select({
+  condition : ol.events.condition.doubleClick,
   style: selected,
   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
   multi: true,
@@ -414,35 +435,20 @@ const selectInteraction = new ol.interaction.Select({
 });
 
 popupCloser.onclick = function() {
-  selectInteraction.getFeatures().clear();
+  singleClickSelectInteraction.getFeatures().clear();
+  doubleClickSelectInteraction.getFeatures().clear();
   popup.setPosition(undefined);
   popupCloser.blur();
   return false;
 };
 
-map.addInteraction(selectInteraction);
+map.addInteraction(singleClickSelectInteraction);
+map.addInteraction(doubleClickSelectInteraction);
 
 
-selectInteraction.on('select', function (evt) {
-  console.log(evt.mapBrowserEvent.type)
-  if (evt.mapBrowserEvent.type === "singleclick") {
-    evt.selected = [evt.selected[0]];
-
-    let foundFeature = null;
-    console.log(evt.selected[0].getProperties().id)
-    selectInteraction.getFeatures().forEach(function(feature) {
-      console.log(feature.get("id"))
-        if (evt.selected[0].getProperties().id != feature.get("id") || evt.selected[0].getProperties().source != feature.get("source")) {
-            foundFeature = feature;
-            // Break the loop since we found the feature we were looking for
-            return true;
-        }
-    });
-    selectInteraction.getFeatures().clear();
-    selectInteraction.getFeatures().push(foundFeature);
-  } 
+doubleClickSelectInteraction.on('select', function (evt) {
   const selectedFeatures = evt.selected;
-  const selectedLayerName = selectInteraction.getLayer(selectedFeatures[0]).get("layerId")
+  const selectedLayerName = doubleClickSelectInteraction.getLayer(selectedFeatures[0]).get("layerId")
 
   if (selectedFeatures.length > 0) {
     if (selectedLayerName =="Selected"){
@@ -451,7 +457,6 @@ selectInteraction.on('select', function (evt) {
       let entry
       for (let selectedFeature of selectedFeatures){
         const selectedFeatureProperties = selectedFeature.getProperties();
-        console.log(selectedFeature)
         delete selectedFeatureProperties.geometry;
         entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
         newPopupContent += entry
@@ -479,7 +484,65 @@ selectInteraction.on('select', function (evt) {
         entry += "</td><td>"
         entry += selectedFeature.get("omsMatches") 
         entry += '</td><td>';
-        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> + </button>`;
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> ADD </button>`;
+        entry += '</td></tr>';
+        newPopupContent += entry
+      }
+      newPopupContent += "</table>"
+      popupContent.innerHTML = newPopupContent
+
+      const actionButtons = document.querySelectorAll('.action-button');
+      actionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const featureId = button.dataset.featureId;
+          addFeature(featureId, "TLM");
+
+        });
+      });
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
+    }
+  }
+})
+
+singleClickSelectInteraction.on('select', function (evt) {
+  const selectedFeatures = evt.selected;
+  const selectedLayerName = singleClickSelectInteraction.getLayer(selectedFeatures[0]).get("layerId")
+
+  if (selectedFeatures.length > 0) {
+    if (selectedLayerName =="Selected"){
+      popupTitle.innerHTML = "Feature";
+      var newPopupContent = '<pre id="json">'
+      let entry
+      for (let selectedFeature of selectedFeatures){
+        const selectedFeatureProperties = selectedFeature.getProperties();
+        delete selectedFeatureProperties.geometry;
+        entry = JSON.stringify(selectedFeatureProperties, undefined, 2);
+        newPopupContent += entry
+      }
+      newPopupContent += "</pre>"
+      popupContent.innerHTML = newPopupContent
+      popup.setPosition(map.getCoordinateFromPixel(evt.mapBrowserEvent.pixel_));
+    } 
+    else if (selectedLayerName =="TLM"){
+      const extent = ol.extent.createEmpty();
+      selectedFeatures.forEach(function (feature) {
+        ol.extent.extend(extent, feature.getGeometry().getExtent());
+      });
+
+      popupTitle.innerHTML = "Line String";
+
+      var newPopupContent = '<table>'
+      let entry = '<tr><th>Source</th><th>Linked Reg. Num.</th><th>Actions</th></tr>'
+      newPopupContent += entry
+      for (let selectedFeature of selectedFeatures){
+        let featureId = selectedFeature.get("id") 
+        entry = ""
+        entry += "<tr><td>" 
+        entry += featureId
+        entry += "</td><td>"
+        entry += selectedFeature.get("omsMatches") 
+        entry += '</td><td>';
+        entry += `<button id="SelectFeature" class="action-button" data-feature-id="${featureId}"> ADD </button>`;
         entry += '</td></tr>';
         newPopupContent += entry
       }
@@ -681,7 +744,7 @@ function updateSelectedFeaturesTable() {
         var row = $('<tr>')
           .append($('<td>').text(value.type))
           .append($('<td>').text(value.id))
-          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}"> - </button>`));
+          .append($('<td>').html(`<button class="remFeatureButton" data-id="${value.id}"> REMOVE </button>`));
     
         tableBody.append(row);
       }

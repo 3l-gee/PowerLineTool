@@ -6,7 +6,8 @@
 
 .GenericDiv{
   border: solid 1px #000000;
-  background-color: rgb(193, 205, 212);
+  background-color: #d1dbfa;
+  border-radius: 20px;
   padding: 10px;
   margin: 10px;
 }
@@ -15,8 +16,8 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 400px;
-
+  width: 600px;
+  max-height: 750px;
 }
 
 #popup {
@@ -29,39 +30,38 @@
   display: block;
 }
 
-#popup-closer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px;
-  cursor: pointer;
+.table-container {
+  border: 1px solid #000000;
+  max-height: 400px;
+  overflow-y: scroll; 
 }
 
 table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 10px; /* Adjust the spacing as needed */
+  border-spacing: 10px; 
 }
 
-/* Style for table cells */
 td, th {
-  padding: 10px;
-  border: 1px solid #ddd; /* Add a border for each cell */
+  padding: 5px 10px;
+  border: 1px solid #000000;
   text-align: left;
 }
 
-/* Optional: Style for table header */
 th {
-  background-color: #f2f2f2; /* Light gray background for header */
+  position: sticky; 
+  top: 0;
+  background-color: #d1dbfa;
 }
 
 .overlayPopup {
   display: none;
   position: absolute;
-  top: 20%;
-  left: 20%;
-  height: 50%;
-  right: 20%;
+  top: 10%;
+  left: 10%;
+  /* min-height: 400px; */
+  bottom: 10%;
+  right: 10%;
   padding: 20px;
   border: solid 1px #000000;
   background-color: rgb(193, 205, 212, 1);
@@ -69,12 +69,12 @@ th {
   z-index: 1000;
 }
 
-#closeBtn {
+/* #closeBtn {
   cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
-}
+} */
 
 /* Styles for the overlay background */
 .overlay {
@@ -89,15 +89,17 @@ th {
   backdrop-filter: blur(2px);
 }
 
-.filePreview{
+.filePreview {
+  position: relative;
   padding: 10px;
   width: 100%;
-  height: 100%;
+  height: 80%;
   border: solid 1px #000000;
   background-color: rgb(255, 255, 255);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
+  
 }
 
 #step2{
@@ -134,6 +136,15 @@ th {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px #000000;
+  background-color: #96aefc;
+  color: #000000;
 }
 
 /* Style for the file input */
@@ -150,11 +161,133 @@ th {
 /* Style for the label */
 .file-upload-label {
   display: block;
-  padding: 10px;
-  border: 2px #000000;
-  background-color: #79ebff;
-  color: #777;
+  font-weight: bold;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Add transition effect for smoother hover */
+}
+
+.file-upload:hover {
+  background-color: #152e81;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
+}
+
+.main-button {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin: 10px;
+  width: 100%;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+  background-color: #96aefc;
+  border: 1px #fff;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s transform 0.3;;
+}
+
+.main-button:hover {
+  background-color: #45a049;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
+}
+#remFeature.main-button:hover {
+  background-color: #7e1515;
+}
+
+#openPopupBtn.main-button:hover {
+  background-color: #152e81;
+}
+
+#validation.main-button:hover {
+  background-color: #14831a;
+}
+
+.close-button{
+  position: absolute;
+  top: 5px; 
+  right: 5px; 
+  padding: 5px 10px;
+  border-radius: 40px;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  color: #000000;
+  background-color: #e04343;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3;
+}
+
+.close-button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
+}
+
+.action-button{
+  border-radius: 40px;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  color: #000000;
+  background-color: #96aefc;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3;
+}
+
+.action-button:hover {
+  background-color: #14831a;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
+}
+
+.remFeatureButton{
+  padding: 5px 10px;
+  border-radius: 40px;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  width: 80%;
+  color: #000000;
+  background-color: #96aefc;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3;
+}
+
+.remFeatureButton:hover {
+  background-color: #7e1515;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
+}
+
+.graph-button-action{
+  padding: 5px 10px;
+  border-radius: 40px;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  color: #000000;
+  background-color: #96aefc;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3;
+}
+
+.graph-button-action:hover {
+  background-color: #152e81;
+  color: #ffffff;
+  transform: translate(2px,-2px);
+  box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
 }

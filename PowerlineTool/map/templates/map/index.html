@@ -42,7 +42,8 @@
     <!-- Popup Container -->
     <div id="popup">
         <h3 id="popup-title"></h3>
-        <a href="#" id="popup-closer">X</a>
+        <button class="close-button" id="popup-closer" type="button">X</button>
+        <!-- <a href="#" id="popup-closer">X</a> -->
         <div id="popup-content">
         </div>
     </div>
@@ -54,50 +55,54 @@
         <!-- Step 1: Selection -->
         <div id="step1" class="GenericDiv">
             <h5>Step 1: Selection </h5>
-            <table id="selectedFeatures">
-                <!-- Table Header -->
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Source</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <div class="table-container">
+                <table id="selectedFeatures">
+                    <!-- Table Header -->
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Source</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <!-- Table Body -->
-                <tbody>
-                </tbody>
-            </table>
+                    <!-- Table Body -->
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Buttons for Step 1 -->
             <div style="padding: 10px;">
-                <button id="validation">VALIDATE</button>
-                <button id="remFeature">RESET</button>
-                <button id="openPopupBtn">DCS</button>
+                <button class="main-button" id="remFeature">RESET</button>
+                <button class="main-button" id="openPopupBtn">DCS</button>
+                <button class="main-button" id="validation">VALIDATE</button>
             </div>
         </div>
 
         <!-- Step 2: Formatting -->
         <div id="step2" class="GenericDiv">
             <h5>Step 2: Formatting </h5>
-            <table id="selectedFeatures">
-                <!-- Table Header -->
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Selected Features</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <div class="table-container">
+                <table id="selectedFeatures">
+                    <!-- Table Header -->
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Selected Features</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <!-- Table Body -->
-                <tbody>
-                </tbody>
-            </table>
+                    <!-- Table Body -->
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Buttons for Step 2 -->
             <div style="padding: 10px;">
-                <button id="exportfeature">EXPORT</button>
+                <button class="main-button" id="exportfeature">EXPORT</button>
             </div>
         </div>
     </div>
@@ -108,41 +113,43 @@
     <!-- DCS Geometry Popup -->
     <div id="DCSPopup" class="overlayPopup">
         <h3>Geometry File</h3>
-        <span id="closeBtn">Close</span>
-        <!-- <input type="file" id="fileInput" accept=".json"> -->
+        <button class="close-button" id="closeBtn" type="button">X</button>
         <div class="file-upload">
             <label for="fileInput" class="file-upload-label">Upload your DCS Geoemtry files here (File 1)</label>
             <input type="file" id="fileInput" accept=".json" class="file-upload-input">
         </div>
+        
         <div id="filePreview" class="filePreview"></div>
-        <button id="saveDCSFeature">Save</button>
+        <button class="main-button" id="saveDCSFeature">Save</button>
     </div>
 
-    <!-- DCS Geometry Popup -->
+    <!-- DCS Metadata Popup -->
     <div id="DCSAttributesPopup" class="overlayPopup">
         <h3>Metadata File</h3>
-        <span id="DCSAttributescloseBtn">Close</span>
+        <!-- <span id="DCSAttributescloseBtn">Close</span> -->
+        <button class="close-button" id="DCSAttributescloseBtn" type="button">X</button>
         <div class="file-upload">
             <label for="DCSAttributesfileInput" class="file-upload-label">Upload your DCS Metadata files here (File 2)</label>
             <input type="file" id="DCSAttributesfileInput" accept=".json" class="file-upload-input">
         </div>
         <div id="DCSAttributesfilePreview" class="filePreview"></div>
-        <button id="exportDcsFeature">Export</button>
+        <button class="main-button" id="exportDcsFeature">Export</button>
     </div>
 
     <!-- Context Menu -->
     <div id="context-menu">
         <h3 id="context-menu-title"></h3>
+        <button class="close-button" id="popup-closer" type="button">X</button>
         <div id="context-menu-content-1"></div>
         <div id="context-menu-content-2"></div>
         <div id="context-menu-2points">
             <ul>
-                <li class="fuse-button">Fuse</li>
+                <li class="fuse-button"><button class="graph-button-action">FUSE</button></li>
             </ul>
         </div>
         <div id="context-menu-1points">
             <ul>
-                <li class="divide-button">Divide</li>
+                <li class="divide-button"><button class="graph-button-action">DIVIDE</button></li>
             </ul>
         </div>
     </div>

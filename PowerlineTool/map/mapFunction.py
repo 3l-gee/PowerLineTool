@@ -161,8 +161,8 @@ class LineStringHandler:
             "y": node1['y'],
             "structureHeight": node1['structureHeight'],
             "elevation": node1['elevation'],
-            "currentLighting": node1['structureHeight'], #TODO what lighting / marking should this have ?
-            "currentMarking" : node1['structureHeight'],
+            "currentLighting": node1['currentLighting'], #TODO what lighting / marking should this have ?
+            "currentMarking" : node1['currentMarking'],
             "description" : node1['structureHeight']
         }
 
