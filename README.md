@@ -43,32 +43,42 @@ This means that lines must be combined, divided, shortened, or extended.
 - ✔️ divide
 - ✔️ cut
 - ✔️ traceability of changes
-- ❌ export
+- ✔️ export
 
 
 ## Use case
 
 STEP 1 : The goal is to select the dataset of data to work with
 - DCS : Loads a dcs feature 
-  - Chose File (DCSexemple.json)
+  - Chose File to load the geometry from (DCSexemple.json)
   - Save
   - DCS feature is added to the features
-- Map click
-    - Displays clicked features
-    - ( + ) loads a feature
+- Map Single click
+    - Displays clicked feature
+    - ( ADD ) loads a feature
     - TLM feature is added to the features
-- ( - ) deletes a feature
+- Map Double click
+    - Displays all clicked features
+    - ( ADD ) loads a feature
+    - TLM feature is added to the features
+- ( REMOVE ) deletes a feature
 - RESET : emptys the features
 - VALIDATE (at least one feature), opens step 2
 
 STEP 2 : we can now modify the data
-- left click point : show detail
-- left click line : show detail + 3 history entry
+- left Single click point : show detail
+- left Single click line : show detail + 3 history entry
+- left Double click : shows all the selected features detail + 3 history entry
 - right click point : Fuse or divde 
   - fuse : both ends
   - divide : in between
-    - unwanted part can be deletd with ( - )
-- EXPORT : TODO Export
+    - unwanted part can be deletd with ( REMOVE )
+- EXPORT : Export the geoemtry
+  - Chose File to load the metadata from (DCSexemple.json)
+  - Save
+  - Two files are downloaded:
+  - History : shows all the steps undertaken to change the feature
+  - MOD: shows all the finished geometry
 
 ## Generic View
 - <span style="color:red">**Blue**<span>: TLM data set (loaded automatically)
