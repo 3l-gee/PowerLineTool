@@ -274,6 +274,7 @@ class LineString:
             coordinates.append((node_data['x'], node_data['y']))
             attributes = {
                 "id" : node,
+                "coordinates" : [node_data['x'], node_data['y']],
                 "description" : node_data['description'],
                 "source" : self.graph_id,
                 "elevation" : node_data['elevation'],
