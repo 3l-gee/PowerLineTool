@@ -400,24 +400,6 @@ const popup = new ol.Overlay({
 
 map.addOverlay(popup);
 
-// function singleOrDoubleClick(event) {
-//   if (event.type === 'dblclick') {
-//       return true;
-//   } else {
-//       return ol.events.condition.singleClick(event) &&
-//           !ol.events.condition.doubleClick(event);
-//   }
-// }
-
-
-// const selectInteraction = new ol.interaction.Select({
-//   condition : singleOrDoubleClick,
-//   style: selected,
-//   layers: [SimplifiedTLMLayer,SelectedFeatureLayer], // Specify the layers on which the interaction will work
-//   multi: true,
-//   hitTolerance : 5
-// });
-
 const singleClickSelectInteraction = new ol.interaction.Select({
   condition : ol.events.condition.singleClick,
   style: selected,

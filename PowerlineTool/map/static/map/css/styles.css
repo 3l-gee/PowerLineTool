@@ -69,14 +69,6 @@ th {
   z-index: 1000;
 }
 
-/* #closeBtn {
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-} */
-
-/* Styles for the overlay background */
 .overlay {
   display: none;
   position: absolute;
@@ -147,7 +139,6 @@ th {
   color: #000000;
 }
 
-/* Style for the file input */
 .file-upload input[type="file"] {
   position: absolute;
   top: 0;
@@ -158,13 +149,12 @@ th {
   cursor: pointer;
 }
 
-/* Style for the label */
 .file-upload-label {
   display: block;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Add transition effect for smoother hover */
+  transition: background-color 0.3s ease;
 }
 
 .file-upload:hover {
