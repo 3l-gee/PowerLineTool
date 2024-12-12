@@ -1,0 +1,115 @@
+{
+    "type": "POWER_LINE_LIMITED",
+    "moving": false,
+    "group": false,
+    "points": [
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 1",
+            "location": {
+                "crs": 2056,
+                "x": 2716228.54,
+                "y": 1157975.62
+            },
+            "elevation": {
+                "magnitude": 1491.2,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "LOW",
+            "marking": "MARKED"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 60,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 2",
+            "location": {
+                "crs": 2056,
+                "x": 2716413.05,
+                "y": 1158120.2
+            },
+            "elevation": {
+                "magnitude": 1517.2,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "MEDIUM",
+            "marking": "ORANGE_SPHERES"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 3",
+            "location": {
+                "crs": 2056,
+                "x": 2716534.3,
+                "y": 1158267.43
+            },
+            "elevation": {
+                "magnitude": 1576.4,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "HIGH",
+            "marking": "CABLE_WARNER"
+        }
+    ],
+    "jths": [
+        {
+            "structureHeight": {
+                "magnitude": 60.59,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "RED_WHITE_RED"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 62.34,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "ORANGE_CANVAS"
+        }
+    ],
+    "hospitalNearby": false,
+    "ownerInfo": {
+        "ownerGivenName": "Power",
+        "ownerFamilyName": "Line",
+        "ownerAddress": {
+            "department": "-",
+            "street1": "blabla111",
+            "street2": "9999",
+            "street3": "nope",
+            "postalCode": "9999",
+            "city": "Nope",
+            "countryCode": "CH"
+        },
+        "ownerContact": "000 000 00 00"
+    },
+    "approvalLetterRequired": true,
+    "lastChangedIn": "b31dcd53-571e-475c-a496-194eb4ab3a05",
+    "pending": false,
+    "authority": "6f453faf-05ac-44e9-8ff6-572b76cb151f",
+    "owner": "296fdd56-c447-471a-8799-49db9ec56670",
+    "publication": true,
+    "structureStatus": "ACTIVE",
+    "penetration": {
+        "magnitude": 100,
+        "unit": "METERS"
+    },
+    "approvalExpiryDate": "2024-12-30"
+}

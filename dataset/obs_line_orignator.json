@@ -1,0 +1,113 @@
+{
+    "type": "POWER_LINE_LIMITED",
+    "moving": false,
+    "group": false,
+    "points": [
+        {
+            "structureHeight": {
+                "magnitude": 10,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 1",
+            "location": {
+                "crs": 2056,
+                "x": 2716228.53,
+                "y": 1157975.62
+            },
+            "elevation": {
+                "magnitude": 1491.2,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "LOW",
+            "marking": "MARKED"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 60,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 2",
+            "location": {
+                "crs": 2056,
+                "x": 2716079.81,
+                "y": 1158059.26
+            },
+            "elevation": {
+                "magnitude": 1595.3,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "MEDIUM",
+            "marking": "ORANGE_SPHERES"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 10,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 3",
+            "location": {
+                "crs": 2056,
+                "x": 2716155.93,
+                "y": 1158338.45
+            },
+            "elevation": {
+                "magnitude": 1767.7,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "HIGH",
+            "marking": "CABLE_WARNER"
+        }
+    ],
+    "jths": [
+        {
+            "structureHeight": {
+                "magnitude": 59.98,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "RED_WHITE_RED"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 62.2,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "ORANGE_CANVAS"
+        }
+    ],
+    "hospitalNearby": false,
+    "ownerInfo": {
+        "ownerGivenName": "Charles",
+        "ownerFamilyName": "Crane",
+        "ownerAddress": {
+            "department": "Cranes",
+            "street1": "Crane Street 5",
+            "postalCode": "7001",
+            "city": "Chur",
+            "countryCode": "CH"
+        },
+        "ownerContact": "044 444 44 44"
+    },
+    "approvalLetterRequired": true,
+    "lastChangedIn": "8b92ad09-cf1f-4bb0-8f07-b30542cca652",
+    "pending": false,
+    "authority": "6f453faf-05ac-44e9-8ff6-572b76cb151f",
+    "owner": "d8993e14-ca3f-420a-83c0-fea23a856b06",
+    "publication": true,
+    "structureStatus": "ACTIVE",
+    "penetration": {
+        "magnitude": 100,
+        "unit": "METERS"
+    },
+    "approvalExpiryDate": "2025-02-28"
+}

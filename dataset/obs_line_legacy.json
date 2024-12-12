@@ -1,0 +1,115 @@
+{
+    "originator": "c30aaeab-e5b7-4e1d-a66f-cfe8d6aa3b5d",
+    "type": "POWER_LINE",
+    "moving": false,
+    "group": false,
+    "points": [
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentLighting": "NONE",
+            "location": {
+                "crs": 2056,
+                "x": 2714081.52,
+                "y": 1157375.6
+            },
+            "elevation": {
+                "magnitude": 1367.33,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            }
+        },
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentLighting": "NONE",
+            "location": {
+                "crs": 2056,
+                "x": 2714358.53,
+                "y": 1157321.6
+            },
+            "elevation": {
+                "magnitude": 1279.01,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            }
+        },
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentLighting": "NONE",
+            "description": "6541",
+            "location": {
+                "crs": 2056,
+                "x": 2714546.54,
+                "y": 1157262.59
+            },
+            "elevation": {
+                "magnitude": 1265.26,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            }
+        },
+        {
+            "structureHeight": {
+                "magnitude": 15,
+                "unit": "METERS"
+            },
+            "currentLighting": "NONE",
+            "description": "6540",
+            "location": {
+                "crs": 2056,
+                "x": 2714725.54,
+                "y": 1157180.59
+            },
+            "elevation": {
+                "magnitude": 1234.84,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            }
+        }
+    ],
+    "jths": [
+        {
+            "structureHeight": {
+                "magnitude": 40,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 20,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 30,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE"
+        }
+    ],
+    "hospitalNearby": false,
+    "ownerInfo": {},
+    "approvalLetterRequired": true,
+    "lastModificationReport": "15995d35-2cee-4959-b38c-57e075764381",
+    "pending": false,
+    "authority": "6f453faf-05ac-44e9-8ff6-572b76cb151f",
+    "publication": false,
+    "structureStatus": "ACTIVE",
+    "legacySymbolCode": "HL",
+    "legacyOwnerAddress": "Società Elettrica Sopracenerina SA\npiazza Grande 5\n6600 Locarno\n",
+    "legacyOmsCMID": "507291",
+    "legacyOmsInvoiceCMID": "507291",
+    "legacyInvoiceAddress": "Società Elettrica Sopracenerina SA\npiazza Grande 5\n6600 Locarno\n",
+    "approvalExpiryDate": "2038-12-31"
+}
