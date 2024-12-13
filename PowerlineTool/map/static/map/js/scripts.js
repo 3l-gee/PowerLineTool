@@ -15,15 +15,19 @@ let ExportMaterial = {
     ownerInfo : null, 
     approvalLetterRequired : null, 
     lastModificationReport : null, 
+    lastChangedIn : null,
+    owner : null,
     pending : null,
     authority : null,
-    publicationTypes : null, 
+    publication : null, 
     structureStatus : null, 
+    penetration : null,
     legacySymbolCode : null, 
     legacyOwnerAddress : null,
     legacyOmsCMID : null, 
     legacyOmsInvoiceCMID : null, 
-    legacyInvoiceAddress : null
+    legacyInvoiceAddress : null,
+    approvalExpiryDate : null,
   },
   history : null
 }
@@ -840,6 +844,11 @@ function exportfeature(){
   })
 };
 
+
+function editFeature(){
+  location.reload();
+}
+
 // POPUP
 /////////////////////////////////////////////////////////////////////
 function openPopup() {
@@ -926,15 +935,19 @@ function handleDCSAttributesFile(file, name) {
       ExportMaterial.dcs.ownerInfo = jsonData.ownerInfo
       ExportMaterial.dcs.approvalLetterRequired = jsonData.approvalLetterRequired
       ExportMaterial.dcs.lastModificationReport = jsonData.lastModificationReport
+      ExportMaterial.dcs.lastChangedIn = jsonData.lastChangedIn 
+      ExportMaterial.dcs.owner = jsonData.owner
       ExportMaterial.dcs.pending = jsonData.pending
       ExportMaterial.dcs.authority = jsonData.authority
-      ExportMaterial.dcs.publicationTypes = jsonData.publicationTypes
+      ExportMaterial.dcs.publication = jsonData.publication
       ExportMaterial.dcs.structureStatus = jsonData.structureStatus
+      ExportMaterial.dcs.penetration = jsonData.penetration
       ExportMaterial.dcs.legacySymbolCode = jsonData.legacySymbolCode
       ExportMaterial.dcs.legacyOwnerAddress = jsonData.legacyOwnerAddress
       ExportMaterial.dcs.legacyOmsCMID = jsonData.legacyOmsCMID
       ExportMaterial.dcs.legacyOmsInvoiceCMID = jsonData.legacyOmsInvoiceCMID
       ExportMaterial.dcs.legacyInvoiceAddress = jsonData.legacyInvoiceAddress
+      ExportMaterial.dcs.approvalExpiryDate = jsonData.approvalExpiryDate
 
       ExportMaterial.history.push({
         timestamp: new Date().toISOString(),
@@ -1007,6 +1020,10 @@ $(document).ready(function() {
 
   $('#exportfeature').click(function() {
     exportfeature();
+  });
+
+  $('#edit').click(function() {
+    editFeature();
   });
   
   $('#DCSAttributescloseBtn').click(function() {

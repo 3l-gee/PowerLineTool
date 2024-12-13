@@ -166,6 +166,8 @@ class LineString:
                     "elevation": tlm_data["points"][i]["terrain"]["magnitude"],
                     "currentLighting": "NONE",
                     "currentMarking": "NONE",
+                    "lighting": None,
+                    "marking" : None,
                     "description" : None
                 }
                 node_id1 = str(uuid.uuid4())[:6]
@@ -178,6 +180,8 @@ class LineString:
                 "elevation": tlm_data["points"][i+1]["terrain"]["magnitude"],
                 "currentLighting": "NONE",
                 "currentMarking": "NONE",
+                "lighting": None,
+                "marking" : None,
                 "description" : None
             }
             node_id2 = str(uuid.uuid4())[:6]
@@ -185,7 +189,8 @@ class LineString:
             
             jth_attributes = {
                 "structureHeight": tlm_data["lines"][i]["structureHeight"]["magnitude"],
-                "currentMarking": "NONE"
+                "currentMarking": "NONE",
+                "markingType" : None
             }
             self.graph.add_edge(node_id1, node_id2, attributes=jth_attributes) 
             node_id1 = node_id2
@@ -222,6 +227,8 @@ class LineString:
                     "elevation": dcs_data["points"][i]["elevation"]["magnitude"],
                     "currentLighting": dcs_data["points"][i].get("currentLighting", "NONE"),
                     "currentMarking": dcs_data["points"][i].get("currentMarking", "NONE"),
+                    "lighting": dcs_data["points"][i].get("lighting", None),
+                    "marking" : dcs_data["points"][i].get("marking", None),
                     "description" : dcs_data["points"][i].get("description", None)
                 }
                 node_id1 = str(uuid.uuid4())[:6]
@@ -234,6 +241,8 @@ class LineString:
                 "elevation": dcs_data["points"][i+1]["elevation"]["magnitude"],
                 "currentLighting": dcs_data["points"][i+1].get("currentLighting", "NONE"),
                 "currentMarking": dcs_data["points"][i+1].get("currentMarking", "NONE"),
+                "lighting": dcs_data["points"][i+1].get("lighting", None),
+                "marking" : dcs_data["points"][i+1].get("marking", None),
                 "description" : dcs_data["points"][i+1].get("description", None)
             }
             node_id2 = str(uuid.uuid4())[:6]
@@ -241,7 +250,8 @@ class LineString:
             
             jth_attributes = {
                 "structureHeight": dcs_data["jths"][i]["structureHeight"]["magnitude"],
-                "currentMarking": dcs_data["jths"][i].get("currentMarking","NONE")
+                "currentMarking": dcs_data["jths"][i].get("currentMarking","NONE"),
+                "markingType": dcs_data["jths"][i].get("markingType",None)
             }
             self.graph.add_edge(node_id1, node_id2, attributes=jth_attributes) 
 
@@ -280,7 +290,9 @@ class LineString:
                 "elevation" : node_data['elevation'],
                 "structureHeight" : node_data['structureHeight'],
                 "currentMarking" : node_data['currentMarking'],
-                "currentLighting" : node_data['currentLighting']
+                "currentLighting" : node_data['currentLighting'],
+                "lighting" : node_data.get('lighting', None),
+                "marking" : node_data.get('marking', None),
             }
             point_geojson = geojson.Feature(geometry=geojson.Point((node_data['x'], node_data['y'])), properties=attributes)
             features.append(point_geojson)
@@ -332,6 +344,13 @@ class LineString:
                 "verticalDatum" : 5728
             }
         })
+
+        if first_node_data.get('lighting', None) is not None:
+            temp_point["lighting"] = first_node_data['lighting']
+
+        if first_node_data.get('marking', None) is not None:
+            temp_point["marking"] = first_node_data['marking']
+
         for i in range(1,len(path)) :
             node_data = self.graph.nodes[path[i]]
             edge_data = self.graph.get_edge_data(path[i-1], path[i])["attributes"]
@@ -355,6 +374,13 @@ class LineString:
                     "verticalDatum" : 5728
                 }
             }
+
+            if node_data.get('lighting', None) is not None:
+                temp_point["lighting"] = node_data['lighting']
+
+            if node_data.get('marking', None) is not None:
+                temp_point["marking"] = node_data['marking']
+
             copied_temp_point = copy.deepcopy(temp_point)
             res["points"].append(copied_temp_point)
 
@@ -365,6 +391,10 @@ class LineString:
                 },
                 "currentMarking" : edge_data["currentMarking"]
             }
+
+            if edge_data.get('markingType', None) is not None:
+                temp_jth["markingType"] = edge_data['markingType']
+
             copied_temp_jth = copy.deepcopy(temp_jth)
             res["jths"].append(copied_temp_jth)
 
