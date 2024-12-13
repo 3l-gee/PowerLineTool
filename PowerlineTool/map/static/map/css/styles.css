@@ -180,7 +180,7 @@ th {
 }
 
 .main-button:hover {
-  background-color: #45a049;
+  background-color: #14831a;
   color: #ffffff;
   transform: translate(2px,-2px);
   box-shadow: -2px 2px 0px 0px rgb(68, 68, 68);
@@ -190,6 +190,10 @@ th {
 }
 
 #openPopupBtn.main-button:hover {
+  background-color: #152e81;
+}
+
+#edit.main-button:hover {
   background-color: #152e81;
 }
 

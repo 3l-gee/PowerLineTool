@@ -21,6 +21,7 @@ let ExportMaterial = {
     authority : null,
     publication : null, 
     structureStatus : null, 
+    penetration : null,
     legacySymbolCode : null, 
     legacyOwnerAddress : null,
     legacyOmsCMID : null, 
@@ -843,6 +844,11 @@ function exportfeature(){
   })
 };
 
+
+function editFeature(){
+  location.reload();
+}
+
 // POPUP
 /////////////////////////////////////////////////////////////////////
 function openPopup() {
@@ -935,6 +941,7 @@ function handleDCSAttributesFile(file, name) {
       ExportMaterial.dcs.authority = jsonData.authority
       ExportMaterial.dcs.publication = jsonData.publication
       ExportMaterial.dcs.structureStatus = jsonData.structureStatus
+      ExportMaterial.dcs.penetration = jsonData.penetration
       ExportMaterial.dcs.legacySymbolCode = jsonData.legacySymbolCode
       ExportMaterial.dcs.legacyOwnerAddress = jsonData.legacyOwnerAddress
       ExportMaterial.dcs.legacyOmsCMID = jsonData.legacyOmsCMID
@@ -1013,6 +1020,10 @@ $(document).ready(function() {
 
   $('#exportfeature').click(function() {
     exportfeature();
+  });
+
+  $('#edit').click(function() {
+    editFeature();
   });
   
   $('#DCSAttributescloseBtn').click(function() {

@@ -1,0 +1,113 @@
+{
+    "type": "POWER_LINE_LIMITED",
+    "moving": false,
+    "group": false,
+    "points": [
+        {
+            "structureHeight": {
+                "magnitude": 25,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 1",
+            "location": {
+                "crs": 2056,
+                "x": 2589587.87,
+                "y": 1118057.36
+            },
+            "elevation": {
+                "magnitude": 483.8,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "NONE",
+            "marking": "NONE"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 25,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 2",
+            "location": {
+                "crs": 2056,
+                "x": 2589877.27,
+                "y": 1118034.07
+            },
+            "elevation": {
+                "magnitude": 483,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "NONE",
+            "marking": "NONE"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 25,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "currentLighting": "NONE",
+            "description": "Point 3",
+            "location": {
+                "crs": 2056,
+                "x": 2590238.81,
+                "y": 1118010.97
+            },
+            "elevation": {
+                "magnitude": 480.3,
+                "unit": "METERS",
+                "verticalDatum": 5728
+            },
+            "lighting": "NONE",
+            "marking": "NONE"
+        }
+    ],
+    "jths": [
+        {
+            "structureHeight": {
+                "magnitude": 25.77,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "NONE"
+        },
+        {
+            "structureHeight": {
+                "magnitude": 25.84,
+                "unit": "METERS"
+            },
+            "currentMarking": "NONE",
+            "markingType": "NONE"
+        }
+    ],
+    "hospitalNearby": false,
+    "ownerInfo": {
+        "ownerGivenName": "Pam",
+        "ownerFamilyName": "Public",
+        "ownerAddress": {
+            "department": "Tester",
+            "street1": "Main Str 1",
+            "postalCode": "8001",
+            "city": "Zürich",
+            "countryCode": "CH"
+        },
+        "ownerContact": "764412345"
+    },
+    "approvalLetterRequired": true,
+    "lastChangedIn": "36c0a85a-bc3c-40fa-9765-8f3401cb51c2",
+    "pending": false,
+    "authority": "6f453faf-05ac-44e9-8ff6-572b76cb151f",
+    "owner": "ae116f0f-edc2-4def-8a54-75deb8a65c1c",
+    "publication": true,
+    "structureStatus": "ACTIVE",
+    "penetration": {
+        "magnitude": 100,
+        "unit": "METERS"
+    },
+    "approvalExpiryDate": "2024-12-30"
+}
